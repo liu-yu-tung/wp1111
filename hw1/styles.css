@@ -1,71 +1,94 @@
 body {
+    display: block;
     background-color: coral;
     color: white;
+    margin: 0px;
 }
 .main {
+    /*
+    position: absolute;
+    */
+    position: sticky;
     background-color: red;
     width: 60%;
-    height: 100%;
-    float: left;
+    left: 0px;
+    top: 0px;
+    bottom: 80px;
+    aspect-ratio: 1/1;
+    /* float: left; */
 }
 .side {
+    position: absolute;
     background-color: orange;
     width: 40%;
-    height: 100%;
-    float: right;
+    top: 0px;
+    bottom: 80px;
+    right: 0px;
+    /*float: right; */
 }
 .container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0px;
-    padding: 0px;
-}
-.card {
-    
-    border-radius: 5%;
-    margin: 3px;
-    padding: 3px;
-    background-color: aqua;
+    vertical-align: middle;
+    align-items: baseline;
 }
 
-.main > .card {
-    padding-top: 100%;
-    width: 98%;
+.card {
+    border: 1px solid blue;
+    border-radius: 5%;
+    background-color: aqua;
+    align-items: baseline;
+}
+
+.main > .container > .card {
+    display: flex;
+    aspect-ratio: 1/1;
+    flex-basis: 80%;
+    align-items: center;
+    justify-content: center;
+    vertical-align: center;
 }
 
 .side > .container > .card {
-    padding-top: 20%;
+    display: flex;
+    aspect-ratio: 5/3;
     flex-basis: 45%;
-    /*flex-basis: 45%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    vertical-align: center;
+    /*
+     * flex-basis: 45%;
      */
 }
 
-
 .footer {
-    background-color: blue;
+    /*background-color: blue;*/
     position: absolute;
     width: 100%;
-    height: 5%;
-    bottom: 0;
+    height: 80px;
+    bottom: 0px;
     align-items: center;
     text-align: center;
 }
 
 .circle {
     border-radius: 50%;
-    background-color: #333333;
+    background-color: #433333;
     text-align: center;
     height: 50%;
-    vertical-align: middle;
+    aspect-ratio: 1/1;
+    vertical-align: center;
     display: table-cell;
 }
+
 @media only screen and (max-width: 800px) {
     .side > .container > .card {
-        padding-top: 20%;
+        aspect-ratio: 5/3;
         width: 100%;
-        flex-basis: 90%;
+        flex-basis: 65%;
     }
 }
 @media only screen and (max-width: 500px) {
