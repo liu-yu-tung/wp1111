@@ -5,33 +5,32 @@ body {
     margin: 0px;
 }
 .main {
-    /*
     position: absolute;
-    */
-    position: sticky;
     background-color: red;
     width: 60%;
-    left: 0px;
+    height: calc(100% - 80px);
     top: 0px;
     bottom: 80px;
-    aspect-ratio: 1/1;
-    /* float: left; */
+    /*padding-top: 1%;*/
 }
 .side {
     position: absolute;
     background-color: orange;
     width: 40%;
+    height: calc(100% - 80px);
     top: 0px;
-    bottom: 80px;
     right: 0px;
-    /*float: right; */
+    justify-content: center;
 }
 .container {
+    border: 1px solid white;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
     justify-content: center;
-    vertical-align: middle;
+    vertical-align: center;
     align-items: baseline;
 }
 
@@ -39,29 +38,25 @@ body {
     border: 1px solid blue;
     border-radius: 5%;
     background-color: aqua;
-    align-items: baseline;
 }
 
 .main > .container > .card {
     display: flex;
     aspect-ratio: 1/1;
-    flex-basis: 80%;
     align-items: center;
     justify-content: center;
-    vertical-align: center;
+    width: min(100%, calc(100vh - 80px));
 }
 
 .side > .container > .card {
     display: flex;
+    width: 150px;
+    /*
+    display: flex;
+    */
     aspect-ratio: 5/3;
-    flex-basis: 45%;
-    align-items: center;
     text-align: center;
     justify-content: center;
-    vertical-align: center;
-    /*
-     * flex-basis: 45%;
-     */
 }
 
 .footer {
@@ -75,20 +70,23 @@ body {
 }
 
 .circle {
+    position: relative;
     border-radius: 50%;
     background-color: #433333;
     text-align: center;
-    height: 50%;
+    height: 75%;
     aspect-ratio: 1/1;
-    vertical-align: center;
     display: table-cell;
 }
 
 @media only screen and (max-width: 800px) {
+
     .side > .container > .card {
+        /*
         aspect-ratio: 5/3;
         width: 100%;
         flex-basis: 65%;
+        */
     }
 }
 @media only screen and (max-width: 500px) {
