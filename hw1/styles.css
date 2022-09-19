@@ -38,6 +38,7 @@ body {
     border: 1px solid blue;
     border-radius: 5%;
     background-color: aqua;
+    align-self: center;
 }
 
 .main > .container > .card {
@@ -50,7 +51,7 @@ body {
 
 .side > .container > .card {
     display: flex;
-    width: 150px;
+    width: 200px;
     /*
     display: flex;
     */
