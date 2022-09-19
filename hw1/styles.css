@@ -81,7 +81,6 @@ body {
 }
 
 @media only screen and (max-width: 800px) {
-
     .side > .container > .card {
         /*
         aspect-ratio: 5/3;
@@ -92,7 +91,15 @@ body {
 }
 @media only screen and (max-width: 500px) {
     .side {
-        display: none;
+        position: absolute;
+        height: 200px;
+        width: 100%;
+        bottom: 80px;
+        top: auto;
+    }
+    .side > .container > .card {
+        width: auto;
+        height: auto;
     }
     .main {
         width: 100%;
