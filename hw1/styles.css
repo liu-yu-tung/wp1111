@@ -17,10 +17,12 @@ body {
     position: absolute;
     background-color: orange;
     width: 40%;
-    height: calc(100% - 80px);
+    height: calc(100% - 120px);
     top: 0px;
     right: 0px;
     justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .container {
     border: 1px solid white;
@@ -31,15 +33,14 @@ body {
     height: 100%;
     justify-content: center;
     vertical-align: center;
-    align-items: baseline;
 }
 
 .card {
     border: 1px solid blue;
     border-radius: 5%;
     background-color: aqua;
-    align-self: center;
 }
+
 
 .main > .container > .card {
     display: flex;
@@ -52,14 +53,13 @@ body {
 
 .side > .container > .card {
     display: flex;
-    width: 200px;
     /*
-    display: flex;
+    width: min(45vw, 200px);
+    aspect-ratio: 5 / 3;
     */
-    aspect-ratio: 5/3;
+    width: 200px;
     text-align: center;
     justify-content: center;
-    align-self: center;
 }
 
 .footer {
@@ -74,13 +74,32 @@ body {
 
 .circle {
     position: relative;
+    display: flex;
     border-radius: 50%;
     background-color: #433333;
     text-align: center;
     height: 75%;
     aspect-ratio: 1/1;
-    display: table-cell;
     align-self: center;
+}
+.text_box {
+
+    /* method 1
+     * */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+    align-self: center;
+    /*
+    */
+}
+.content {
+    /* method 1
+     */
+    align-self: center;
+    */
+    */
 }
 
 @media only screen and (max-width: 800px) {
