@@ -3,6 +3,7 @@ body {
     background-color: coral;
     color: white;
     margin: 0px;
+    font-family: "Roboto";
 }
 .main {
     position: absolute;
@@ -37,10 +38,9 @@ body {
 
 .card {
     border: 1px solid blue;
-    border-radius: 5%;
+    border-radius: 20px;
     background-color: aqua;
 }
-
 
 .main > .container > .card {
     display: flex;
@@ -57,7 +57,7 @@ body {
     width: min(45vw, 200px);
     aspect-ratio: 5 / 3;
     */
-    width: 200px;
+    width: 225px;
     text-align: center;
     justify-content: center;
 }
@@ -68,10 +68,23 @@ body {
     width: 100%;
     height: 80px;
     bottom: 0px;
+    display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
     text-align: center;
+    border: 1px solid green;
+    justify-content: center;
 }
-
+.footer > .bottom {
+    position: relative;
+    justify-content: center;
+    height: 100%;
+    align-self: center;
+    border: 1px solid green;
+    width: 33%;
+    
+}
 .circle {
     position: relative;
     display: flex;
@@ -83,7 +96,6 @@ body {
     align-self: center;
 }
 .text_box {
-
     /* method 1
      * */
     margin: auto;
@@ -93,10 +105,12 @@ body {
     align-self: center;
     /*
     */
+    
 }
 .content {
     /* method 1
      */
+    font-family: "Roboto";
     align-self: center;
     */
     */
@@ -112,6 +126,7 @@ body {
     }
 }
 @media only screen and (max-width: 500px) {
+    /*
     .side {
         position: absolute;
         height: 200px;
@@ -123,8 +138,16 @@ body {
         width: auto;
         height: auto;
     }
+    */
+    .side  {
+        display: none;
+    }
     .main {
         width: 100%;
     }
 }
 
+@font-face {
+    font-family: "Roboto";
+    src:  url("fonts/SourceCodePro-Black.ttf") format("truetype");
+}
