@@ -36,7 +36,6 @@ body {
     width: 100%;
     height: 100%;
     justify-content: center;
-    vertical-align: middle;
 }
 
 .card {
@@ -55,21 +54,24 @@ body {
     align-self: center;
     flex-direction: column;
     position: relative;
-    height: 33%;
+    height: 80%;
     width: 100%;
     border: 1px solid purple;
     
 }
-
+.b1, .b3{
+    height: 10%;
+}
+.b2 {
+    justify-content: center;
+    display: flex;
+}
 .main > .container > .card {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 97%;
     height: 97%;
-    /*
-    width: min(80vw, calc(98vh - 80px));
-    */
     align-self: center;
 }
 .side > .container {
@@ -89,56 +91,100 @@ body {
 }
 
 .footer {
-    /*background-color: blue;*/
-    position: absolute;
-    width: 100%;
-    height: 80px;
-    bottom: 0px;
-    display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
+    box-sizing: border-box;
+    position: fixed;
+    display: flex;
     text-align: center;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    width: 100vw;
+    height: 5rem;
+    bottom: 0px;
     border: 1px solid green;
+}
+.down {
+    align-items: center;
+    display: flex;
+    flex: 1 1 25%;
+}
+#down2 {
     justify-content: center;
 }
-.footer > .bottom {
-    position: relative;
-    justify-content: center;
-    height: 100%;
+#down2 > .box {
+    width: 276px;
     align-self: center;
-    border: 1px solid green;
-    width: 33%;
-    
+    background-color: purple;
+    justify-content: center;
+}
+#down3 > .box {
+    justify-content: center;
+}
+.box {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 12px;
+    padding: 0 6px;
+}
+#down2 > .box > .bott {
+    align-self: center;
+    display: flex;
+    border: 1px solid white; 
+    background-color: yellow;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+#down3 {
+    justify-content: flex-end;
+    background-color: blue;
+    margin-right: 18px;
+}
+#down1 {
+    justify-content: flex-start;
+    margin-left: 12px;
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    align-items: center;
+    display: flex;
+}
+.bott {
+    align-self: center;
+    display: flex;
+    border: 1px solid white; 
+    background-color: yellow;
+    width: 40px;
+    height: 40px;
+}
+#down2 > .box > #bottom25 {
+    border-radius: 20px;
+    width: 56px;
+    height: 40px;
+    background-color: #EA4335;
+
 }
 .circle {
-    position: relative;
     display: flex;
     border-radius: 50%;
     background-color: #433333;
-    text-align: center;
-    height: 100%;
+    height: 40%;
     aspect-ratio: 1/1;
     align-self: center;
 }
+.side > .container > .card > .block > .circle {
+    height: 70%;
+}
 .text_box {
-    /* method 1
-     * */
     margin: auto;
     display: flex;
     justify-content: center;
     background-color: gray;
     align-self: center;
-    /*
-    */
 }
 .content {
-    /* method 1
-     */
     font-family: "Roboto";
     align-self: center;
-    */
-    */
 }
 .mute_box {
     position: relative;
@@ -167,15 +213,29 @@ body {
     */
 }
 
-.
-    /*
-    background-image: url("img/mute.svg");
-    */
-    background-color: white;
-    height: 100%;
-    width: 100%;
-    transform: translate( -50%, -50% );
-    
+.sp {
+    align-self: center;
+    border-left: 1px solid #DADCE0;
+    height: 1rem;
+}
+.time {
+    display: flex;
+}
+.time > .text_box {
+    letter-spacing: .00625em;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0 .75rem;
+}
+.meeting_code {
+    letter-spacing: .00625em;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    max-width: 400px;
 }
 
 @media only screen and (max-width: 800px) {
