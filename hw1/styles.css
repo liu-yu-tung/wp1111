@@ -15,16 +15,18 @@ body {
     /*padding-top: 1%;*/
 }
 .side {
-
+    display: flex;
     position: absolute;
     background-color: orange;
     width: 30%;
-    height: calc(100% - 120px);
+    height: calc(100% - 80px);
     top: 0px;
     right: 0px;
     justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    /*
+    padding-top: 30px;
+    padding-bottom: 30px;
+    */
 }
 .container {
     border: 1px solid white;
@@ -38,10 +40,25 @@ body {
 }
 
 .card {
+    display: flex;
     border: 1px solid blue;
     border-radius: 20px;
     background-color: aqua;
     margin: 1%;
+    padding: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.block {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    position: relative;
+    height: 33%;
+    width: 100%;
+    border: 1px solid purple;
+    
 }
 
 .main > .container > .card {
@@ -55,15 +72,20 @@ body {
     */
     align-self: center;
 }
+.side > .container {
+    height: auto;
+    align-self: center;
+}
 
 .side > .container > .card {
     display: flex;
     /*
     width: min(45vw, 200px);
     */
-    aspect-ratio: 5 / 3;
     width: max(47%, 150px);
+    aspect-ratio: 5 / 4;
     justify-content: center;
+    align-self: center;
 }
 
 .footer {
@@ -95,7 +117,7 @@ body {
     border-radius: 50%;
     background-color: #433333;
     text-align: center;
-    height: 40%;
+    height: 100%;
     aspect-ratio: 1/1;
     align-self: center;
 }
@@ -118,14 +140,41 @@ body {
     */
     */
 }
-
 .mute_box {
+    position: relative;
+    background-color: violet;
+    border: 5px solid yellow;
+    z-index: 10;
+    transform: translate(-200%, 0);
+}
+.text_box {
+    /* method 1
+     * */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+    align-self: center;
+    /*
+    */
+}
+.content {
+    /* method 1
+     */
+    font-family: "Roboto";
+    align-self: center;
+    */
+    */
+}
+
+.
     /*
     background-image: url("img/mute.svg");
-    background-color: white;
-    height: 25px;
-    width: 25px;
     */
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    transform: translate( -50%, -50% );
     
 }
 
