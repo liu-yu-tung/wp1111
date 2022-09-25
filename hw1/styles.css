@@ -1,9 +1,14 @@
 body {
     display: block;
     background-color: #202124; 
-    color: white;
+    color: #e8eaed;
     margin: 0px;
     font-family: "Roboto";
+    -webkit-tap-highlight-color: transparent;
+}
+svg {
+    fill: white;
+    position: relative;
 }
 .main {
     position: absolute;
@@ -12,7 +17,6 @@ body {
     height: calc(100% - 80px);
     top: 0px;
     bottom: 80px;
-    /*padding-top: 1%;*/
 }
 .side {
     display: flex;
@@ -23,10 +27,6 @@ body {
     top: 0px;
     right: 0px;
     justify-content: center;
-    /*
-    padding-top: 30px;
-    padding-bottom: 30px;
-    */
 }
 .container {
     background-color: #202124; 
@@ -55,15 +55,144 @@ body {
     align-self: center;
     flex-direction: column;
     position: relative;
+    /*
     height: 80%;
+    */
     width: 100%;
     border: 1px solid purple;
     
 }
-.b1, .b3{
-    height: 10%;
+.b3 > .pin {
+    border-radius: 50%;
+}
+.three_bottoms {
+    padding: 1px;
+    margin: 5px;
+    background-color: #48484b;
+    visibility: hidden;
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 20px;
+    position: absolute;
+    flex-direction: row;
+    justify-self: center;
+    align-items: flex;
+    align-self: center;
+    z-index: 10;
+    opacity: 50%;
+}
+.tooltip {
+    position: relative;
+    visibility: hidden;
+}
+.main .tooltip {
+    height: 24px;
+    width: 24px;
+    font-size: 20px;
+    background-color: #3c4043;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    border-radius: 50%;
+    z-index: 10;
+    visibility: hidden;
+}
+.tooltip.left_bottom, .tooltip.middle_bottom, .tooltip.right_bottom {
+    z-index: 50;
+    visibility: hidden;
+}
+.main .tooltip:hover {
+    visibility: visible;
+    transition: 0.5s;
+}
+.main:hover .three_bottoms .screen_bottom{
+    visibility: visible;
+    opacity: 50%;
+    transition: 0.5s;
+}
+.main:hover .three_bottoms {
+    visibility: visible;
+    opacity: 50%;
+    transition: 0.5s;
+}
+.main .left_bottom:hover, .main .middle_bottom:hover, .main .right_bottom:hover {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.1s;
+}
+.main .three_bottoms:hover {
+    opacity: 80%;
+    transition: 0.1s;
+}
+.main .b1 {
+    border: yellowgreen 1px solid;
+    height: 24px;
+    position: absolute;
+    top: .5px;
+    padding: 8px 0px;
+    display: flex;
+    justify-content: flex-end;
+}
+.main .mute {
+    color: rgb(128,126,124);
+    color: #fff;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.3);
+    margin: 4px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    right: 12px;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+}
+
+.main .b3 {
+    border: yellowgreen 1px solid;
+    position: absolute;
+    bottom: -.5px;
+    left: 0px;
+    right: 0px;
+    margin: 0px;
+    padding: 8px 0px;
+    display: flex;
+    justify-content: flex-start;
+}
+.main .status {
+    align-items: center;
+    display: flex;
+    min-height: 1.625rem;
+    overflow: hidden;
+}
+.main .pin {
+    display: flex;
+    width: 32px;
+    height: 24px;
+    display: flex;
+    min-height: 1.625rem;
+    overflow: hidden;
+    line-height: inherit;
+    word-wrap: normal;
+    font-size: 24px;
+    padding-left: 8px;
+}
+.main .pin .name{
+    display: flex;
+    position: relative;
+    margin: 0 1rem;
+    font-size: 24px;
+    align-items: center;
+}
+.main .b2 {
+    width: 100%;
+    aspect-ratio: 16/9;
+    justify-content: center;
+    display: flex;
 }
 .b2 {
+    width: 100%;
     justify-content: center;
     display: flex;
 }
@@ -75,6 +204,21 @@ body {
     width: 97%;
     height: 97%;
     align-self: center;
+}
+.main > .container > .card > .b2 > .circle {
+    width: 160px;
+    height: 160px;
+    background-color: lightslategrey;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+
 }
 .side > .container {
     height: auto;
@@ -179,7 +323,6 @@ body {
     margin: auto;
     display: flex;
     justify-content: center;
-    background-color: gray;
     align-self: center;
 }
 .content {
@@ -189,28 +332,15 @@ body {
 .mute_box {
     position: relative;
     background-color: violet;
-    border: 5px solid yellow;
+    border: 1px solid yellow;
     z-index: 10;
     transform: translate(-200%, 0);
-}
-.text_box {
-    /* method 1
-     * */
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    background-color: gray;
-    align-self: center;
-    /*
-    */
 }
 .content {
     /* method 1
      */
     font-family: "Roboto";
     align-self: center;
-    */
-    */
 }
 
 .sp {
