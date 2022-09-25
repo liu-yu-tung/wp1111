@@ -55,9 +55,6 @@ svg {
     align-self: center;
     flex-direction: column;
     position: relative;
-    /*
-    height: 80%;
-    */
     width: 100%;
     border: 1px solid purple;
     
@@ -83,19 +80,22 @@ svg {
     opacity: 50%;
 }
 .tooltip {
+    height: 24px;
+    width: fit-content;
     position: relative;
     visibility: hidden;
+    padding: 4px 4px;
+    margin: 6px;
 }
 .main .tooltip {
     height: 24px;
     width: 24px;
-    font-size: 20px;
-    background-color: #3c4043;
+    font-size: 24px;
     white-space: nowrap;
     text-overflow: ellipsis;
     text-align: center;
     border-radius: 50%;
-    z-index: 10;
+    z-index: 20;
     visibility: hidden;
 }
 .tooltip.left_bottom, .tooltip.middle_bottom, .tooltip.right_bottom {
@@ -108,7 +108,7 @@ svg {
 }
 .main:hover .three_bottoms .screen_bottom{
     visibility: visible;
-    opacity: 50%;
+    opacity: 80%;
     transition: 0.5s;
 }
 .main:hover .three_bottoms {
@@ -117,9 +117,9 @@ svg {
     transition: 0.5s;
 }
 .main .left_bottom:hover, .main .middle_bottom:hover, .main .right_bottom:hover {
-    visibility: visible;
+    background-color: #202124;
     opacity: 1;
-    transition: 0.1s;
+    transition: 0.05s;
 }
 .main .three_bottoms:hover {
     opacity: 80%;
@@ -133,6 +133,29 @@ svg {
     padding: 8px 0px;
     display: flex;
     justify-content: flex-end;
+}
+.side .block {
+    display: flex;
+    flex-direction: column;
+    height: 16%;
+}
+.side .block .mute{
+    background-color: rgba(32,33,36,0.302);
+    display: flex;
+    height: 18px;
+    width: 18px;
+    align-self: flex-end;
+    padding: 5%;
+    border-radius: 50%;
+}
+.side .block.b2{
+    height: 60%;
+}
+.side .t_box {
+    width: 90%;
+    height: 90%;
+    align-self: center;
+    justify-content: center;
 }
 .main .mute {
     color: rgb(128,126,124);
@@ -160,7 +183,19 @@ svg {
     display: flex;
     justify-content: flex-start;
 }
-.main .status {
+.side .b3 {
+    border: yellowgreen 1px solid;
+    display: flex;
+    justify-content: flex-start;
+}
+.side .name{
+    display: flex;
+    position: relative;
+    margin: 0 0.5rem;
+    font-size: 0.875rem;
+    align-items: center;
+}
+.status{
     align-items: center;
     display: flex;
     min-height: 1.625rem;
@@ -311,13 +346,13 @@ svg {
 .circle {
     display: flex;
     border-radius: 50%;
-    background-color: lightgrey;
+    background-color: turquoise;
     height: 40%;
     aspect-ratio: 1/1;
     align-self: center;
 }
-.side > .container > .card > .block > .circle {
-    height: 70%;
+.side .circle {
+    height: 80%;
 }
 .text_box {
     margin: auto;
@@ -329,6 +364,9 @@ svg {
     font-family: "Roboto";
     align-self: center;
 }
+.side .content {
+    font-size: 2rem;
+}
 .mute_box {
     position: relative;
     background-color: violet;
@@ -336,13 +374,6 @@ svg {
     z-index: 10;
     transform: translate(-200%, 0);
 }
-.content {
-    /* method 1
-     */
-    font-family: "Roboto";
-    align-self: center;
-}
-
 .sp {
     align-self: center;
     border-left: 1px solid #DADCE0;
