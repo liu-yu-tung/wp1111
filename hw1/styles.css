@@ -4,11 +4,34 @@ body {
     color: #e8eaed;
     margin: 0px;
     font-family: "Roboto";
+    justify-content: center;
+    align-items: center;
+    align-self: center;
     -webkit-tap-highlight-color: transparent;
 }
 svg {
     fill: white;
     position: relative;
+}
+.on {
+    display: block;
+}
+.off {
+    display: none;
+}
+input {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    display: block;
+    justify-self: center;
+    visibility: hidden;
+}
+.on {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-self: center;
 }
 .main {
     position: absolute;
@@ -30,7 +53,6 @@ svg {
 }
 .container {
     background-color: #202124; 
-    border: 1px solid white;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -41,9 +63,7 @@ svg {
 
 .card {
     display: flex;
-    border: 1px solid blue;
     border-radius: 20px;
-    background-color: aqua;
     margin: 1%;
     padding: 0;
     justify-content: center;
@@ -56,7 +76,6 @@ svg {
     flex-direction: column;
     position: relative;
     width: 100%;
-    border: 1px solid purple;
     
 }
 .b3 > .pin {
@@ -126,7 +145,6 @@ svg {
     transition: 0.1s;
 }
 .main .b1 {
-    border: yellowgreen 1px solid;
     height: 24px;
     position: absolute;
     top: .5px;
@@ -173,7 +191,6 @@ svg {
 }
 
 .main .b3 {
-    border: yellowgreen 1px solid;
     position: absolute;
     bottom: -.5px;
     left: 0px;
@@ -184,7 +201,6 @@ svg {
     justify-content: flex-start;
 }
 .side .b3 {
-    border: yellowgreen 1px solid;
     display: flex;
     justify-content: flex-start;
 }
@@ -283,7 +299,6 @@ svg {
     width: 100vw;
     height: 5rem;
     bottom: 0px;
-    border: 1px solid green;
 }
 .down {
     align-items: center;
@@ -343,6 +358,12 @@ svg {
     background-color: #EA4335;
 
 }
+.down .bott > input:checked ~ .off {
+    display: block;
+}
+.down .bott > input:checked ~ .off {
+    display: none;
+}
 .circle {
     display: flex;
     border-radius: 50%;
@@ -367,13 +388,6 @@ svg {
 .side .content {
     font-size: 2rem;
 }
-.mute_box {
-    position: relative;
-    background-color: violet;
-    border: 1px solid yellow;
-    z-index: 10;
-    transform: translate(-200%, 0);
-}
 .sp {
     align-self: center;
     border-left: 1px solid #DADCE0;
@@ -397,6 +411,7 @@ svg {
     font-weight: 500;
     line-height: 1.5rem;
     max-width: 400px;
+    padding-left: 1rem;
 }
 
 @media only screen and (max-width: 800px) {
