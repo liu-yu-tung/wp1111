@@ -9,6 +9,27 @@ body {
     align-self: center;
     -webkit-tap-highlight-color: transparent;
 }
+.hint {
+    margin: 2px;
+    visibility: hidden; 
+    position: absolute;
+    top: -20px;
+    width: auto;
+    height: 20px;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 5px;
+    text-overflow: ellipsis;
+    text-align: center;
+    color: #e8eaed;
+    border: none;
+    white-space: nowarp;
+    transition: opacity 1s;
+    border-radius: 5px;
+    background-color: #3c4043;
+}
 svg {
     fill: white;
     position: relative;
@@ -96,14 +117,14 @@ input {
     display: flex;
     height: fit-content;
     width: fit-content;
-    border-radius: 20px;
+    border-radius: 30px;
     position: absolute;
     flex-direction: row;
     justify-self: center;
     align-items: flex;
     align-self: center;
     z-index: 10;
-    opacity: 50%;
+    opacity: 80%;
 }
 .tooltip {
     height: 24px;
@@ -364,11 +385,22 @@ input {
     width: 40px;
     height: 40px;
 }
-#down2 > .box > #bottom25 {
+#down2 .bott26 {
+    align-self: center;
+    justify-content: center;
+    display: flex;
+    height: 40px;
     border-radius: 20px;
     width: 56px;
-    height: 40px;
     background-color: #ea4335;
+}
+.bott26 .bottom_hover {
+    border-radius: 20px;
+    visibility: hidden;
+    width: 56px;
+    height: 40px;
+    transition: 0.1s;
+    background-color: #bdc1c6;
 }
 #bottom23 .bottom_background{
     background-color: rgb(138, 180, 248);
@@ -385,6 +417,12 @@ input {
 #bottom25 .bottom_background{
     background-color: #3c4043 
 }
+.down input:checked ~ .hint.off {
+    display: block;
+}
+.down input:checked ~ .hint.on {
+    display: none;
+}
 .down input:checked ~ .off {
     display: block;
 }
@@ -400,6 +438,25 @@ input {
 .bott:hover .bottom_hover{
     transition: 0.1s;;
     opacity: 30%;
+}
+.bott26:hover .bottom_hover{
+    visibility: visible;
+    transition: 0.1s;;
+    opacity: 30%;
+}
+.bott:hover .hint{
+    visibility: visible;
+    font-size: 12px;
+    opacity: 100%;
+    transition: opacity 0.1s;
+    transition: font-size 0.3s;
+}
+.bott26:hover .hint{
+    visibility: visible;
+    font-size: 12px;
+    opacity: 100%;
+    transition: opacity 0.1s;
+    transition: font-size 0.3s;
 }
 .bottom_background {
     position: absolute;
