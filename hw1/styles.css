@@ -1,4 +1,5 @@
 body {
+    min-width: 500px;
     display: block;
     background-color: #202124; 
     color: #e8eaed;
