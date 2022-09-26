@@ -9,6 +9,18 @@ body {
     align-self: center;
     -webkit-tap-highlight-color: transparent;
 }
+#p2 .circle{
+    background-color: sandybrown;  
+}
+#p3 .circle{
+    background-color: plum;  
+}
+#p4 .circle{
+    background-color: darkseagreen;  
+}
+#p5 .circle{
+    background-color: cadetblue;  
+}
 .hint {
     margin: 2px;
     visibility: hidden; 
