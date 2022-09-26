@@ -1,8 +1,8 @@
 # Web Programming HW#1
 **feature**
-    1. support RWD 
-    2. support icon-changing when user clickging
-    3. include interactive effects 
+1. support RWD 
+2. support icon-changing when user clickging
+3. include interactive effects 
 ## implementaion
 1. Divide the page into three sections, and each sections include its small sections
 2. adding classes for the elements 
