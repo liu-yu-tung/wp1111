@@ -12,6 +12,9 @@ body {
 svg {
     fill: white;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-self: center;
 }
 .on {
     display: block;
@@ -19,13 +22,17 @@ svg {
 .off {
     display: none;
 }
+label {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0px;
+}
 input {
-    height: 24px;
-    width: 24px;
-    border-radius: 50%;
-    display: block;
-    justify-self: center;
+    width: 0px;
+    height: 0px;
     visibility: hidden;
+    margin: 0px;
 }
 .on {
     display: flex;
@@ -322,10 +329,11 @@ input {
     grid-column-gap: 12px;
     padding: 0 6px;
 }
-#down2 > .box > .bott {
+#down2 .bott {
     align-self: center;
+    justify-content: center;
+    align-items: center;
     display: flex;
-    border: 1px solid white; 
     background-color: #3c4043;
     border-radius: 50%;
     width: 40px;
@@ -334,6 +342,12 @@ input {
 #down3 {
     justify-content: flex-end;
     margin-right: 18px;
+}
+#down3 .bott{
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 #down1 {
     justify-content: flex-start;
@@ -347,7 +361,6 @@ input {
 .bott {
     align-self: center;
     display: flex;
-    border: 1px solid white; 
     width: 40px;
     height: 40px;
 }
@@ -355,15 +368,69 @@ input {
     border-radius: 20px;
     width: 56px;
     height: 40px;
-    background-color: #EA4335;
-
+    background-color: #ea4335;
 }
-.down .bott > input:checked ~ .off {
+#bottom23 .bottom_background{
+    background-color: rgb(138, 180, 248);
+}
+#bottom23 .on{
+    fill: black;
+}
+#bottom24 .bottom_background{
+    background-color: rgb(138, 180, 248);
+}
+#bottom24 .on{
+    fill: black;
+}
+#bottom25 .bottom_background{
+    background-color: #3c4043 
+}
+.down input:checked ~ .off {
     display: block;
 }
-.down .bott > input:checked ~ .off {
+.down input:checked ~ .on {
     display: none;
 }
+#bottom23 input:checked ~ .on {
+    display: none;
+}
+#bottom24 input:checked ~ .on {
+    display: none;
+}
+.bott:hover .bottom_hover{
+    transition: 0.1s;;
+    opacity: 30%;
+}
+.bottom_background {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #ea4335;
+}
+.bottom_hover {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #bdc1c6;
+    opacity: 0%;
+}
+.down input:checked ~ .bottom_background{
+    background-color: #3c4043;
+}
+#bottom23 input:checked ~ .bottom_background{
+    background-color: #3c4043;
+}
+#bottom24 input:checked ~ .bottom_background{
+    background-color: #3c4043;
+}
+#down3 .bottom{
+    display: flex;
+    width: 24px; 
+    height: 24px; 
+}
+
 .circle {
     display: flex;
     border-radius: 50%;
@@ -371,6 +438,7 @@ input {
     height: 40%;
     aspect-ratio: 1/1;
     align-self: center;
+    align-content: center;
 }
 .side .circle {
     height: 80%;
@@ -416,27 +484,9 @@ input {
 
 @media only screen and (max-width: 800px) {
     .side > .container > .card {
-        /*
-        aspect-ratio: 5/3;
-        width: 100%;
-        flex-basis: 65%;
-        */
     }
 }
 @media only screen and (max-width: 500px) {
-    /*
-    .side {
-        position: absolute;
-        height: 200px;
-        width: 100%;
-        bottom: 80px;
-        top: auto;
-    }
-    .side > .container > .card {
-        width: auto;
-        height: auto;
-    }
-    */
     .side  {
         display: none;
     }
