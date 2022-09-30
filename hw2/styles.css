@@ -20,6 +20,12 @@ body {
     top: 20px;
     background-color: blue;
 }
+.Person {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: aquamarine;
+}
 .hint {
     margin: 2px;
     visibility: hidden; 

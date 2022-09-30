@@ -27,21 +27,28 @@ class Person {
         return count;
     }
 }
-/*
-var people = new Array();
 
-for (var i=0; i<16; i++) {
-    people.push(new Person(true, i, "./"));
-}
-*/
+createYou();
+
+function createYou() {
+    var you_instance = new Person(true, "you", "./");
+    const you_html = document.createElement("div");
+    you_html.innerHTML = you_instance.name;
+    you_html.className= "Person";
+    Person.count++;
+    var board = document.getElementsByClassName("board");
+    board[0].appendChild(you_html);
+};
 
 function createNewPeople() {
     if (Person.count <= 15) {
-        const newPeople = document.createElement("div");
-        newPeople.className= "Person";
-        newPeople.innerHTML = Person.count;
+        const newPeople_html = document.createElement("div");
+        const newPeople_instance = new Person(true, Person.count, "./");
+        newPeople_html.className= "Person";
+        //newPeople.innerHTML = Person.count;
+        newPeople_html.innerHTML = newPeople_instance.name;
         var board = document.getElementsByClassName("board");
-        board[0].appendChild(newPeople);
+        board[0].appendChild(newPeople_html);
         Person.count ++;
     }
     else {
