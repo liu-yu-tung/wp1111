@@ -1,20 +1,4 @@
-console.log("Hello World");
-var p = document.getElementsByClassName('plus')[0];
-var q = document.getElementById("pppp");
-
-if (p) {
-    console.log("true");
-    p.onclick = function() {
-        console.log("clicked");
-        createNewPeople();    
-        console.log(Person.count);
-    }
-}
-else {
-    console.log("false");
-}
-
-class Person {
+class card {
     constructor(self, name, path) {
         this.self = self;
         this.name = name;
@@ -22,36 +6,74 @@ class Person {
         console.log("construct ", this.name, " == ", this.self);
     }
     static count = 0;
+    static pined = true;
     static get_count() {
         console.log("count = ", count);
         return count;
     }
 }
 
-createYou();
 
 function createYou() {
-    var you_instance = new Person(true, "you", "./");
+    var you_instance = new card(true, "you", "./");
     const you_html = document.createElement("div");
     you_html.innerHTML = you_instance.name;
-    you_html.className= "Person";
-    Person.count++;
-    var board = document.getElementsByClassName("board");
-    board[0].appendChild(you_html);
+    you_html.className= "card";
+    var board = document.getElementById("side");
+    board.appendChild(you_html);
+    card.count++;
 };
 
 function createNewPeople() {
-    if (Person.count <= 15) {
+    if (card.count <= 15) {
         const newPeople_html = document.createElement("div");
-        const newPeople_instance = new Person(true, Person.count, "./");
-        newPeople_html.className= "Person";
-        //newPeople.innerHTML = Person.count;
+        const newPeople_instance = new card(true, card.count, "./");
+        newPeople_html.className= "card";
+        //newPeople.innerHTML = card.count;
         newPeople_html.innerHTML = newPeople_instance.name;
-        var board = document.getElementsByClassName("board");
-        board[0].appendChild(newPeople_html);
-        Person.count ++;
+        var board = document.getElementById("side");
+        board.appendChild(newPeople_html);
+        card.count ++;
     }
     else {
         console.log("already 15");
     }
 };
+
+function if_pined() {
+    if(card.pined) {
+        var m = document.getElementById("main");
+        var s = document.getElementById("side");
+        m.style.display = "none";
+        s.style.display = "flex";
+        s.style.width = "100%";
+        console.log("pined");
+    }
+};
+
+//start
+console.log("Hello World");
+var p = document.getElementById("pppp");
+
+if (p) {
+    console.log("true");
+    p.onclick = function() {
+        console.log("clicked");
+        createNewPeople();    
+        console.log(card.count);
+        if_pined();
+    }
+}
+else {
+    console.log("false");
+}
+
+
+createYou();
+card.pined = true;
+var m = document.getElementById("main");
+var s = document.getElementById("side");
+m.style.background = "white";
+s.style.background= "orange";
+
+//end

@@ -47,6 +47,9 @@ body {
     border-radius: 5px;
     background-color: #3c4043;
 }
+.plus {
+    z-index: 30;
+}
 svg {
     fill: white;
     position: relative;
@@ -326,8 +329,8 @@ input {
     display: flex;
     /*
     width: min(45vw, 200px);
-    */
     width: max(47%, 150px);
+    */
     aspect-ratio: 5 / 4;
     justify-content: center;
     align-self: center;
