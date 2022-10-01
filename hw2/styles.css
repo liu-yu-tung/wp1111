@@ -340,9 +340,8 @@ input {
     background-color: #3c4043; 
     background-color: darkkhaki; 
     display: flex;
-    width: min(45vw, 200px);
-    width: max(47%, 150px);
-    aspect-ratio: 5 / 4;
+    width: max(30%, 125px);
+    aspect-ratio: 4 / 3;
     justify-content: center;
     align-self: center;
 }

@@ -44,7 +44,7 @@ class card {
             circle.className = "circle";
             let text_box = document.createElement("div");
             text_box.className = "text_box";
-            let content = document.createElement("content");
+            let content = document.createElement("div");
             content.className = "content";
             content.innerHTML = name;
             text_box.appendChild(content);
@@ -68,6 +68,7 @@ class card {
             node.appendChild(block_b3);
             if (pin_self) {
                 var m = document.getElementById("main_container");
+                content.classList.add("main_content");
                 m.appendChild(node);
             }
             else {
@@ -77,47 +78,92 @@ class card {
             card.count++;
             card.curr_num++;
             if (this.pin_self) {
-                card.pined_Person = this;
+                card.pined_Person_name = this.name;
                 card.pined_bool = true;
             }
 
             remove_bottom.onclick = () => {
-                if (this == card.pined_Person) {
-                    card.pined_Person = null;
+                if (this.name == card.pined_Person_name) {
+                    card.pined_Person_name = "";
                     card.pined_bool = false;
                 }
                 this.clean();
                 node.remove();
                 if_pined();
             };
+
+            three_bottoms_left.onclick = () => {
+                if (card.pined_bool) {
+                    if(card.pined_Person_name == this.name) {
+                        if (card.curr_num > 1) {
+                            this.push_to_side();
+                            if_pined();
+                        }
+                    }
+                    else {
+                        this.swap_pined();
+                        console.log("this.name: ", this.name);
+                        console.log("MAIN.name: ", MAIN.name);
+                    }
+                }
+                else {
+                    this.push_to_main();
+                    node.remove();
+                }
+                if_pined();
+            };
         };
         this.node = make_node();
 
         console.log("construct ", this.name, " == ", this.self);
-
+    }
+    push_to_main = () => {
+        let main_txt = document.getElementsByClassName("main_content");
+        main_txt[0].innerHTML = this.name; 
+        /*
+        card.pined_Person_name = this.name;
+        card.pined_Person_path = this.path;
+        */
+        card.pined_bool = true;
+        var tmp_name = this.name;
+        var tmp_path = this.path;
+        this.clean();
+        MAIN.name = tmp_name;
+        MAIN.path = tmp_path;
+        card.pined_Person_name = this.name;
+        card.pined_Person_path = this.path;
     }
 
+    push_to_side = () => {
+        var push = new card(false, card.pined_Person_name, card.pined_Person_path);
+        card.pined_bool = false;
+        MAIN.name = "";
+        MAIN.path = "";
+        /*
+        card.pined_Person_name = "";
+        card.pined_Person_path = "";
+        */
+    }
     swap_pined = () => {
-        let tmp_name = this.name;
-        let tmp_path = this.path;
-        this.name = pined_Person.name;
-        this.path = pined_Person.path;
-        card.pined_Person.name = tmp_name;
-        card.pined_Person.path = tmp_path;
-        card.pined_Person = this;
-        update_main();
+        console.log("swap called");
+        this.update_main();
     }
 
-    update_main() {
+    update_main = () => {
         if (card.pined_bool) {
             let main_ref = card.pined_Person;
         }
     }
     clean = () => {
-        if (this.pined_self) {
+        if (this.name == card.pined_Person_name) {
             console.log("clean is pined");
             card.pined_bool = false;
-            pined_Person = null;
+            card.pined_Person_name = "";
+            card.pined_Person_path = "";
+            /*
+            MAIN.name = "";
+            MAIN.path = "";
+            */
             if_pined();
         }
         else {
@@ -128,7 +174,12 @@ class card {
         console.log("count ", card.count);
         console.log("curr_num ", card.curr_num);
     };
-    static pined_Person = null;
+    update_apperence = () => {
+        this.content = this.name;
+    }
+
+    static pined_Person_name = "";
+    static pined_Person_path = "";
     static count = 0;
     static curr_num = 0;
     static pined_bool = true;
@@ -138,9 +189,11 @@ class card {
     }
 }
 
+/*
 function createYou() {
     var you = new card(true, "You", "./");
 }
+*/
 
 function createNewPeople() {
     if (card.count <= 15) {
@@ -149,16 +202,16 @@ function createNewPeople() {
     else {
         console.log("already 15");
     }
-    console.log("pined_person = ", card.pined_Person);
+    console.log("pined_person = ", card.pined_Person_name);
 }
 
 function if_pined() {
     let m = document.getElementById("main");
     let s = document.getElementById("side");
     if(card.pined_bool) {
-        m.style.display = "flex"; 
-        s.style.display = "flex";
+        m.style.display = "block";
         m.style.width = "70%";
+        s.style.display = "sticky";
         s.style.width = "30%";
         console.log("pined");
     }
@@ -186,7 +239,8 @@ else {
     console.log("false");
 }
 
-createYou();
+MAIN = new card(true, "you", "./");
+//createYou();
 var m = document.getElementById("main");
 var s = document.getElementById("side");
 m.style.background = "white";
