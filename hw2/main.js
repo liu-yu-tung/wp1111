@@ -103,12 +103,13 @@ class card {
                     else {
                         this.swap_pined();
                         console.log("this.name: ", this.name);
-                        console.log("MAIN.name: ", MAIN.name);
+                        console.log("pined.name: ", card.pined_Person_name);
                     }
                 }
                 else {
                     this.push_to_main();
                     node.remove();
+                if_pined();
                 }
                 if_pined();
             };
@@ -120,10 +121,6 @@ class card {
     push_to_main = () => {
         let main_txt = document.getElementsByClassName("main_content");
         main_txt[0].innerHTML = this.name; 
-        /*
-        card.pined_Person_name = this.name;
-        card.pined_Person_path = this.path;
-        */
         card.pined_bool = true;
         var tmp_name = this.name;
         var tmp_path = this.path;
@@ -139,10 +136,8 @@ class card {
         card.pined_bool = false;
         MAIN.name = "";
         MAIN.path = "";
-        /*
         card.pined_Person_name = "";
         card.pined_Person_path = "";
-        */
     }
     swap_pined = () => {
         console.log("swap called");
@@ -160,10 +155,6 @@ class card {
             card.pined_bool = false;
             card.pined_Person_name = "";
             card.pined_Person_path = "";
-            /*
-            MAIN.name = "";
-            MAIN.path = "";
-            */
             if_pined();
         }
         else {
@@ -188,12 +179,6 @@ class card {
         return count;
     }
 }
-
-/*
-function createYou() {
-    var you = new card(true, "You", "./");
-}
-*/
 
 function createNewPeople() {
     if (card.count <= 15) {
