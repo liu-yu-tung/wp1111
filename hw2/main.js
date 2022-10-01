@@ -66,9 +66,14 @@ class card {
             node.appendChild(block_b1);
             node.appendChild(block_b2);
             node.appendChild(block_b3);
-            var s = document.getElementById("side_container");
-            s.appendChild(node);
-
+            if (pin_self) {
+                var m = document.getElementById("main_container");
+                m.appendChild(node);
+            }
+            else {
+                var s = document.getElementById("side_container");
+                s.appendChild(node);
+            }
             card.count++;
             card.curr_num++;
             if (this.pin_self) {
@@ -102,8 +107,11 @@ class card {
         card.pined_Person = this;
         update_main();
     }
-    update_main() {
 
+    update_main() {
+        if (card.pined_bool) {
+            let main_ref = card.pined_Person;
+        }
     }
     clean = () => {
         if (this.pined_self) {
