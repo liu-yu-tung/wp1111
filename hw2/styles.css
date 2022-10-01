@@ -325,13 +325,16 @@ input {
 }
 
 .side > .container > .card {
+    /*
     background-color: #3c4043; 
+    */
+    background-color: darkkhaki; 
     display: flex;
     /*
     width: min(45vw, 200px);
     width: max(47%, 150px);
-    */
     aspect-ratio: 5 / 4;
+    */
     justify-content: center;
     align-self: center;
 }

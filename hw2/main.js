@@ -3,7 +3,36 @@ class card {
         this.self = self;
         this.name = name;
         this.path = path;
+        let make_node = () => {
+            console.log("make node");
+            let node = document.createElement("div");
+            node.className = "card";
+            node.innerHTML = this.name;
+
+            let three_bottoms = document.createElement("div");
+            three_bottoms.className = "three_bottoms";
+
+            let three_bottoms_left = document.createElement("div");
+            three_bottoms_left.className = "tooltip left_bottom screen_bottom";
+
+            let three_bottoms_middle = document.createElement("div");
+            three_bottoms_middle.className = "tooltip middle_bottom screen_bottom";
+            
+            let three_bottoms_right = document.createElement("div");
+            three_bottoms_right.className = "tooltip right_bottom screen_bottom";
+
+            three_bottoms.appendChild(three_bottoms_left);            
+            three_bottoms.appendChild(three_bottoms_middle);            
+            three_bottoms.appendChild(three_bottoms_right);            
+
+            node.appendChild(three_bottoms);
+            var s = document.getElementById("side_container");
+            s.appendChild(node);
+        }
+        this.node = make_node();
+
         console.log("construct ", this.name, " == ", this.self);
+
     }
     static count = 0;
     static pined = true;
@@ -13,43 +42,38 @@ class card {
     }
 }
 
-
 function createYou() {
-    var you_instance = new card(true, "you", "./");
-    const you_html = document.createElement("div");
-    you_html.innerHTML = you_instance.name;
-    you_html.className= "card";
-    var board = document.getElementById("side");
-    board.appendChild(you_html);
+    var you = new card(true, "You", "./");
     card.count++;
-};
+    card.pined = false;
+}
 
 function createNewPeople() {
     if (card.count <= 15) {
-        const newPeople_html = document.createElement("div");
-        const newPeople_instance = new card(true, card.count, "./");
-        newPeople_html.className= "card";
-        //newPeople.innerHTML = card.count;
-        newPeople_html.innerHTML = newPeople_instance.name;
-        var board = document.getElementById("side");
-        board.appendChild(newPeople_html);
+        var newPeople = new card(true, card.count, "./");
         card.count ++;
     }
     else {
         console.log("already 15");
     }
-};
+}
 
 function if_pined() {
+    let m = document.getElementById("main");
+    let s = document.getElementById("side");
     if(card.pined) {
-        var m = document.getElementById("main");
-        var s = document.getElementById("side");
-        m.style.display = "none";
+        m.style.display = "flex"; 
         s.style.display = "flex";
-        s.style.width = "100%";
+        m.style.width = "70%";
+        s.style.width = "30%";
         console.log("pined");
     }
-};
+    else {
+        m.style.display = "none";
+        s.style.width = "100%";
+        console.log("unpined");
+    }
+}
 
 //start
 console.log("Hello World");
@@ -68,9 +92,7 @@ else {
     console.log("false");
 }
 
-
 createYou();
-card.pined = true;
 var m = document.getElementById("main");
 var s = document.getElementById("side");
 m.style.background = "white";
