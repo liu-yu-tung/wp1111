@@ -7,25 +7,72 @@ class card {
             console.log("make node");
             let node = document.createElement("div");
             node.className = "card";
-            node.innerHTML = this.name;
+
+            let remove_bottom = document.createElement("div");
+            remove_bottom.className = "remove_bottom screen_bottom";
+            remove_bottom.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="m9.4 16.5 2.6-2.6 2.6 2.6 1.4-1.4-2.6-2.6L16 9.9l-1.4-1.4-2.6 2.6-2.6-2.6L8 9.9l2.6 2.6L8 15.1ZM7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21ZM17 6H7v13h10ZM7 6v13Z"/></svg>';
 
             let three_bottoms = document.createElement("div");
             three_bottoms.className = "three_bottoms";
 
             let three_bottoms_left = document.createElement("div");
             three_bottoms_left.className = "tooltip left_bottom screen_bottom";
+            three_bottoms_left.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" ><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none"/><g class="currentLayer" ><title>Layer 1</title><path d="m16 12 2 2v2h-5v6l-1 1-1-1v-6H6v-2l2-2V5H7V3h10v2h-1Z" id="svg_1" class=""/><path fill="none" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-dasharray="none" stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end="" d="M4.021065903957926,4.1949427251193345 L19.836733573662723,22.285713993362844 " id="svg_2" class=""/></g></svg>';
 
             let three_bottoms_middle = document.createElement("div");
             three_bottoms_middle.className = "tooltip middle_bottom screen_bottom";
+            three_bottoms_middle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M3 11 V3 h8 v8 Z  m0 10 v-8 h8 v8 Z  m 10 -10 V3 h8 v8 Z  m0 10 v-8 h8 v8 Z  M5 9h 4V 5H 5Z m10 0 h4 V5 h-4 Z  m0 10 h4 v-4 h-4 Z  M5 19 h4 v-4 H5 Z  M15 9 Z  m0 6Zm-6 0Zm0-6Z"/></svg>';
             
             let three_bottoms_right = document.createElement("div");
             three_bottoms_right.className = "tooltip right_bottom screen_bottom";
+            three_bottoms_right.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M3.4 22 2 20.6 8.6 14H4v-2h8v8h-2v-4.6ZM12 12V4h2v4.6L20.6 2 22 3.4 15.4 10H20v2Z"/></svg>';
 
             three_bottoms.appendChild(three_bottoms_left);            
             three_bottoms.appendChild(three_bottoms_middle);            
             three_bottoms.appendChild(three_bottoms_right);            
 
+            let block_b1 = document.createElement("div");
+            block_b1.className = "block b1";
+            let mute = document.createElement("div");
+            mute.className = "mute";
+            mute.innerHTML = '<span class="material-symbols-outlined">mic_off</span>';
+            block_b1.append(remove_bottom);
+            block_b1.append(mute);
+
+            let block_b2 = document.createElement("div");
+            block_b2.className = "block b2";
+            let circle = document.createElement("div");
+            circle.className = "circle";
+            let text_box = document.createElement("div");
+            text_box.className = "text_box";
+            let content = document.createElement("content");
+            content.className = "content";
+            content.innerHTML = name;
+            text_box.appendChild(content);
+            circle.appendChild(text_box);
+            block_b2.appendChild(circle);
+
+            
+            let block_b3 = document.createElement("div");
+            block_b3.className = "block b3";
+            let status = document.createElement("div");
+            status.className = "status";
+            /*
+            let pin = document.createElement("div");
+            pin.className = "pin";
+            block_b3.appendChild(pin);
+            */
+            let name_bar = document.createElement("div");
+            name_bar.className = "name";
+            name_bar.innerHTML = name;
+            status.appendChild(name_bar);
+            block_b3.appendChild(status);
+
+            
             node.appendChild(three_bottoms);
+            node.appendChild(block_b1);
+            node.appendChild(block_b2);
+            node.appendChild(block_b3);
             var s = document.getElementById("side_container");
             s.appendChild(node);
         }

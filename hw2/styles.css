@@ -20,6 +20,10 @@ body {
     top: 20px;
     background-color: blue;
 }
+.remove_bottom {
+    display: flex;
+    justify-content: flex-start;
+}
 .Person {
     width: 100px;
     height: 100px;
@@ -144,7 +148,7 @@ input {
     align-items: flex;
     align-self: center;
     z-index: 10;
-    opacity: 80%;
+    opacity: 50%;
 }
 .tooltip {
     height: 24px;
@@ -154,7 +158,7 @@ input {
     padding: 4px 4px;
     margin: 6px;
 }
-.main .tooltip {
+.tooltip{
     height: 24px;
     width: 24px;
     font-size: 24px;
@@ -165,30 +169,27 @@ input {
     z-index: 20;
     visibility: hidden;
 }
-.tooltip.left_bottom, .tooltip.middle_bottom, .tooltip.right_bottom {
-    z-index: 50;
-    visibility: hidden;
-}
-.main .tooltip:hover {
+
+.tooltip:hover {
     visibility: visible;
     transition: 0.5s;
 }
-.main:hover .three_bottoms .screen_bottom{
+.side:hover .three_bottoms .screen_bottom{
     visibility: visible;
     opacity: 80%;
     transition: 0.5s;
 }
-.main:hover .three_bottoms {
+.card:hover .three_bottoms {
     visibility: visible;
     opacity: 50%;
     transition: 0.5s;
 }
-.main .left_bottom:hover, .main .middle_bottom:hover, .main .right_bottom:hover {
+.left_bottom:hover, .middle_bottom:hover, .right_bottom:hover {
     background-color: #202124;
     opacity: 1;
     transition: 0.05s;
 }
-.main .three_bottoms:hover {
+.card .three_bottoms:hover {
     opacity: 80%;
     transition: 0.1s;
 }
@@ -205,13 +206,24 @@ input {
     flex-direction: column;
     height: 16%;
 }
-.side .block .mute{
+.remove_bottom{
+    position: absolute;
+    left: 5px;
+    top: 5px;
     background-color: rgba(32,33,36,0.302);
     display: flex;
-    height: 18px;
-    width: 18px;
-    align-self: flex-end;
-    padding: 5%;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+.mute{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: rgba(32,33,36,0.302);
+    display: flex;
+    height: 24px;
+    width: 24px;
     border-radius: 50%;
 }
 .side .block.b2{
@@ -325,16 +337,12 @@ input {
 }
 
 .side > .container > .card {
-    /*
     background-color: #3c4043; 
-    */
     background-color: darkkhaki; 
     display: flex;
-    /*
     width: min(45vw, 200px);
     width: max(47%, 150px);
     aspect-ratio: 5 / 4;
-    */
     justify-content: center;
     align-self: center;
 }
@@ -562,6 +570,7 @@ input {
     padding-left: 1rem;
 }
 
+/*
 @media only screen and (max-width: 800px) {
     .side > .container > .card {
     }
@@ -575,6 +584,7 @@ input {
     }
 }
 
+*/
 @font-face {
     font-family: "Roboto";
     src:  url("fonts/SourceCodePro-Black.ttf") format("truetype");
