@@ -10,26 +10,14 @@ body {
     align-self: center;
     -webkit-tap-highlight-color: transparent;
 }
-.borad {
-    height: calc(100vh - 80px);
-    width: 100vw;
-}
 .plus {
     position: absolute;
     right: 20px;
     top: 20px;
-    background-color: blue;
+    background-color: gray;
+    z-index: 30;
 }
-.remove_bottom {
-    display: flex;
-    justify-content: flex-start;
-}
-.Person {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: aquamarine;
-}
+
 .hint {
     margin: 2px;
     visibility: hidden; 
@@ -51,9 +39,7 @@ body {
     border-radius: 5px;
     background-color: #3c4043;
 }
-.plus {
-    z-index: 30;
-}
+
 svg {
     fill: white;
     position: relative;
@@ -62,7 +48,10 @@ svg {
     align-self: center;
 }
 .on {
-    display: block;
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-self: center;
 }
 .off {
     display: none;
@@ -79,11 +68,9 @@ input {
     visibility: hidden;
     margin: 0px;
 }
-.on {
+.remove_bottom {
     display: flex;
-    justify-self: center;
-    justify-content: center;
-    align-self: center;
+    justify-content: flex-start;
 }
 .main {
     position: absolute;
@@ -112,7 +99,6 @@ input {
     height: 100%;
     justify-content: center;
 }
-
 .card {
     display: flex;
     border-radius: 20px;
@@ -204,7 +190,14 @@ input {
 .side .block {
     display: flex;
     flex-direction: column;
-    height: 16%;
+    height: 14%;
+}
+button {
+    border : 0;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    border-radius: 30%;
 }
 .remove_bottom{
     position: absolute;
@@ -212,9 +205,6 @@ input {
     top: 5px;
     background-color: rgba(32,33,36,0.302);
     display: flex;
-    height: 24px;
-    width: 24px;
-    border-radius: 50%;
 }
 .mute{
     position: absolute;
@@ -222,18 +212,14 @@ input {
     top: 5px;
     background-color: rgba(32,33,36,0.302);
     display: flex;
-    height: 24px;
-    width: 24px;
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
-}
-.side .block.b2{
-    height: 60%;
-}
-.side .t_box {
-    width: 90%;
-    height: 90%;
-    align-self: center;
     justify-content: center;
+}
+
+.side .block.b2{
+    height: 50%;
 }
 .main .mute {
     color: rgb(128,126,124);
@@ -252,7 +238,7 @@ input {
 
 .main .b3 {
     position: absolute;
-    bottom: -.5px;
+    bottom: 10px;
     left: 0px;
     right: 0px;
     margin: 0px;
@@ -264,17 +250,16 @@ input {
     display: flex;
     justify-content: flex-start;
 }
-.side .name{
+ .name{
     display: flex;
     position: relative;
-    margin: 0 0.5rem;
+    margin: 0 1rem 0.5rem 1rem;
     font-size: 0.875rem;
     align-items: center;
 }
 .status{
     align-items: center;
     display: flex;
-    min-height: 1.625rem;
     overflow: hidden;
 }
 .main .pin {
@@ -317,8 +302,8 @@ input {
     align-self: center;
 }
 .main > .container > .card > .b2 > .circle {
-    width: 160px;
-    height: 160px;
+    width: 200px;
+    height: 200px;
     background-color: lightslategrey;
     border-radius: 50%;
     position: absolute;
@@ -329,18 +314,26 @@ input {
     justify-content: center;
     align-items: center;
     font-size: 100px;
-
 }
 .side > .container {
     height: auto;
     align-self: center;
 }
 
+/*
+.status {
+    position: absolute;
+    padding-left: 5%;
+    padding-bottom: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    align-self: flex-start;
+}
+*/
 .side > .container > .card {
     background-color: #3c4043; 
-    background-color: darkkhaki; 
     display: flex;
-    width: max(30%, 125px);
+    width: max(30%, 135px);
     aspect-ratio: 4 / 3;
     justify-content: center;
     align-self: center;
@@ -543,11 +536,6 @@ input {
 .side .content {
     font-size: 2rem;
 }
-.sp {
-    align-self: center;
-    border-left: 1px solid #DADCE0;
-    height: 1rem;
-}
 .time {
     display: flex;
 }
@@ -568,23 +556,7 @@ input {
     max-width: 400px;
     padding-left: 1rem;
 }
-
-/*
-@media only screen and (max-width: 800px) {
-    .side > .container > .card {
-    }
-}
-@media only screen and (max-width: 500px) {
-    .side  {
-        display: none;
-    }
-    .main {
-        width: 100%;
-    }
-}
-
-*/
 @font-face {
     font-family: "Roboto";
-    src:  url("fonts/SourceCodePro-Black.ttf") format("truetype");
+    src:  url("../fonts/SourceCodePro-Black.ttf") format("truetype");
 }
