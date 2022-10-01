@@ -174,7 +174,7 @@ input {
     visibility: visible;
     transition: 0.5s;
 }
-.side:hover .three_bottoms .screen_bottom{
+.card:hover .three_bottoms .screen_bottom{
     visibility: visible;
     opacity: 80%;
     transition: 0.5s;

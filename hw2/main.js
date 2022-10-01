@@ -1,16 +1,15 @@
 class card {
-    constructor(self, name, path) {
-        this.self = self;
+    constructor(pin_self, name, path) {
+        this.pin_self = pin_self;
         this.name = name;
         this.path = path;
         let make_node = () => {
-            console.log("make node");
             let node = document.createElement("div");
             node.className = "card";
-
-            let remove_bottom = document.createElement("div");
+            let remove_bottom = document.createElement("button");
             remove_bottom.className = "remove_bottom screen_bottom";
             remove_bottom.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="m9.4 16.5 2.6-2.6 2.6 2.6 1.4-1.4-2.6-2.6L16 9.9l-1.4-1.4-2.6 2.6-2.6-2.6L8 9.9l2.6 2.6L8 15.1ZM7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21ZM17 6H7v13h10ZM7 6v13Z"/></svg>';
+            remove_bottom.setAttribute("type", "button");
 
             let three_bottoms = document.createElement("div");
             three_bottoms.className = "three_bottoms";
@@ -57,32 +56,74 @@ class card {
             block_b3.className = "block b3";
             let status = document.createElement("div");
             status.className = "status";
-            /*
-            let pin = document.createElement("div");
-            pin.className = "pin";
-            block_b3.appendChild(pin);
-            */
             let name_bar = document.createElement("div");
             name_bar.className = "name";
             name_bar.innerHTML = name;
             status.appendChild(name_bar);
             block_b3.appendChild(status);
 
-            
             node.appendChild(three_bottoms);
             node.appendChild(block_b1);
             node.appendChild(block_b2);
             node.appendChild(block_b3);
             var s = document.getElementById("side_container");
             s.appendChild(node);
-        }
+
+            card.count++;
+            card.curr_num++;
+            if (this.pin_self) {
+                card.pined_Person = this;
+                card.pined_bool = true;
+            }
+
+            remove_bottom.onclick = () => {
+                if (this == card.pined_Person) {
+                    card.pined_Person = null;
+                    card.pined_bool = false;
+                }
+                this.clean();
+                node.remove();
+                if_pined();
+            };
+        };
         this.node = make_node();
 
         console.log("construct ", this.name, " == ", this.self);
 
     }
+
+    swap_pined = () => {
+        let tmp_name = this.name;
+        let tmp_path = this.path;
+        this.name = pined_Person.name;
+        this.path = pined_Person.path;
+        card.pined_Person.name = tmp_name;
+        card.pined_Person.path = tmp_path;
+        card.pined_Person = this;
+        update_main();
+    }
+    update_main() {
+
+    }
+    clean = () => {
+        if (this.pined_self) {
+            console.log("clean is pined");
+            card.pined_bool = false;
+            pined_Person = null;
+            if_pined();
+        }
+        else {
+            console.log("clean is unpined");
+        }
+        card.curr_num--;
+        console.log("remove ", this.name);
+        console.log("count ", card.count);
+        console.log("curr_num ", card.curr_num);
+    };
+    static pined_Person = null;
     static count = 0;
-    static pined = true;
+    static curr_num = 0;
+    static pined_bool = true;
     static get_count() {
         console.log("count = ", count);
         return count;
@@ -91,24 +132,22 @@ class card {
 
 function createYou() {
     var you = new card(true, "You", "./");
-    card.count++;
-    card.pined = false;
 }
 
 function createNewPeople() {
     if (card.count <= 15) {
-        var newPeople = new card(true, card.count, "./");
-        card.count ++;
+        var newPeople = new card(false, card.count, "./");
     }
     else {
         console.log("already 15");
     }
+    console.log("pined_person = ", card.pined_Person);
 }
 
 function if_pined() {
     let m = document.getElementById("main");
     let s = document.getElementById("side");
-    if(card.pined) {
+    if(card.pined_bool) {
         m.style.display = "flex"; 
         s.style.display = "flex";
         m.style.width = "70%";
