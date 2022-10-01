@@ -184,7 +184,7 @@ class card {
 }
 
 function createNewPeople() {
-    if (card.count <= 15) {
+    if (card.curr_num <= 15) {
         var newPeople = new card(false, card.count, "./");
     }
     else {
@@ -226,6 +226,12 @@ if (p) {
 else {
     console.log("false");
 }
+update_time();
+function update_time() {
+    let time = new Date();
+    document.getElementById("curr_time").innerHTML = time.toLocaleTimeString('em-US', {hour:'numeric', minute:'numeric', hour12: true});
+};
+setInterval(update_time, 1000);
 
 MAIN = new card(true, "you", "./");
 //createYou();
