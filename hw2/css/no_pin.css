@@ -1,0 +1,8 @@
+.p_1 {
+    width: calc(95% / 1);
+    aspect-ratio: 3 / 2;
+}
+.p_2 {
+    width: calc(95% / 2);
+    aspect-ratio: 3 / 2;
+}
