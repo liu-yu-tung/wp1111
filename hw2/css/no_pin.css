@@ -46,7 +46,7 @@
 }
 .side > .p_10.adjust > .card{
     
-    width: calc(97%/4);
+    width: calc(97%/5);
     aspect-ratio: 3 / 2;
 }
 .side > .p_11.adjust > .card{
