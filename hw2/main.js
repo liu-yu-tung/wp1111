@@ -6,10 +6,10 @@ class card {
         let make_node = () => {
             let node = document.createElement("div");
             node.className = "card";
-            let remove_bottom = document.createElement("button");
+            let remove_bottom = document.createElement("div");
             remove_bottom.className = "remove_bottom screen_bottom";
             remove_bottom.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20"><path d="M4.5 17q-.625 0-1.062-.438Q3 16.125 3 15.5v-11q0-.625.438-1.062Q3.875 3 4.5 3H10v1.5H4.5v11H10V17Zm9-3.5-1.062-1.062 1.687-1.688H8v-1.5h6.125l-1.687-1.688L13.5 6.5 17 10Z"/></svg>';
-            remove_bottom.setAttribute("type", "button");
+            //remove_bottom.setAttribute("type", "button");
 
             let three_bottoms = document.createElement("div");
             three_bottoms.className = "three_bottoms";
@@ -74,7 +74,7 @@ class card {
                 var m = document.getElementById("main_container");
                 content.classList.add("main_content");
                 m.appendChild(node);
-                document.getElementById("main_remove").style.display = "none";
+                document.getElementById("main_remove").style.display = "visible";
             }
             else {
                 var s = document.getElementById("side_container");
@@ -88,12 +88,14 @@ class card {
             }
 
             remove_bottom.onclick = () => {
-                if (this.name == card.pined_Person_name) {
+                if (this.name == MAIN.name) {
                     card.pined_Person_name = "";
                     card.pined_bool = false;
                 }
-                this.clean();
-                node.remove();
+                else {
+                    this.clean();
+                    node.remove();
+                }
                 if_pined();
             };
 
@@ -101,6 +103,8 @@ class card {
                 if (card.pined_bool) {
                     if(card.pined_Person_name == this.name) {
                         if (card.curr_num > 1) {
+                            var main_txt = document.getElementsByClassName("main_content");
+                            main_txt.innerHTML = "empty";
                             this.push_to_side();
                             if_pined();
                         }
