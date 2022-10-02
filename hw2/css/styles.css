@@ -14,8 +14,29 @@ body {
     position: absolute;
     right: 20px;
     top: 20px;
-    background-color: gray;
+    border-radius: 50%;
     z-index: 30;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-items: center;
+    background-color: #3c4043;
+}
+.hover_plus {
+    width: fit-content;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 50%;
+    visibility: hidden;
+}
+.hover_plus svg {
+    visibility: visible;
+    display: flex;
+}
+.hover_plus:hover {
+    transition: 0.1s;
+    opacity: 100%;
 }
 
 .hint {
