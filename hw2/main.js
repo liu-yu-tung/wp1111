@@ -159,6 +159,7 @@ class card {
             let main_txt = document.getElementsByClassName("main_content");
             main_txt[0].innerHTML = MAIN.name; 
             card.pined_bool = true;
+            card.curr_num--;
         }
         if_pined();
     }
