@@ -1,8 +1,40 @@
-.p_1 {
-    width: calc(95% / 1);
+.p_1 > *{
+    width: 95%;
     aspect-ratio: 3 / 2;
 }
-.p_2 {
-    width: calc(95% / 2);
+.p_2 > *{
+    width: calc(95%/2);
+    aspect-ratio: 3 / 2;
+}
+.p_3 > *{
+    width: calc(95%/2);
+    aspect-ratio: 3 / 2;
+}
+.p_4 > *{
+    width: calc(95%/2);
+    aspect-ratio: 3 / 2;
+}
+.p_5 > *{
+    width: calc(95%/2);
+    aspect-ratio: 3 / 2;
+}
+.p_6 > *{
+    width: calc(95%/3);
+    aspect-ratio: 3 / 2;
+}
+.p_7 > *{
+    width: calc(95%/3);
+    aspect-ratio: 3 / 2;
+}
+.p_8 > *{
+    width: calc(95%/3);
+    aspect-ratio: 3 / 2;
+}
+.p_9 > *{
+    width: calc(95%/3);
+    aspect-ratio: 3 / 2;
+}
+.p_10 > *{
+    width: calc(95%/4);
     aspect-ratio: 3 / 2;
 }

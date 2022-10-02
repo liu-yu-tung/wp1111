@@ -127,7 +127,6 @@ class card {
                             var main_txt = document.getElementsByClassName("main_content");
                             main_txt.innerHTML = "empty";
                             this.push_to_side();
-                            if_pined();
                         }
                     }
                     else {
@@ -142,7 +141,6 @@ class card {
                     this.clean();
                     node.remove();
                     card.pined_bool = true;
-                    if_pined();
                 }
                 if_pined();
             };
@@ -195,11 +193,11 @@ class card {
 
             //card.pined_Person_name = "";
             //card.pined_Person_path = "";
-            if_pined();
         }
         else {
         }
         card.curr_num--;
+            if_pined();
     };
 
     static pined_Person_name = "";
