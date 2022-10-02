@@ -1,4 +1,4 @@
-
+console.log(selection);
 function update_card_width() {
     console.log("update card width, n: ", card.curr_num);
 
@@ -278,5 +278,9 @@ setInterval(update_time, 1000);
 MAIN = new card(true, "you", "./");
 if_pined();
 //createYou();
+for (var i = 1; i<selection; i++) {
+    var pp = new card(false, card.curr_num, "./");
+}
+if_pined();
 
 //end
