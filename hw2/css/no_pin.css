@@ -1,32 +1,32 @@
 
 .side > .p_1.adjust > .card{
     
-    width: 95%;
+    width: 90%;
     aspect-ratio: 3 / 2;
 }
 .side > .p_2.adjust > .card{
     
-    width: calc(95%/2);
+    width: calc(90%/2);
     aspect-ratio: 3 / 2;
 }
 .side > .p_3.adjust > .card{
     
-    width: calc(95%/2);
+    width: calc(90%/2);
     aspect-ratio: 3 / 2;
 }
 .side > .p_4.adjust > .card{
     
-    width: calc(95%/2);
+    width: calc(90%/2);
     aspect-ratio: 3 / 2;
 }
 .side > .p_5.adjust > .card{
     
-    width: calc(95%/3);
+    width: calc(90%/3);
     aspect-ratio: 3 / 2;
 }
 .side > .p_6.adjust > .card{
     
-    width: calc(95%/3);
+    width: calc(90%/3);
     aspect-ratio: 3 / 2;
 }
 .side > .p_7.adjust > .card{
