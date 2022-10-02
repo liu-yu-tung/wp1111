@@ -63,7 +63,12 @@ class card {
             text_box.className = "text_box";
             let content = document.createElement("div");
             content.className = "content";
-            content.innerHTML = name;
+            if (name == "you") {
+                content.innerHTML = "你";
+            }
+            else {
+                content.innerHTML = name;
+            }
             text_box.appendChild(content);
             circle.appendChild(text_box);
             block_b2.appendChild(circle);
@@ -90,7 +95,6 @@ class card {
                 var m = document.getElementById("main_container");
                 content.classList.add("main_content");
                 m.appendChild(node);
-                //document.getElementsByClassName("you_remove")[0].style.display = "visible";
             }
             else {
                 var s = document.getElementById("side_container");
@@ -99,7 +103,6 @@ class card {
             card.count++;
             card.curr_num++;
             if (this.name == "you") {
-                card.pined_Person_name = this.name;
                 card.pined_bool = true;
             }
 
@@ -157,12 +160,6 @@ class card {
             var old_main_to_side = new card(false, tmp_name, tmp_path);
             let main_txt = document.getElementsByClassName("main_content");
             main_txt[0].innerHTML = MAIN.name; 
-            /*
-            if (MAIN.name != "you") {
-                var display_main_remove = document.getElementById("main_remove");
-                display_main_remove.style.display = "visible";
-            }
-            */
             card.pined_bool = true;
         }
         if_pined();
