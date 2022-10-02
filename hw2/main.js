@@ -65,7 +65,9 @@ class card {
             let name_bar = document.createElement("div");
             name_bar.className = "name";
             name_bar.innerHTML = name;
-            status.appendChild(name_bar);
+            if (name != "you") {
+                status.appendChild(name_bar);
+            }
             block_b3.appendChild(status);
 
             node.appendChild(three_bottoms);
