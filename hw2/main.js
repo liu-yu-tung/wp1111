@@ -37,7 +37,9 @@ class card {
             mute.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20"><path d="M14.604 12.479 13.5 11.375q.229-.437.365-.906Q14 10 14 9.5h1.5q0 .792-.229 1.552t-.667 1.427Zm-2.229-2.229L7.5 5.375V4.5q0-1.042.729-1.771Q8.958 2 10 2q1.042 0 1.771.729.729.729.729 1.771v5q0 .188-.031.375t-.094.375ZM9.25 17v-2.062q-2.062-.25-3.406-1.803Q4.5 11.583 4.5 9.5H6q0 1.667 1.167 2.833Q8.333 13.5 10 13.5q.708 0 1.344-.271.635-.271 1.177-.729l1.083 1.083q-.604.521-1.333.886-.729.364-1.521.469V17ZM16 18.125 1.875 3.979l1.063-1.062 14.124 14.145Z"/></svg>';
             if (name == "you") {
                 remove_bottom.id = "main_remove";
-                remove_bottom.classList.add("you_remove");
+                if (!pin_self) {
+                    remove_bottom.classList.add("you_remove");
+                }
             }
             block_b1.append(remove_bottom);
             block_b1.append(mute);
@@ -116,8 +118,6 @@ class card {
                         this.swap_pined();
                         //this.clean();
                         node.remove();
-                        console.log("this.name: ", this.name);
-                        console.log("pined.name: ", card.pined_Person_name);
                         card.pined_bool = true;
                     }
                 }
@@ -237,16 +237,18 @@ function if_pined() {
         console.log("unpined");
     }
     if (MAIN.name == "you") {
-        console.log("main_remove none");
-        var you_none = document.getElementsByClassName("you_remove");
-        you_none[0].style.display = "none"; 
+        console.log("you main");
+        var you_none = document.getElementById("main_remove");
+        you_none.style.display = "none"; 
     }
     else {
         var main_visible = document.getElementById("main_remove");
         main_visible.classList.remove("you_remove");
         main_visible.style.display = "block";
         var you_none = document.getElementsByClassName("you_remove");
-        you_none[0].style.display = "none"; 
+        if (you_none[0]) {
+            you_none[0].style.display = "none"; 
+        }
 
     }
 }
@@ -256,16 +258,12 @@ console.log("Hello World");
 var p = document.getElementById("pppp");
 
 if (p) {
-    console.log("true");
     p.onclick = function() {
-        console.log("clicked");
         createNewPeople();    
-        console.log(card.count);
         if_pined();
     }
 }
 else {
-    console.log("false");
 }
 update_time();
 function update_time() {
