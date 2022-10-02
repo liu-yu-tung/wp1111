@@ -1,3 +1,14 @@
+
+function update_card_width() {
+    console.log("update card width");
+    var remove_n_plus_1 = "p_" + (card.curr_num + 1);
+    var remove_n_minus_1 = "p_" + (card.curr_num - 1);
+    var add_n = "p_" + (card.curr_num);
+    var sid_card_container = document.getElementById("side_container");
+    sid_card_container.classList.remove(remove_n_minus_1);
+    sid_card_container.classList.remove(remove_n_plus_1);
+    sid_card_container.classList.add(add_n);
+}
 class card {
     constructor(pin_self, name, path) {
         this.pin_self = pin_self;
@@ -138,7 +149,6 @@ class card {
         console.log("construct ", this.name);
     }
     swap_pined = () => {
-        console.log("swap pined");
         if (this.name != MAIN.name) {
             var tmp_name = MAIN.name;
             var tmp_path = MAIN.path;
@@ -158,7 +168,6 @@ class card {
         if_pined();
     }
     push_to_main = () => {
-        console.log("push to main");
         let main_txt = document.getElementsByClassName("main_content");
         main_txt[0].innerHTML = this.name; 
         card.pined_bool = true;
@@ -173,7 +182,6 @@ class card {
     }
 
     push_to_side = () => {
-        console.log("push to side");
         let main_txt = document.getElementsByClassName("main_content");
         var push = new card(false, MAIN.name, MAIN.path);
         card.pined_bool = false;
@@ -186,7 +194,6 @@ class card {
 
     clean = () => {
         if (this.name == MAIN.name) {
-            console.log("clean is pined");
             card.pined_bool = false;
 
             //card.pined_Person_name = "";
@@ -194,12 +201,8 @@ class card {
             if_pined();
         }
         else {
-            console.log("clean is unpined");
         }
         card.curr_num--;
-        console.log("remove ", this.name);
-        console.log("count ", card.count);
-        console.log("curr_num ", card.curr_num);
     };
 
     static pined_Person_name = "";
@@ -207,10 +210,6 @@ class card {
     static count = 0;
     static curr_num = 0;
     static pined_bool = true;
-    static get_count() {
-        console.log("count = ", count);
-        return count;
-    }
 }
 
 function createNewPeople() {
@@ -220,7 +219,6 @@ function createNewPeople() {
     else {
         console.log("already 15");
     }
-    console.log("pined_person = ", MAIN.name);
 }
 
 function if_pined() {
@@ -231,15 +229,12 @@ function if_pined() {
         m.style.width = "70%";
         s.style.display = "sticky";
         s.style.width = "30%";
-        console.log("pined");
     }
     else {
         m.style.display = "none";
         s.style.width = "100%";
-        console.log("unpined");
     }
     if (MAIN.name == "you") {
-        console.log("you main");
         var you_none = document.getElementById("main_remove");
         you_none.style.display = "none"; 
     }
@@ -251,8 +246,8 @@ function if_pined() {
         if (you_none[0]) {
             you_none[0].style.display = "none"; 
         }
-
     }
+    update_card_width();
 }
 
 //start
