@@ -35,9 +35,10 @@ class card {
             let mute = document.createElement("div");
             mute.className = "mute";
             mute.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20"><path d="M14.604 12.479 13.5 11.375q.229-.437.365-.906Q14 10 14 9.5h1.5q0 .792-.229 1.552t-.667 1.427Zm-2.229-2.229L7.5 5.375V4.5q0-1.042.729-1.771Q8.958 2 10 2q1.042 0 1.771.729.729.729.729 1.771v5q0 .188-.031.375t-.094.375ZM9.25 17v-2.062q-2.062-.25-3.406-1.803Q4.5 11.583 4.5 9.5H6q0 1.667 1.167 2.833Q8.333 13.5 10 13.5q.708 0 1.344-.271.635-.271 1.177-.729l1.083 1.083q-.604.521-1.333.886-.729.364-1.521.469V17ZM16 18.125 1.875 3.979l1.063-1.062 14.124 14.145Z"/></svg>';
-            if (name != "you") {
-                block_b1.append(remove_bottom);
+            if (name == "you") {
+                remove_bottom.id = "main_remove";
             }
+            block_b1.append(remove_bottom);
             block_b1.append(mute);
 
             let block_b2 = document.createElement("div");
@@ -73,6 +74,7 @@ class card {
                 var m = document.getElementById("main_container");
                 content.classList.add("main_content");
                 m.appendChild(node);
+                document.getElementById("main_remove").style.display = "none";
             }
             else {
                 var s = document.getElementById("side_container");
@@ -105,6 +107,7 @@ class card {
                     }
                     else {
                         this.swap_pined();
+                        node.remove();
                         console.log("this.name: ", this.name);
                         console.log("pined.name: ", card.pined_Person_name);
                     }
@@ -112,7 +115,7 @@ class card {
                 else {
                     this.push_to_main();
                     node.remove();
-                if_pined();
+                    if_pined();
                 }
                 if_pined();
             };
@@ -120,6 +123,23 @@ class card {
         this.node = make_node();
 
         console.log("construct ", this.name, " == ", this.self);
+    }
+    swap_pined = () => {
+        if (this.name != card.pined_Person_name) {
+            var tmp_name = MAIN.name;
+            var tmp_path = MAIN.path;
+            MAIN.name = this.name;
+            MAIN.path = this.path;
+            this.clean();
+            var old_main_to_side = new card(false, tmp_name, tmp_path);
+            let main_txt = document.getElementsByClassName("main_content");
+            main_txt[0].innerHTML = MAIN.name; 
+            if (MAIN.name != "you") {
+                var display_main_remove = document.getElementById("main_remove");
+                display_main_remove.style.display = "visible";
+            }
+            card.pined_bool = true;
+        }
     }
     push_to_main = () => {
         let main_txt = document.getElementsByClassName("main_content");
@@ -141,15 +161,7 @@ class card {
         MAIN.path = "";
         card.pined_Person_name = "";
         card.pined_Person_path = "";
-    }
-    swap_pined = () => {
-        if (this.name != card.pined_Person_name) {
-            var tmp_name = this.name;
-            var tmp_path = this.path;
-            
-            let main_txt = document.getElementsByClassName("main_content");
-            main_txt[0].innerHTML = this.name; 
-        }
+        if_pined();
     }
 
     clean = () => {
