@@ -1,40 +1,76 @@
-.p_1 > *{
+
+.side > .p_1.adjust > .card{
+    
     width: 95%;
     aspect-ratio: 3 / 2;
 }
-.p_2 > *{
+.side > .p_2.adjust > .card{
+    
     width: calc(95%/2);
     aspect-ratio: 3 / 2;
 }
-.p_3 > *{
+.side > .p_3.adjust > .card{
+    
     width: calc(95%/2);
     aspect-ratio: 3 / 2;
 }
-.p_4 > *{
+.side > .p_4.adjust > .card{
+    
     width: calc(95%/2);
     aspect-ratio: 3 / 2;
 }
-.p_5 > *{
-    width: calc(95%/2);
-    aspect-ratio: 3 / 2;
-}
-.p_6 > *{
+.side > .p_5.adjust > .card{
+    
     width: calc(95%/3);
     aspect-ratio: 3 / 2;
 }
-.p_7 > *{
+.side > .p_6.adjust > .card{
+    
     width: calc(95%/3);
     aspect-ratio: 3 / 2;
 }
-.p_8 > *{
-    width: calc(95%/3);
-    aspect-ratio: 3 / 2;
-}
-.p_9 > *{
-    width: calc(95%/3);
-    aspect-ratio: 3 / 2;
-}
-.p_10 > *{
+.side > .p_7.adjust > .card{
+    
     width: calc(95%/4);
+    aspect-ratio: 3 / 2;
+}
+.side > .p_8.adjust > .card{
+    
+    width: calc(95%/4);
+    aspect-ratio: 3 / 2;
+}
+.side > .p_9.adjust > .card{
+    
+    width: calc(97%/4);
+    aspect-ratio: 3 / 2;
+}
+.side > .p_10.adjust > .card{
+    
+    width: calc(97%/4);
+    aspect-ratio: 3 / 2;
+}
+.side > .p_11.adjust > .card{
+    
+    width: calc(97%/5);
+    aspect-ratio: 3 / 2;
+}
+.side > .p_12.adjust > .card{
+    
+    width: calc(97%/5);
+    aspect-ratio: 3 / 2;
+}
+.side > .p_13.adjust > .card{
+    
+    width: calc(97%/5);
+    aspect-ratio: 3 / 2;
+}
+.side > .p_14.adjust > .card{
+    
+    width: calc(97%/5);
+    aspect-ratio: 3 / 2;
+}
+.side > .p_15.adjust > .card{
+    
+    width: calc(97%/5);
     aspect-ratio: 3 / 2;
 }

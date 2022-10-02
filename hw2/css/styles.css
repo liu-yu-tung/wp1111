@@ -351,11 +351,17 @@ button {
     align-self: flex-start;
 }
 */
+.card {
+    width: max(30%, 135px);
+    aspect-ratio: 4 / 3;
+}
 .side > .container > .card {
     background-color: #3c4043; 
     display: flex;
+    /*
     width: max(30%, 135px);
     aspect-ratio: 4 / 3;
+    */
     justify-content: center;
     align-self: center;
 }

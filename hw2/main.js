@@ -1,6 +1,7 @@
 
 function update_card_width() {
-    console.log("update card width");
+    console.log("update card width, n: ", card.curr_num);
+
     var remove_n_plus_1 = "p_" + (card.curr_num + 1);
     var remove_n_minus_1 = "p_" + (card.curr_num - 1);
     var add_n = "p_" + (card.curr_num);
@@ -8,6 +9,12 @@ function update_card_width() {
     sid_card_container.classList.remove(remove_n_minus_1);
     sid_card_container.classList.remove(remove_n_plus_1);
     sid_card_container.classList.add(add_n);
+    if(!card.pined_bool) {
+        sid_card_container.classList.add("adjust");
+    }
+    else {
+        sid_card_container.classList.remove("adjust");
+    }
 }
 class card {
     constructor(pin_self, name, path) {
@@ -117,6 +124,7 @@ class card {
                     //this.clean();
                     node.remove();
                 }
+                card.curr_num--;
                 if_pined();
             };
 
@@ -127,19 +135,21 @@ class card {
                             var main_txt = document.getElementsByClassName("main_content");
                             main_txt.innerHTML = "empty";
                             this.push_to_side();
+                            card.curr_num--;
                         }
                     }
                     else {
                         this.swap_pined();
                         //this.clean();
                         node.remove();
+                        card.curr_num--;
                         card.pined_bool = true;
                     }
                 }
                 else {
                     this.push_to_main();
-                    this.clean();
                     node.remove();
+                    card.curr_num--;
                     card.pined_bool = true;
                 }
                 if_pined();
@@ -209,7 +219,7 @@ class card {
 }
 
 function createNewPeople() {
-    if (card.curr_num <= 15) {
+    if (card.curr_num < 15) {
         var newPeople = new card(false, card.count, "./");
     }
     else {
