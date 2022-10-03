@@ -15,7 +15,7 @@
 - Setting display to "none" when there is no pined person
 
 ### side(right part)
-- append new person in this section when there is a new one need to be display here
+- Append new person in this section when there is a new one need to be display here
 
 ### footer(bottom part)
-- mainly use the css setting from HW1
+- Mainly use the css setting from HW1
