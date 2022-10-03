@@ -16,6 +16,7 @@
 
 ### side(right part)
 - Append new person in this section when there is a new one need to be display here
+- Changing display when there is no pined person
 
 ### footer(bottom part)
 - Mainly use the css setting from HW1
