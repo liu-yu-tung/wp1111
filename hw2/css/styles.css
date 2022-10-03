@@ -238,6 +238,10 @@ button {
     border-radius: 50%;
     justify-content: center;
 }
+.side {
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
 
 .side .block.b2{
     height: 50%;
@@ -352,7 +356,7 @@ button {
 }
 */
 .card {
-    width: max(45%, 135px);
+    width: min(45%, 135px);
     aspect-ratio: 4 / 3;
 }
 .side > .container > .card {
