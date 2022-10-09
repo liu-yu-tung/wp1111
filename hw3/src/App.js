@@ -42,21 +42,33 @@ const Input = () => {
       placeholder="What needs to be done?" 
       onKeyDown={handleKeyDown}></input>
         <ul className='todo-app__list' id="todo-list">
+          {/*
           <Item 
             name={"todo-"+input} 
             id={"todo"+input}
             status={false}
           />
+  */}
         </ul>
       </Fragment>
   );
 };
+
 function App(props) {
+  const taskList = props.tasks.map((task) => (
+    <Item 
+    id={task.id}
+    name={task.name}
+    completed={task.completed}
+    key={task.id}
+    />
+  ));
   return (
       <div id="root" className='todo-app__root'>
         <Header />
         <section className="todo-app__main">
           <Input />
+          {taskList}
         </section>
 
       <footer className='todo-app__footer' id='todo-footer'>
