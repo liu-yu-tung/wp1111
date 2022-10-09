@@ -1,46 +1,64 @@
 import './App.css';
 import './styles.css';
-import React from 'react';
-const { useState } = React;
+import React, { Fragment } from 'react';
+import { useState } from 'react';
 
-const Item = () => {
-    <li className='todo-app__item'>
-      <div className='todo-app__checkbox'>
-        <input type="checkbox"></input>
-          <label></label>
-      </div>
-      <h1 className='todo-app__item-detail'></h1>
-      <img src={require('./img/x.png')} className='todo-app__item-x'></img>
-    </li>
-};
 
-const Input = () => {
-    <input className="todo-app__input"  placeholder="What needs to be done">
-        <ul className='todo-app__list' id="todo-list">
-          <Item />
-        </ul>
-        </input>
-};
-function App() {
+const Header = (props) => {
   return (
-      <div className='todo-app__root'>
       <header className="todo-app__header">
         <div className='todo-app__title'>todos</div>
       </header>
-      <section className="todo-app__main">
-        <input className="todo-app__input"></input>
-        <ul className='todo-app__list' id="todo-list">
+  );
+};
+const Item = (props) => {
+  return(
     <li className='todo-app__item'>
       <div className='todo-app__checkbox'>
-        <input type="checkbox"></input>
-          <label></label>
+        <input id={props.id} type="checkbox" defaultChecked={props.status}></input>
+        <label htmlFor={props.id}></label>
       </div>
+      <h1 className='todo-app__item-detail'>
+        {props.name}
+      </h1>
+          <img src={require('./img/x.png')} className='todo-app__item-x'></img>
+      </li>
+  );
+};
 
-      <h1 className='todo-app__item-detail'></h1>
-      <img src={require('./img/x.png')} className='todo-app__item-x'></img>
-    </li>
+const Input = () => {
+  const [input, setInput] = useState(0);
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      setInput(input + 1);
+      console.log('do validate')
+      console.log(input);
+    }
+  }
+  return(
+    <Fragment>
+    <input className="todo-app__input" 
+      placeholder="What needs to be done?" 
+      onKeyDown={handleKeyDown}></input>
+        <ul className='todo-app__list' id="todo-list">
+          <Item 
+            name={"todo-"+input} 
+            id={"todo"+input}
+            status={false}
+          />
         </ul>
-      </section>
+      </Fragment>
+  );
+};
+function App(props) {
+  return (
+      <div id="root" className='todo-app__root'>
+        <Header />
+        <section className="todo-app__main">
+          <Input />
+        </section>
+
       <footer className='todo-app__footer' id='todo-footer'>
         <div className='todo-app__total'></div>
         <ul className='todo-app__view-buttons'>
