@@ -203,7 +203,7 @@ input[type='checkbox'] {
     font-size: 1.5em;
     font-weight: 300;
     overflow-wrap: break-word;
-    width: 80%;
+    width: 100%;
     min-height: 3em;
     transition: opacity 0.3s;
     border: none;

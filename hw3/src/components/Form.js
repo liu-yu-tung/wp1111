@@ -18,7 +18,7 @@ function Form(props) {
 
   return(
     <form onSubmit={handleSubmit}>
-      <input className="todo-app__input" 
+      <input className="todo-app__input todo-item-input"  
         placeholder="What needs to be done?" 
         type="text"
         name="text"
