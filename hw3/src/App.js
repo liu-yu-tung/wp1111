@@ -78,7 +78,11 @@ function App(props) {
         </section>
 
       <footer className='todo-app__footer' id='todo-footer'>
-        <div className='todo-app__total'></div>
+        <div className='todo-app__total'
+              style={{visibility: !tasks.length && 'hidden'}}
+          >
+          {tasks.length} left
+        </div>
         <ul className='todo-app__view-buttons'>
           <li className='todo-app__button_All'>
             <button id='All' type='button'>All</button>
