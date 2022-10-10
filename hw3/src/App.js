@@ -5,8 +5,7 @@ import Form from "./components/Form"
 import React, { Fragment } from 'react';
 import { useState, useEffect } from 'react';
 
-
-const Header = (props) => {
+const Header = () => {
   return (
       <header className="todo-app__header">
         <div className='todo-app__title'>todos</div>
@@ -27,11 +26,17 @@ function App(props) {
     setTasks([...tasks, newTask]);
   }
 
+  function deleteTask(id) {
+    console.log("delete");
+    const newTasks = tasks.filter(task => id !== task.id);
+    setTasks(newTasks);
+  }
   const taskList = tasks.map(task => (
     <Todo
     id={Math.floor(Math.random()*Math.pow(2,20))}
     name={task.name}
     completed={task.completed}
+    deleteTask={deleteTask}
     key={Math.floor(Math.random()*Math.pow(2,20))}
     />
   )

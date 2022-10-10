@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 export default function Todo(props){
+
   return(
     <li className='todo-app__item'>
       <div className='todo-app__checkbox'>
@@ -9,7 +10,10 @@ export default function Todo(props){
       <h1 className='todo-app__item-detail'>
         {props.name}
       </h1>
-          <img src={require('../img/x.png')} className='todo-app__item-x'></img>
+          < img src={require('../img/x.png')} 
+            className='todo-app__item-x'
+            onClick={() => props.deleteTask(props.id)}>
+            </img>
       </li>
   );
 };
