@@ -17,17 +17,19 @@ const Header = (props) => {
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
   const [num, setNum] = useState(0);
+
   function addTask(name){
     setNum(num + 1);
     const newTask = {id: num, name: name, completed: false}; 
     setTasks([...tasks, newTask]);
   }
+
   const taskList = tasks.map(task => (
     <Todo
-    id={num}
+    id={Math.floor(Math.random()*Math.pow(2,20))}
     name={task.name}
     completed={task.completed}
-    key={num}
+    key={Math.floor(Math.random()*Math.pow(2,20))}
     />
   )
   );

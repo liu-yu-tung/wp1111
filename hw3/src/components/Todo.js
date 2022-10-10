@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
 export default function Todo(props){
-  console.log(props);
   return(
     <li className='todo-app__item'>
       <div className='todo-app__checkbox'>
