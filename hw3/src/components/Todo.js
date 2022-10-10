@@ -9,12 +9,12 @@ export default function Todo(props){
     props.deleteTask(props.id);
   }
   const checkHandle = () => {
+    props.toggleTaskCompleted(props.id);
     setChecked(!checked); 
-    console.log(checked);
+    //console.log("props completed" + props.completed);
   };
   return(
-    <li className={"todo-app__item ${remove &&'visibility-hidden'}"}
-
+    <li className={"todo-app__item"}
     >
       <div className='todo-app__checkbox'>
         <input id={props.id} 
@@ -23,12 +23,13 @@ export default function Todo(props){
                onClick={checkHandle}
                >
 
-               </input>
+            </input>
         <label htmlFor={props.id}></label>
       </div>
-      <h1 className='todo-app__item-detail' 
+      <h1 className={'todo-app__item-detail'}
             style={{
                 textDecoration: checked && 'line-through',
+                opacity: '50%',
                 transition: '0.3s'
             }}
             >
