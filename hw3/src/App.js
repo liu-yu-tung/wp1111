@@ -1,7 +1,7 @@
 import './App.css';
 import './styles.css';
 import React, { Fragment } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const Header = (props) => {
@@ -11,7 +11,8 @@ const Header = (props) => {
       </header>
   );
 };
-const Item = (props) => {
+function Item(props){
+  console.log(props);
   return(
     <li className='todo-app__item'>
       <div className='todo-app__checkbox'>
@@ -26,48 +27,65 @@ const Item = (props) => {
   );
 };
 
-const Input = () => {
-  const [input, setInput] = useState(0);
+function Input(props) {
+  const [name, setName] = useState("");
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      setInput(input + 1);
-      console.log('do validate')
-      console.log(input);
+  function handleChange(event){
+    setName(event.target.value);
+  };
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      if (name === "") {
+        console.log("none");
+      }
+      else {
+        event.preventDefault();
+        props.addTask(name);
+        console.log("name: " + name);
+        setName("");
+      }
     }
-  }
+  };
   return(
-    <Fragment>
-    <input className="todo-app__input" 
-      placeholder="What needs to be done?" 
-      onKeyDown={handleKeyDown}></input>
-        <ul className='todo-app__list' id="todo-list">
-          {/*
-          <Item 
-            name={"todo-"+input} 
-            id={"todo"+input}
-            status={false}
-          />
-  */}
-        </ul>
-      </Fragment>
+      <input className="todo-app__input" 
+        placeholder="What needs to be done?" 
+        type="text"
+        name="text"
+        autoComplete='off'
+        value={name}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        >
+      </input>
   );
 };
 
-function App(props) {
-  const taskList = props.tasks.map((task) => (
+function App() {
+  //let DATA = [];
+  const [tasks, setTasks] = useState();
+  const [num, setNum] = useState(0);
+  function addTask(name){
+    console.log("add new task: " + name);
+    setNum(num + 1);
+    const newTask = {id: num, name, completed: false}; 
+    setTasks([...tasks, newTask]);
+    console.log("print tasklist");
+    console.log(taskList);
+  }
+  const taskList = tasks.map((task) => (
     <Item 
     id={task.id}
-    name={task.name}
+    name={tasks.name}
     completed={task.completed}
-    key={task.id}
+    key={num}
     />
-  ));
+  )
+  );
   return (
-      <div id="root" className='todo-app__root'>
+      <div className='todo-app__root'>
         <Header />
-        <section className="todo-app__main">
-          <Input />
+        <section role="list" className="todo-app__main">
+          <Input addTask={addTask} />
           {taskList}
         </section>
 

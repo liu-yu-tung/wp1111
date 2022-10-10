@@ -6,8 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const DATA = [
-  {name: "test", id: "test", completed: false}
+let DATA = [
 ];
 root.render(
   <React.StrictMode>
