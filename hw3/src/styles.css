@@ -2,6 +2,9 @@
     box-sizing: border-box;
 }
 
+.visibility-hidden {
+    visibility: hidden;
+}
 html,
 body {
     height: 100%;

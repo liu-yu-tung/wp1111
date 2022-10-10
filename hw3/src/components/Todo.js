@@ -1,12 +1,21 @@
 import React, {useEffect, useRef, useState} from 'react';
 export default function Todo(props){
+
+  const [remove, setRemove] = useState(false);
+  const [checked, setChecked] = useState(props.completed);
+  const removeHandle = () => {
+    setRemove(!remove); 
+    console.log(remove);
+    props.deleteTask(props.id);
+  }
   const checkHandle = () => {
     setChecked(!checked); 
     console.log(checked);
   };
-  const [checked, setChecked] = useState(props.completed);
   return(
-    <li className='todo-app__item'>
+    <li className={"todo-app__item ${remove &&'visibility-hidden'}"}
+
+    >
       <div className='todo-app__checkbox'>
         <input id={props.id} 
                type="checkbox" 
@@ -27,7 +36,7 @@ export default function Todo(props){
       </h1>
           < img src={require('../img/x.png')} 
             className='todo-app__item-x'
-            onClick={() => props.deleteTask(props.id)}>
+            onClick={removeHandle}>
             </img>
       </li>
   );

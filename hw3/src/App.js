@@ -4,6 +4,7 @@ import Todo from "./components/Todo";
 import Form from "./components/Form"
 import React, { Fragment } from 'react';
 import { useState, useEffect } from 'react';
+import {nanoid} from "nanoid";
 
 const Header = () => {
   return (
@@ -30,26 +31,31 @@ function App(props) {
 
   function addTask(name){
     setNum(num + 1);
-    const newTask = { id: num, 
-                      name: name, 
-                      completed: false
-                    }; 
+    const newTask = {id: nanoid(), name, completed: false};
     setTasks([...tasks, newTask]);
   }
 
   function deleteTask(id) {
     console.log("delete");
-    const newTasks = tasks.filter(task => id !== task.id);
+    let newTasks = [];
+    for (var i=0; i< tasks.length; i++) {
+      if (tasks[i].id !== id) {
+          console.log("now i: " + i);
+          console.log(id + " " + tasks[i].id);
+          newTasks.push(tasks[i]);
+      }
+    }
+    //let newTasks = tasks.filter(task => id !== task.id);
     setTasks(newTasks);
   }
   const taskList = tasks.map(task => (
     <Todo
-    id={Math.floor(Math.random()*Math.pow(2,20))}
+    id={task.id}
     name={task.name}
     completed={task.completed}
     toggleTaskCompleted={toggleTaskCompleted}
     deleteTask={deleteTask}
-    key={Math.floor(Math.random()*Math.pow(2,20))}
+    key={task.id}
     />
   )
   );
