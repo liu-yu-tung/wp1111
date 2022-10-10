@@ -16,6 +16,17 @@ const Header = () => {
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
   const [num, setNum] = useState(0);
+  function toggleTaskCompleted(id) {
+    const updatedTasks = tasks.map(task => {
+      if (id === task.id) {
+        console.log("completed");
+        return {
+          ...task, completed: !task.completed}
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  }
 
   function addTask(name){
     setNum(num + 1);
@@ -36,6 +47,7 @@ function App(props) {
     id={Math.floor(Math.random()*Math.pow(2,20))}
     name={task.name}
     completed={task.completed}
+    toggleTaskCompleted={toggleTaskCompleted}
     deleteTask={deleteTask}
     key={Math.floor(Math.random()*Math.pow(2,20))}
     />
