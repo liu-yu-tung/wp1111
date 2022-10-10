@@ -20,7 +20,10 @@ function App(props) {
 
   function addTask(name){
     setNum(num + 1);
-    const newTask = {id: num, name: name, completed: false}; 
+    const newTask = { id: num, 
+                      name: name, 
+                      completed: false
+                    }; 
     setTasks([...tasks, newTask]);
   }
 
