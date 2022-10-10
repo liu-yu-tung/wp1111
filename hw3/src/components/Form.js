@@ -12,7 +12,7 @@ function Form(props) {
     if (!name.trim()) {
         return;
     }
-    props.addTask(name);
+    props.addtodo(name);
     setName("");
   };
 

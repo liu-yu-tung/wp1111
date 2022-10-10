@@ -17,57 +17,57 @@ const Header = () => {
 
 const Filtermap = {
   All: () => true,
-  Active: task => !task.completed,
-  Completed: task => task.completed
+  Active: todo => !todo.completed,
+  Completed: todo => todo.completed
 };
 const Filtername = Object.keys(Filtermap);
 
 function App(props) {
-  const [tasks, setTasks] = useState(props.tasks);
+  const [todos, settodos] = useState(props.todos);
   const [filter, setFilter] = useState("All");
-  function toggleTaskCompleted(id) {
-    const updatedTasks = tasks.map(task => {
-      if (id === task.id) {
+  function toggletodoCompleted(id) {
+    const updatedtodos = todos.map(todo => {
+      if (id === todo.id) {
         return {
-          ...task, completed: !task.completed}
+          ...todo, completed: !todo.completed}
       }
-      return task;
+      return todo;
     });
-    setTasks(updatedTasks);
+    settodos(updatedtodos);
   }
 
-  function addTask(name){
-    const newTask = {id: nanoid(), name, completed: false};
-    setTasks([...tasks, newTask]);
+  function addtodo(name){
+    const newtodo = {id: nanoid(), name, completed: false};
+    settodos([...todos, newtodo]);
   }
 
-  function deleteTask(id) {
-    let newTasks = [];
-    for (var i=0; i< tasks.length; i++) {
-      if (tasks[i].id !== id) {
-          newTasks.push(tasks[i]);
+  function deletetodo(id) {
+    let newtodos = [];
+    for (var i=0; i< todos.length; i++) {
+      if (todos[i].id !== id) {
+          newtodos.push(todos[i]);
       }
     }
-    newTasks = tasks.filter(task => id !== task.id);
-    setTasks(newTasks);
+    newtodos = todos.filter(todo => id !== todo.id);
+    settodos(newtodos);
   }
   const CleanHandle= () => {
-    const nownum = tasks.length;
-    let newTasks = [];
-    setTasks(newTasks);
+    const nownum = todos.length;
+    let newtodos = [];
+    settodos(newtodos);
   }
 
   function get_update() {
     return document.getElementsByClassName('todo-completed');
   }
-  const taskList = tasks.filter(Filtermap[filter]).map(task => (
+  const todoList = todos.filter(Filtermap[filter]).map(todo => (
     <Todo
-    id={task.id}
-    name={task.name}
-    completed={task.completed}
-    toggleTaskCompleted={toggleTaskCompleted}
-    deleteTask={deleteTask}
-    key={task.id}
+    id={todo.id}
+    name={todo.name}
+    completed={todo.completed}
+    toggletodoCompleted={toggletodoCompleted}
+    deletetodo={deletetodo}
+    key={todo.id}
     />
   )
   );
@@ -75,7 +75,6 @@ function App(props) {
     <FilterButton 
     key={name}
     name={name}
-    isPressed={name === filter}
     setFilter={setFilter}
     />
   ));
@@ -84,15 +83,15 @@ function App(props) {
       <div className='todo-app__root'>
         <Header />
         <section role="list" className="todo-app__main">
-          <Form addTask={addTask} />
-          {taskList}
+          <Form addtodo={addtodo} />
+          {todoList}
         </section>
 
       <footer className='todo-app__footer' id='todo-footer'>
         <div className='todo-app__total'
-              style={{visibility: !tasks.length && 'hidden'}}
+              style={{visibility: !todos.length && 'hidden'}}
           >
-          {taskList.length} left
+          {todoList.length} left
         </div>
         <ul className='todo-app__view-buttons'>
           {filterList}
@@ -100,7 +99,7 @@ function App(props) {
         <div className='todo-app__clean'>
             <button id='Clear_completed' 
             type='button' 
-            style={{visibility: !tasks.length && 'hidden' }}
+            style={{visibility: !todos.length && 'hidden' }}
             onClick={CleanHandle}
             >Clear completed</button>
           </div>

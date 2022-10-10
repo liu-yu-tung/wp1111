@@ -6,10 +6,10 @@ export default function Todo(props){
   const removeHandle = () => {
     setRemove(!remove); 
     console.log(remove);
-    props.deleteTask(props.id);
+    props.deletetodo(props.id);
   }
   const checkHandle = () => {
-    props.toggleTaskCompleted(props.id);
+    props.toggletodoCompleted(props.id);
     setChecked(!checked); 
     //console.log("props completed" + props.completed);
   };
