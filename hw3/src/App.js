@@ -15,8 +15,8 @@ const Header = () => {
 };
 
 function App(props) {
-  const [tasks, setTasks] = useState(props.tasks);
   const [num, setNum] = useState(0);
+  const [tasks, setTasks] = useState(props.tasks);
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map(task => {
       if (id === task.id) {
@@ -30,7 +30,7 @@ function App(props) {
   }
 
   function addTask(name){
-    setNum(num + 1);
+    console.log("num = " + tasks.length);
     const newTask = {id: nanoid(), name, completed: false};
     setTasks([...tasks, newTask]);
   }
@@ -40,13 +40,23 @@ function App(props) {
     let newTasks = [];
     for (var i=0; i< tasks.length; i++) {
       if (tasks[i].id !== id) {
-          console.log("now i: " + i);
-          console.log(id + " " + tasks[i].id);
+          //console.log(id + " " + tasks[i].id);
           newTasks.push(tasks[i]);
+          console.log("num = " + tasks.length);
       }
     }
     //let newTasks = tasks.filter(task => id !== task.id);
     setTasks(newTasks);
+  }
+  const CleanHandle= () => {
+    const nownum = tasks.length;
+    let newTasks = [];
+    setTasks(newTasks);
+    
+    //TODO:
+    console.log("nownum = " + nownum);
+      console.log("num = " + tasks.length);
+    
   }
   const taskList = tasks.map(task => (
     <Todo
@@ -81,7 +91,11 @@ function App(props) {
           </li>
         </ul>
         <div className='todo-app__clean'>
-            <button id='Clear_completed' type='button'>Clear completed</button>
+            <button id='Clear_completed' 
+            type='button' 
+            style={{visibility: !tasks.length && 'hidden' }}
+            onClick={CleanHandle}
+            >Clear completed</button>
           </div>
       </footer>
     </div>
