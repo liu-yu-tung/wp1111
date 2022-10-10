@@ -1,4 +1,15 @@
 # Web Programming HW#3
+ 
+# Prerequirements
+
+1. make sure to have `npm`, `Node.js`
+2. then install `npm install create-react-app`
+3. sometimes needs to run `npm add react-scripts`
+4. run `npm install` to install required packeges
+
+# Start
+
+1. run `npm start`
 
 ## features
 
