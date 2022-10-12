@@ -31,9 +31,24 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     // Creating a board
     const freshBoard = () => {
         const newBoard = createBoard(boardSize, mineNum);
+        console.log(newBoard.board);
+        let curr_non_mine_count = 0;
+        let mine_locations = [];
+        for (let i=0; i<boardSize; i++) {
+            for (let j=0; j<boardSize; j++) {
+                if(newBoard.board[i][j].value !== '💣') {
+                    curr_non_mine_count++;
+                }
+                else {
+                    mine_locations.push([i, j]);
+                }
+            }
+        }
+        setNonMineCount(curr_non_mine_count);
+        setMineLocations(mine_locations);
+        console.log(mine_locations);
         // Basic TODO: Use `newBoard` created above to set the `Board`.
         // Hint: Read the definition of those Hook useState functions and make good use of them.
-
     }
 
     const restartGame = () => {
@@ -71,12 +86,15 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         <div className='boardPage' >
             <div className='boardWrapper' >
                  <h1>This is the board Page!</h1>  {/* This line of code is just for testing. Please delete it if you finish this function. */}
-
+                 <h1>{"nonMineCount: " + nonMineCount}</h1>
+                 <h1>{mineLocations}</h1>
                 {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
 
                 {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.
-                Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */}
+                Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */
+
+                }
                 
             </div>
         </div>
