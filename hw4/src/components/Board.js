@@ -12,7 +12,7 @@ import Modal from './Modal';
 import Dashboard from './Dashboard';
 import { revealed } from '../util/reveal';
 import createBoard from '../util/createBoard';
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 
 const Board = ({ boardSize, mineNum, backToHome }) => {
@@ -51,12 +51,14 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         setNonMineCount(curr_non_mine_count);
         setMineLocations(mine_locations);
         setRemainFlagNum(curr_flag);
-        setBoard({
-            
-        });
-        //setBoard(newBoard.board.map);
+        {
+            setBoard(
+                [newBoard.board]
+            );
+        }
         console.log("value test: " + newBoard.board[0][0].value);
         console.log(mine_locations);
+        console.log(board);
         
         // Basic TODO: Use `newBoard` created above to set the `Board`.
         // Hint: Read the definition of those Hook useState functions and make good use of them.
@@ -96,9 +98,11 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     return (
         <div className='boardPage' >
             <div className='boardWrapper' >
-                 <h1>This is the board Page!</h1>  {/* This line of code is just for testing. Please delete it if you finish this function. */}
-                 <h1>{"nonMineCount: " + nonMineCount}</h1>
-                 <h1>{mineLocations}</h1>
+                <h1>This is the board Page!</h1>  {/* This line of code is just for testing. Please delete it if you finish this function. */}
+                <h1>{"nonMineCount: " + nonMineCount}</h1>
+                <h1>{mineLocations}</h1>
+                <h1>{"test"}</h1>
+                    <h1>{"test"}</h1>
                 {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
                 {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.
@@ -106,7 +110,18 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 <div className='boardWrapper'>
                 <div className='boardContainer'>
                 <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver}/>
-                <Cell rowIdx={0} colIdx={0} detail={0} updateFlag={updateFlag} revealCell={revealCell}/>
+                    {
+                        board.map((b, i) =>
+                            b.map((content, j) =>
+                                <div id={"row"+j} style={{display:"flex"}}>
+                                    {content.map((val ,k) =>
+                                        <Cell rowIdx={j} colIdx={k} detail={val} updateFlag={updateFlag} revealCell={revealCell}/>
+                                    )}
+                                </div>
+                            )
+                    
+                        )
+                    }
                 </div>
                 </div>
                 }
