@@ -34,6 +34,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         console.log(newBoard.board);
         let curr_non_mine_count = 0;
         let mine_locations = [];
+        let curr_flag = mineNum;
         for (let i=0; i<boardSize; i++) {
             for (let j=0; j<boardSize; j++) {
                 if(newBoard.board[i][j].value !== '💣') {
@@ -42,11 +43,21 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 else {
                     mine_locations.push([i, j]);
                 }
+                if (newBoard.board[i][j].flagged == true) {
+                    curr_flag--;
+                }
             }
         }
         setNonMineCount(curr_non_mine_count);
         setMineLocations(mine_locations);
+        setRemainFlagNum(curr_flag);
+        setBoard({
+            
+        });
+        //setBoard(newBoard.board.map);
+        console.log("value test: " + newBoard.board[0][0].value);
         console.log(mine_locations);
+        
         // Basic TODO: Use `newBoard` created above to set the `Board`.
         // Hint: Read the definition of those Hook useState functions and make good use of them.
     }
@@ -89,11 +100,15 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                  <h1>{"nonMineCount: " + nonMineCount}</h1>
                  <h1>{mineLocations}</h1>
                 {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
-
                 {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.
                 Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */
-
+                <div className='boardWrapper'>
+                <div className='boardContainer'>
+                <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver}/>
+                <Cell rowIdx={0} colIdx={0} detail={0} updateFlag={updateFlag} revealCell={revealCell}/>
+                </div>
+                </div>
                 }
                 
             </div>
