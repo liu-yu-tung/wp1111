@@ -76,6 +76,20 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         // Deep copy of a state
         let newBoard = JSON.parse(JSON.stringify(board));
         let newFlagNum = remainFlagNum;
+        console.log("right click");
+        if (!newBoard[x][y].revealed && newFlagNum) {
+            console.log(x + " " + y);
+            if (newBoard[x][y].flagged) {
+                newBoard[x][y].flagged = !newBoard[x][y].flagged;
+                newFlagNum += 1;
+            }
+            else {
+                newBoard[x][y].flagged = !newBoard[x][y].flagged;
+                newFlagNum -= 1;
+            }
+            setRemainFlagNum(newFlagNum);
+            setBoard(newBoard);
+        }
 
         // Basic TODO: Right Click to add a flag on board[x][y]
         // Remember to check if board[x][y] is able to add a flag (remainFlagNum, board[x][y].revealed)
@@ -96,6 +110,9 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         else {
             board[x][y].revealed = true;
             setNonMineCount(nonMineCount-1);
+            if (nonMineCount == 0) {
+                setWin(true);
+            }
         }
         //console.log(board[0][0]);
         // Basic TODO: Complete the conditions of revealCell (Refer to reveal.js)
@@ -111,8 +128,6 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 <h1>This is the board Page!</h1>  {/* This line of code is just for testing. Please delete it if you finish this function. */}
                 <h1>{"nonMineCount: " + nonMineCount}</h1>
                 <h1>{mineLocations}</h1>
-                <h1>{"test"}</h1>
-                    <h1>{"test"}</h1>
                 {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
                 {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.
