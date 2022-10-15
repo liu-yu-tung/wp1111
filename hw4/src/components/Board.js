@@ -48,12 +48,11 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 }
             }
         }
-        setNonMineCount(curr_non_mine_count);
-        setMineLocations(mine_locations);
+        setNonMineCount(curr_non_mine_count); setMineLocations(mine_locations);
         setRemainFlagNum(curr_flag);
         {
             setBoard(
-                [newBoard.board]
+                newBoard.board
             );
         }
         console.log("value test: " + newBoard.board[0][0].value);
@@ -87,7 +86,18 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     const revealCell = (x, y) => {
         if (board[x][y].revealed || gameOver || board[x][y].flagged) return;
         let newBoard = JSON.parse(JSON.stringify(board));
+        console.log(x+ " "+y);
+        if (board[x][y].value == '💣') {
+            board[x][y].revealed = true;
+            console.log('💣');
+            setGameOver(true);
 
+        }
+        else {
+            board[x][y].revealed = true;
+            setNonMineCount(nonMineCount-1);
+        }
+        //console.log(board[0][0]);
         // Basic TODO: Complete the conditions of revealCell (Refer to reveal.js)
         // Hint: If `Hit the mine`, check ...?
         //       Else if `Reveal the number cell`, check ...?
@@ -111,15 +121,12 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 <div className='boardContainer'>
                 <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver}/>
                     {
-                        board.map((b, i) =>
-                            b.map((content, j) =>
-                                <div id={"row"+j} style={{display:"flex"}}>
-                                    {content.map((val ,k) =>
-                                        <Cell rowIdx={j} colIdx={k} detail={val} updateFlag={updateFlag} revealCell={revealCell}/>
-                                    )}
-                                </div>
-                            )
-                    
+                        board.map((content, i) =>
+                            <div id={"row"+i} style={{display:"flex"}}>
+                                {content.map((val ,j) =>
+                                    <Cell rowIdx={i} colIdx={j} detail={val} updateFlag={updateFlag} revealCell={revealCell}/>
+                                )}
+                            </div>
                         )
                     }
                 </div>
