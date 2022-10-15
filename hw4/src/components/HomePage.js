@@ -27,7 +27,26 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
       {/* Advanced TODO: Implementation of Difficult Adjustment
                 Useful Hint: <input type = 'range' min = '...' max = '...' defaultValue = '...'> 
                 Useful Hint: Error color: '#880000', default text color: '#0f0f4b', invisible color: 'transparent' 
-                Reminder: The defaultValue of 'mineNum' is 10, and the defaultValue of 'boardSize' is 8. */}
+                Reminder: The defaultValue of 'mineNum' is 10, and the defaultValue of 'boardSize' is 8. */
+        <div className='controlContainer'>
+          <button className='btn'>Difficulty Adjustment</button>
+          <div className='controlWrapper'>
+            <div className='error'>ERROR: Mines number and board size are invalid!</div>
+            <div className='controlPane'>
+              <div className='controlCol'>
+                <p className='controlTitle'>Mines Number</p>
+                <input type="range" step="1" min="1" max="20" defaultValue="10"></input>
+                <p className='controlNum'>10</p>
+              </div>
+              <div className='controlCol'>
+                <p className='controlTitle'>Board Size(n*n)</p>
+                <input type="range" step="1" min="1" max="20" defaultValue="8"></input>
+                <p className='controlNum'>8</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
 
     </div>
   );
