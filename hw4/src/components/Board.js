@@ -156,7 +156,6 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 <h1>{"nonMineCount: " + nonMineCount}</h1>
                 <h1>{mineLocations}</h1>
                 {/* Advanced TODO: Implement Modal based on the state of `gameOver` */
-                <Modal restartGame={restartGame} backToHome={backToHome} gameOver={gameOver} win={win}/>
                 }
                 {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.

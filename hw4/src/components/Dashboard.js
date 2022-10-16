@@ -18,12 +18,20 @@ export default function Dashboard({ remainFlagNum, gameOver }) {
   {/* Useful Hint: Try to understand the difference between time and sTime. */ }
 
   useEffect(() => {
-    
+    if (!gameOver) {
+      timeIntervalId = setInterval(() => {
+          setTime((time) => time+1);
+      }
+      ,1000)
+    }
+    return () => clearInterval(timeIntervalId);
   }, []);
 
   useEffect(() => {
-
-  }, []);
+    if(gameOver) {
+      setSTime(time);
+    }
+  }, [gameOver]);
 
 
   return (
@@ -37,7 +45,7 @@ export default function Dashboard({ remainFlagNum, gameOver }) {
       <div id='dashBoard_col2' >
         <div className='dashBoard_col'>
           <p className='icon'>⏰</p>
-          {gameOver ? sTime : time}
+          {gameOver?sTime:time}
         </div>
       </div>
     </div>
