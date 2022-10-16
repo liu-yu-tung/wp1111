@@ -36,15 +36,16 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
             <div className='controlPane'>
               <div className='controlCol'>
                 <p className='controlTitle'>Mines Number</p>
-                {"error: "+ error}
                 <input type='range' step={1} min={1} max={20} defaultValue={10} 
-                  onInput={(e) => {mineNumOnChange(e.target.value); if(e.target.value > (boardSize*boardSize)){setError(true)};}} 
-                  onClick={(e) => mineNumOnChange(e.target.value)}>
+                  onInput={(e) => {mineNumOnChange(e.target.value); 
+                    if(e.target.value > (boardSize*boardSize)){setError(true)}
+                    else{
+                        setError(false);
+                    };}} 
+                  onChange={(e) => mineNumOnChange(e.target.value)}>
                 </input>
-                <p className='controlNum' style={{color: error?("880000"):("880000") }}>{mineNum}</p>
-                {/*
-                <p className='controlNum' style={{color: ((mineNum > (boardSize*boardSize))?"#880000":"0f0f4b")}}>{mineNum}</p>
-              */}
+                <p className='controlNum' style={{color: "#0f0f4b", display: error && "none"}}>{mineNum}</p>
+                <p className='controlNum' style={{color: "#880000", display: (!error) && "none"}}>{mineNum}</p>
               </div>
               <div className='controlCol'>
                 <p className='controlTitle'>Board Size(n*n)</p>
@@ -55,10 +56,10 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
                   onChange={(e) => {boardSizeOnChange(e.target.value); 
                   if(mineNum > (boardSize* boardSize)) {setError(true)}
                   else {setError(false)};}} 
-                
                 >
                 </input>
-                <p className='controlNum' style={{color: error?"#880000":"0f0f4b"}}>{boardSize}</p>
+                <p className='controlNum' style={{color: "#0f0f4b", display: error && "none"}}>{boardSize}</p>
+                <p className='controlNum' style={{color: "#880000", display: (!error) && "none"}}>{boardSize}</p>
               </div>
             </div>
           </div>
