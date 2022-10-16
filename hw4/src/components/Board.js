@@ -50,11 +50,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         }
         setNonMineCount(curr_non_mine_count); setMineLocations(mine_locations);
         setRemainFlagNum(curr_flag);
-        {
-            setBoard(
-                newBoard.board
-            );
-        }
+        setBoard(newBoard.board);
         console.log("value test: " + newBoard.board[0][0].value);
         console.log(mine_locations);
         console.log(board);

@@ -3,7 +3,8 @@
 ## Features
 
 1. complete basic and advanced requirements 
- 
+2. add emojis
+
 ![](https://i.imgur.com/pfsPBRR.png)
 ## [Demo Video](https://www.youtube.com/watch?v=mDx4bi-rA-Q)
 

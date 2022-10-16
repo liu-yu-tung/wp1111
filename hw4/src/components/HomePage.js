@@ -19,14 +19,14 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
     <div className='HomeWrapper'>
       <p className='title'>MineSweeper</p>
       {/* Basic TODO:  Implemen start button */
-        <button className = "btn" onClick={startGameOnClick}>Start Game</button>
+        <button className = "btn" onClick={startGameOnClick}>🎮 Start Game</button>
       }
       {/* Advanced TODO: Implementation of Difficult Adjustment
                 Useful Hint: <input type = 'range' min = '...' max = '...' defaultValue = '...'> 
                 Useful Hint: Error color: '#880000', default text color: '#0f0f4b', invisible color: 'transparent' 
                 Reminder: The defaultValue of 'mineNum' is 10, and the defaultValue of 'boardSize' is 8. */
         <div className='controlContainer'>
-          <button className='btn' onClick={() => {setShowPanel(!showPanel)}}>Difficulty Adjustment</button>
+          <button className='btn' onClick={() => {setShowPanel(!showPanel)}}>🎯 Difficulty Adjustment</button>
           <div className='controlWrapper' style={{visibility: !showPanel && "hidden"}}>
             <div className='error' style={{color:"#880000", visibility: ((mineNum > (boardSize*boardSize))? false:true) && "hidden"}}>ERROR: Mines number and board size are invalid!</div>
             <div className='controlPane'>

@@ -24,12 +24,12 @@ export default function Modal({ restartGame, backToHome, gameOver, win }) {
         <div className='modal' style={{display: !gameOver && "none"}}>
             <div className='modalWrapper'></div>
             <div className='modalContent'>
-                <div className='modalResult' style={{display: !win && "none"}}> WIN </div>
-                <div className='modalResult' style={{display: win && "none"}}> Game Over </div>
+                <div className='modalResult' style={{display: !win && "none"}}>🥳 WIN</div>
+                <div className='modalResult' style={{display: win && "none"}}>😵 Game Over</div>
                 <div className='modalBtnWrapper'>
-                    <div className='modalBtn' onClick={restartGame} style={{display: !win && "none"}}>New Game</div>
-                    <div className='modalBtn' onClick={restartGame} style={{display: win && "none"}}>Try Again</div>
-                    <div className='modalBtn'  onClick={backToHome}>Back to Home</div>
+                    <div className='modalBtn' onClick={restartGame} style={{display: !win && "none"}}>🎲 New Game</div>
+                    <div className='modalBtn' onClick={restartGame} style={{display: win && "none"}}>💪🏼 Try Again</div>
+                    <div className='modalBtn'  onClick={backToHome}>🏠 Back to Home</div>
                 </div>
             </div>
             <div className='modalWrapper'></div>
