@@ -1,4 +1,9 @@
 # HW4 MineSweeper
+
+## Features
+
+1. complete basic and advanced requirements 
+ 
 ![](https://i.imgur.com/pfsPBRR.png)
 ## [Demo Video](https://www.youtube.com/watch?v=mDx4bi-rA-Q)
 
@@ -17,3 +22,4 @@
 ![](https://i.imgur.com/nLgxGL2.png)
 ![](https://i.imgur.com/5TwVv4A.png)
 ![](https://i.imgur.com/BvhORok.png)
+
