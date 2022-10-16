@@ -29,10 +29,6 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
           <button className='btn' onClick={() => {setShowPanel(!showPanel)}}>Difficulty Adjustment</button>
           <div className='controlWrapper' style={{visibility: !showPanel && "hidden"}}>
             <div className='error' style={{color:"#880000", visibility: ((mineNum > (boardSize*boardSize))? false:true) && "hidden"}}>ERROR: Mines number and board size are invalid!</div>
-            {/*
-            <div className='error' style={{visibility: (mineNum > (boardSize*boardSize))? true:true && "hidden"}}>ERROR: Mines number and board size are invalid!</div>
-              */
-            }
             <div className='controlPane'>
               <div className='controlCol'>
                 <p className='controlTitle'>Mines Number</p>

@@ -110,6 +110,10 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         else {
             board[x][y].revealed = true;
             setNonMineCount(nonMineCount-1);
+            let newNonMineCount = nonMineCount;
+            revealed(newBoard, x, y, newNonMineCount);
+            setBoard(newBoard);
+            setNonMineCount(newNonMineCount);
             if (nonMineCount == 0) {
                 setWin(true);
             }
