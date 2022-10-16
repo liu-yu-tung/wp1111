@@ -24,13 +24,14 @@ export default function Dashboard({ remainFlagNum, gameOver }) {
       }
       ,1000)
     }
+    else {
+      setTime(0);
+    }
     return () => clearInterval(timeIntervalId);
-  }, []);
+  }, [gameOver]);
 
   useEffect(() => {
-    if(gameOver) {
-      setSTime(time);
-    }
+    setSTime(time);
   }, [gameOver]);
 
 
