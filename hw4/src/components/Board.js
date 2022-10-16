@@ -97,6 +97,8 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
 
     };
 
+
+
     const revealCell = (x, y) => {
         if (board[x][y].revealed || gameOver || board[x][y].flagged) return;
         let newBoard = JSON.parse(JSON.stringify(board));
@@ -104,8 +106,15 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         if (board[x][y].value == '💣') {
             board[x][y].revealed = true;
             console.log('💣');
+            for (let i=0; i<boardSize; i++) {
+                newBoard[i].map((i) => {
+                    if (i.value === '💣') {
+                        i.revealed = true;
+                    }
+                })
+            }
+            setBoard(newBoard);
             setGameOver(true);
-
         }
         else {
             //board[x][y].revealed = true;
