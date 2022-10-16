@@ -31,7 +31,7 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
             <div className='error' style={{color:"#880000", visibility: ((mineNum > (boardSize*boardSize))? false:true) && "hidden"}}>ERROR: Mines number and board size are invalid!</div>
             <div className='controlPane'>
               <div className='controlCol'>
-                <p className='controlTitle'>Mines Number</p>
+                <p className='controlTitle'>💣 Mines Number</p>
                 <input type='range' step={1} min={1} max={20} defaultValue={10} 
                   onInput={(e) => {mineNumOnChange(e.target.value); 
                     if(e.target.value > (boardSize*boardSize)){setError(true)}
@@ -44,7 +44,7 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
                 <p className='controlNum' style={{color: "#880000", display: (!error) && "none"}}>{mineNum}</p>
               </div>
               <div className='controlCol'>
-                <p className='controlTitle'>Board Size(n*n)</p>
+                <p className='controlTitle'>♟️ Board Size(n*n)</p>
                 <input type="range" step={1} min={1} max={20} defaultValue={8} 
                   onInput={(e) => {boardSizeOnChange(e.target.value); 
                   if(mineNum > (boardSize* boardSize)) {setError(true)}
