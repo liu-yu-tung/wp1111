@@ -18,18 +18,21 @@ const MineSweeper = () => {
 
     // Basic TODO: Change `startGame` from false to true when this function is called
     const startGameOnClick = () => {
-       setStartGame(!startGame);
-       console.log("start game");
+        if (mineNum < (boardSize*boardSize)) {
+            setStartGame(true);
+            console.log("start game");
+        }
     }
 
     // Advanced TODO: Change `mineNum` to the number you send by this function
     const mineNumOnChange = (value) => {
-        
+        setMineNum(value);
+        console.log("mine num: " + value);
     }
 
     // Advanced TODO: Change `boardSize` to the number you send by this function
     const boardSizeOnChange = (value) => {
-        
+        setBoardSize(value); 
     }
 
     // Advanced TODO: Change `startGame` from true to false when this function is called
@@ -51,6 +54,8 @@ const MineSweeper = () => {
                     startGameOnClick={startGameOnClick} 
                     mineNumOnChange={mineNumOnChange} 
                     boardSizeOnChange={boardSizeOnChange} 
+                    mineNum={mineNum}
+                    boardSize={boardSize}
                 />
                 
             }
