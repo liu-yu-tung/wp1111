@@ -108,12 +108,24 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
 
         }
         else {
-            board[x][y].revealed = true;
-            setNonMineCount(nonMineCount-1);
+            //board[x][y].revealed = true;
+            //setNonMineCount(nonMineCount-1);
             let newNonMineCount = nonMineCount;
-            revealed(newBoard, x, y, newNonMineCount);
-            setBoard(newBoard);
+            revealed(newBoard, boardSize, x, y, newNonMineCount);
+            setBoard(JSON.parse(JSON.stringify(newBoard)));
+            newNonMineCount = 0;
+            for (let i=0; i<boardSize; i++) {
+                newBoard[i].map((i) => {
+                    if (i.value !== '💣' && !i.revealed) {
+                        newNonMineCount ++;
+                    }
+                    console.log(i.x+" "+i.y+" "+ i.value+ " "+i.revealed);
+                })
+            }
+            console.log(newBoard);
+            console.log(board);
             setNonMineCount(newNonMineCount);
+            console.log("new: " + newNonMineCount);
             if (nonMineCount == 0) {
                 setWin(true);
             }
