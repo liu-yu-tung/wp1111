@@ -135,8 +135,10 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
             console.log(board);
             setNonMineCount(newNonMineCount);
             console.log("new: " + newNonMineCount);
-            if (nonMineCount == 0) {
+            if (newNonMineCount == 0) {
+                console.log("WIN");
                 setWin(true);
+                setGameOver(true);
             }
         }
         //console.log(board[0][0]);
@@ -153,7 +155,9 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 <h1>This is the board Page!</h1>  {/* This line of code is just for testing. Please delete it if you finish this function. */}
                 <h1>{"nonMineCount: " + nonMineCount}</h1>
                 <h1>{mineLocations}</h1>
-                {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
+                {/* Advanced TODO: Implement Modal based on the state of `gameOver` */
+                <Modal restartGame={restartGame} backToHome={backToHome} gameOver={gameOver} win={win}/>
+                }
                 {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.
                 Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */
