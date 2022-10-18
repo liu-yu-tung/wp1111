@@ -47,14 +47,19 @@ const Wordle = ({ solution }) => {
             {/* TODO 6: Implementation for the result of the game */}
             
             
-            {/* TODO 2-1:  call `Board` and pass `turn`, `guesses`, `curGuess` into it  */}
+            {/* TODO 2-1:  call `Board` and pass `turn`, `guesses`, `curGuess` into it  */
+            
+                <Board turn={turn} guesses={guesses} curGuess={curGuess}/>
+            }
             
             
-            {/* TODO 1-1: call `Keyboard` and pass `usedChars` into it. */}
+            {/* TODO 1-1: call `Keyboard` and pass `usedChars` into it. */
+                <Keyboard usedChars={usedChars}/>
+            }
             
             
             {/* ↓ This button is only for testing! Please remember to comment it before you hand in your hack#1. ↓ */}
-            {/* <button className='App-test-btn' onClick={printTest}>TEST</button>       */}
+             <button className='App-test-btn' onClick={printTest}>TEST</button>
             {/* ↑ This button is only for testing! Please remember to comment it before you hand in your hack#1. ↑ */}
         </div>
     )
