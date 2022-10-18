@@ -12,7 +12,6 @@ import React from 'react';
 
 const CurRow = ({ curGuess, rowIdx }) => {
     let letters = curGuess.split('');
-
     return (
         <div className='Row-container'>
             {/* TODO 3: Row Implementation -- CurRow */}
