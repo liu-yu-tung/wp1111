@@ -17,11 +17,12 @@ const Row = ({ guess, rowIdx }) => {
             
             {/* ↓ Default row, you should modify it. ↓ */}
             <div className='Row-wrapper'>
+
                 <div className='Row-wordbox' id={rowIdx+"-0"} key={rowIdx+"-0" }>{guess[0]}</div>
-                <div className='Row-wordbox' id={rowIdx+"-1"}key={rowIdx+"-1"}></div>
-                <div className='Row-wordbox' id={rowIdx+"-2"}key={rowIdx+"-2"}></div>
-                <div className='Row-wordbox' id={rowIdx+"-3"}key={rowIdx+"-3"}></div>
-                <div className='Row-wordbox' id={rowIdx+"-4"}key={rowIdx+"-4"}></div>
+                <div className='Row-wordbox' id={rowIdx+"-0"} key={rowIdx+"-0" }>{guess[1]}</div> 
+                <div className='Row-wordbox' id={rowIdx+"-0"} key={rowIdx+"-0" }>{guess[2]}</div>
+                <div className='Row-wordbox' id={rowIdx+"-0"} key={rowIdx+"-0" }>{guess[3]}</div>
+                <div className='Row-wordbox' id={rowIdx+"-0"} key={rowIdx+"-0" }>{guess[4]}</div>
             </div>
             {/* ↑ Default row, you should modify it. ↑ */}
         </div>

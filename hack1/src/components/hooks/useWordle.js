@@ -63,9 +63,15 @@ const useWordle = (solution) => {
             }
         }
         let newguess = guesses;
-        newguess.push(curGuess);
+        console.log(curGuess);
+        console.log(curGuess);
+        newguess[turn] = curGuess;
         setGuesses(newguess);
         setTurn(turn+1);
+        if (curGuess === solution) {
+            setIsCorrect(true);
+        }
+        setCurGuess("");
         // add the formatted guess generated into guesses.
 
         

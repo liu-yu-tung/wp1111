@@ -14,12 +14,18 @@ import CurRow from "./CurRow";
 const Board = ({ turn, guesses, curGuess }) => {
     const [board, setBoard] = useState([]);
     let newBoard = [];
+    let j = 0;
+    console.log(guesses);
     for (let i=0; i<6; i++) {
         if (i == turn) {
             newBoard.push(<CurRow curGuess={curGuess} key={i} />);
         }
         else {
-            newBoard.push(<Row guess={guesses} key={i} />);
+            let str = "";
+            if (guesses[i]) {
+                str = guesses[i];
+            }
+            newBoard.push(<Row guess={str} key={i} />);
         }
     }
     return (
