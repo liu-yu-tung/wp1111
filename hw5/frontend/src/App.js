@@ -46,7 +46,7 @@ function App() {
         onClick={handleGuess}
         disabled={!number}
       >guess!</button>
-      <p>{status} test</p>
+      <p>{status}</p>
     </>
   )
   const startMenu = (
