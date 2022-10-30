@@ -10,14 +10,13 @@ function App() {
   const [status, setStatus] = useState('');
 
   const handleGuess = async() => {
+    setNumber('');
     const response = await guess(number);
-
     if (response === 'Equal') {
       setHasWon(true);
     }
     else {
       setStatus(response);
-      SVGAnimatedNumber('');
     }
   } 
   const wiinningMode = (
@@ -31,7 +30,7 @@ function App() {
     <>
       <p>Guess a number between 1 to 100</p>
       <input 
-      type='text' 
+      type='number' 
       id='input_number' 
       value={number} 
       onChange={(e) => setNumber(e.target.value)}
