@@ -8,6 +8,7 @@ function App() {
   const [hasWon, setHasWon] = useState(false);
   const [number, setNumber] = useState('');
   const [status, setStatus] = useState('');
+  const [ans, setAns] = useState('');
 
   const handleStart = async() => {
     setHaStarted(true);
@@ -15,18 +16,19 @@ function App() {
     console.log(msg);
   }
   const handleGuess = async() => {
-    setNumber('');
     const response = await guess(number);
     if (response === 'Equal') {
       setHasWon(true);
+      setAns(number);
     }
     else {
       setStatus(response);
     }
+    setNumber('');
   } 
   const wiinningMode = (
     <>
-      <p>you won! the number was {number}.</p> 
+      <p>you won! the number was {ans}.</p> 
       <button onClick={()=> {handleStart(); setHasWon(false)}} 
       >restart</button>
     </>

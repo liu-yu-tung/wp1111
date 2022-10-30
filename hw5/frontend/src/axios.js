@@ -12,7 +12,7 @@ const guess = async(number) => {
     }
     catch (error) {
         console.log(error.response.data.msg)
-        return "this is not a valid number (1 - 100)" 
+        return  "Error"+number+"is not a valid number (1 - 100)" 
     }
 }   
    
