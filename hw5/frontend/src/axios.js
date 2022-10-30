@@ -5,13 +5,13 @@ const startGame = async () => {
     return msg
 }
 const guess = async(number) => {
-    const {data:{msg}} = await instance.get('/guess', {params: {number}})
     try {
-        console.log(msg)
-        return msg
+        const {data:{msg}} = await instance.get('/guess', {params: {number}});
+        console.log(msg);
+        return msg;
     }
     catch (error) {
-        console.log(error.response)
+        console.log(error.response.data.msg)
         return "this is not a valid number (1 - 100)" 
     }
 }   

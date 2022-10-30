@@ -1,13 +1,13 @@
 import express from 'express'
-import {ans} from '../core/getNumber'
+import { getNumber, genNumber } from '../core/getNumber'
 
 const router = express.Router()
-router.post('./start', (_, res) => {
-    genNumer()
+router.post('/start', (_, res) => {
+    genNumber()
     res.json({msg: 'The game has started.'})
 })
 router.get('/guess', (req, res) => {
-
+    let ans = getNumber();
     console.log(ans);
     console.log(req.query.number);
     const user_input = req.query.number;
