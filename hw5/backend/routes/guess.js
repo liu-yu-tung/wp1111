@@ -1,7 +1,6 @@
 import express from 'express'
 
 const router = express.Router()
-router.post('/start', (_, res))
 router.post('./start', (_, res) => {
     genNumer()
     res.json({msg: 'The game has started.'})

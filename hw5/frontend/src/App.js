@@ -7,8 +7,19 @@ function App() {
   const [hasStarted, setHaStarted] = useState(false);
   const [hasWon, setHasWon] = useState(false);
   const [number, setNumber] = useState('');
-  const [status, setStatus] = useState(' ');
+  const [status, setStatus] = useState('');
 
+  const handleGuess = async() => {
+    const response = await guess(number);
+
+    if (response === 'Equal') {
+      setHasWon(true);
+    }
+    else {
+      setStatus(response);
+      SVGAnimatedNumber('');
+    }
+  } 
   const wiinningMode = (
     <>
       <p>you won! the number was {number}.</p> 
@@ -26,7 +37,7 @@ function App() {
       onChange={(e) => setNumber(e.target.value)}
       ></input>
       <button 
-        //onClick={handleGuess}
+        onClick={handleGuess}
         disabled={!number}
       >guess!</button>
       <p>{status} test</p>
@@ -40,17 +51,6 @@ function App() {
       </button>
     </div>
   )
-  const handleGuess = async() => {
-    const response = await guess(number);
-
-    if (response === 'Equal') {
-      setHasWon(true);
-    }
-    else {
-      setStatus(response);
-      SVGAnimatedNumber('');
-    }
-  } 
   const game = (
     <div>
       {hasWon ? wiinningMode : gameMode}
