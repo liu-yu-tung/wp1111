@@ -1,7 +1,5 @@
 import express from 'express'
 import cors from 'cors'
-import mongoose from 'mongoose'
-import dotenv from 'dotenv-defaults'
 import routes from './routes'
 import db from './db'
 
@@ -16,11 +14,7 @@ app.get('/', (req, res) => {
     res.send(`Hello World!`)
 })
 app.listen(port, () => {
-    console.log(`Example appp listening on port ${port}`)
+    console.log(`Example app listening on port ${port}`)
 })
 
-export default {
-    connnect: () => {
-
-    }
-}
+db.connect()

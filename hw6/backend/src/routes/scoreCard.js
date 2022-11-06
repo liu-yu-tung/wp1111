@@ -1,4 +1,4 @@
-import {Router} from 'react'
+import {Router} from 'express'
 import ScoreCard from "../models/ScoreCard"
 
 const router = Router()
