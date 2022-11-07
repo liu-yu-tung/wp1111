@@ -6,8 +6,7 @@ const router = Router()
 router.delete("/cards", (req, res) => {
     console.log("router delete")
     res.send(`DELETE req send`)
-    deleteDB()
-    
+    deleteDB(res)
 })
 
 router.post("/card", (req, res) => {
@@ -15,21 +14,19 @@ router.post("/card", (req, res) => {
     const name = req.body.name
     const subject = req.body.subject
     const score = req.body.score
-    saveData(name, subject, score)
-    res.send(`POST req send`)
+    saveData(name, subject, score, res)
+    //res.send(`POST req send`)
 })
 
 router.get("/cards", (req, res) => {
     console.log("router get")
-    res.send(`GET req send`)
+    //res.send(`GET req send`)
 })
 
-const saveData = async (name, subject, score) => {
+const saveData = async (name, subject, score, res) => {
     const nameExisting = await ScoreCard.findOne({name: name, subject: subject})
-    //console.log(nameExisting)
     let exist = false
     if (nameExisting) {
-        //throw new Error(`data ${name} exists!!`)
         const updateResult = await ScoreCard.findOneAndUpdate(
             {"name": name, "subject": subject},
             {score: score}
@@ -37,11 +34,13 @@ const saveData = async (name, subject, score) => {
         console.log(updateResult)
         console.log('exist')
         exist = true
+        res.status(200).send({message: `Updating(${name}, ${subject}, ${score})`, card: nameExisting})
     }
     try {
         if (!exist) {
             const newScoreCard = new ScoreCard({name, subject, score})
             console.log("Created data", newScoreCard)
+            res.status(200).send({message: `Adding(${name}, ${subject}, ${score})`, card: newScoreCard})
             return newScoreCard.save()
         }
     }
@@ -50,7 +49,7 @@ const saveData = async (name, subject, score) => {
     }
 }
 
-const deleteDB = async () => {
+const deleteDB = async (res) => {
     try {
         await ScoreCard.deleteMany({})
         console.log("Database deleted")
