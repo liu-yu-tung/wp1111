@@ -10,6 +10,7 @@ const ScoreCardContext = createContext({
   addCardMessage: () => {},
   addRegularMessage: () => {},
   addErrorMessage: () => {},
+  deleteAll: () => {}
 });
 
 const makeMessage = (message, color) => {
@@ -34,6 +35,10 @@ const ScoreCardProvider = (props) => {
     setMessages([...messages, makeMessage(message, ERROR_MESSAGE_COLOR)]);
   };
 
+  const deleteAll = (message) => {
+    setMessages([message, makeMessage(message, REGULAR_MESSAGE_COLOR)])
+    console.log("deleteAll called")
+  };
   return (
     <ScoreCardContext.Provider
       value={{
@@ -41,6 +46,7 @@ const ScoreCardProvider = (props) => {
         addCardMessage,
         addRegularMessage,
         addErrorMessage,
+        deleteAll,
       }}
       {...props}
     />
