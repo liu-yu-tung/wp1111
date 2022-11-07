@@ -3,7 +3,6 @@ import dotenv from 'dotenv-defaults'
 
 dotenv.config()
 
-
 const db = mongoose.connection
 
 export default {
@@ -14,6 +13,5 @@ export default {
             useUnifiedTopology: true,
             })
             .then((res) => console.log("mongo db connnection created"))
-        
     }
 }
