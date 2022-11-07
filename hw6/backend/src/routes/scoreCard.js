@@ -5,8 +5,8 @@ const router = Router()
 
 router.delete("/cards", (req, res) => {
     console.log("router delete")
-    res.send(`DELETE req send`)
-    deleteDB(res)
+    deleteDB()
+    res.status(200).send({message: `Database deleted`})
 })
 
 router.post("/card", (req, res) => {
@@ -49,7 +49,7 @@ const saveData = async (name, subject, score, res) => {
     }
 }
 
-const deleteDB = async (res) => {
+const deleteDB = async () => {
     try {
         await ScoreCard.deleteMany({})
         console.log("Database deleted")
