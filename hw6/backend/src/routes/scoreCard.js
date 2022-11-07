@@ -10,17 +10,34 @@ router.delete("/cards", (req, res) => {
 })
 
 router.post("/card", (req, res) => {
-    //console.log("router post")
     const name = req.body.name
     const subject = req.body.subject
     const score = req.body.score
     saveData(name, subject, score, res)
-    //res.send(`POST req send`)
 })
 
-router.get("/cards", (req, res) => {
-    console.log("router get")
-    //res.send(`GET req send`)
+router.get("/cards", async (req, res) => {
+    console.log(req.query)
+    const type = req.query.type
+    const str = req.query.queryString
+    let find = false
+    find = await ScoreCard.find({[type]:str})
+    if (find != '') {
+        console.log("found")
+        const messages = find.map((i) => `Found card with ${type}:(${i.name}, ${i.subject}, ${i.score})`)
+        console.log(messages)
+        res.status(200).send({messages: messages})
+    }
+    else {
+        if(type === 'name') {
+            console.log("no name")
+            res.status(200).send({message: `Name (${str}) not found` })
+        }
+        else {
+            console.log("no sub")
+            res.status(200).send({message: `Subject (${str}) not found`} )
+        }
+    }
 })
 
 const saveData = async (name, subject, score, res) => {
