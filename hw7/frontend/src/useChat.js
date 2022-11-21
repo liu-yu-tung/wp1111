@@ -3,13 +3,18 @@ import { useState } from "react";
 const useChat = () => {
   const [messages, setMessages] = useState([]);
   const [status, setStatus] = useState({});
-  const sendMessage = (msg) => { 
-    setMessages([...messages, {name: msg.name, body: msg.body}]);
+  const client = new WebSocket('ws://localhost:4000')
+  const sendData = async (data) => {
+    await client.send(JSON.stringify(data))
+  }
+  const sendMessage = (playload) => { 
+    sendData(["input", playload])
+    setMessages([...messages, {name: playload.name, body: playload.body}]);
     setStatus({
       type: "success",
-      msg: "Message sent."
+      playload: "Message sent."
     })
-    console.log(msg);
+    console.log(playload);
   }
   return {
     status, messages, sendMessage
