@@ -7,14 +7,14 @@ const useChat = () => {
   const sendData = async (data) => {
     await client.send(JSON.stringify(data))
   }
-  const sendMessage = (playload) => { 
-    sendData(["input", playload])
-    setMessages([...messages, {name: playload.name, body: playload.body}]);
+  const sendMessage = (payload) => { 
+    sendData(["input", payload])
+    setMessages([...messages, {name: payload.name, body: payload.body}]);
     setStatus({
       type: "success",
-      playload: "Message sent."
+      payload: "Message sent."
     })
-    console.log(playload);
+    console.log(payload);
   }
   return {
     status, messages, sendMessage
