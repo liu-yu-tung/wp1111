@@ -6,6 +6,7 @@ const useChat = () => {
   const client = new WebSocket('ws://localhost:4000')
   const sendData = async (data) => {
     await client.send(JSON.stringify(data))
+    console.log("send " + JSON.stringify(data))
   }
   const sendMessage = (payload) => { 
     sendData(["input", payload])
