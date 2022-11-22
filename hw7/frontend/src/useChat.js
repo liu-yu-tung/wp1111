@@ -14,10 +14,7 @@ const useChat = () => {
         break
       }
       case "status": {
-        setStatus({
-          type: payload.type,
-          msg: payload.msg
-        })
+        setStatus(payload)
         break
       }
       default: break 
