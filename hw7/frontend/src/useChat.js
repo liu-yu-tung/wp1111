@@ -7,13 +7,17 @@ const useChat = () => {
   client.onmessage = (byteString) => {
     const {data} = byteString
     const [task, payload] = JSON.parse(data)
+    console.log("client onmessage: " + task + ", payload: " + payload)
     switch (task) {
       case "output": {
         setMessages(() => [...messages, ...payload])
         break
       }
       case "status": {
-        setStatus(payload)
+        setStatus({
+          type: payload.type,
+          msg: payload.msg
+        })
         break
       }
       default: break 
@@ -30,7 +34,7 @@ const useChat = () => {
       type: "success",
       msg: "Message sent."
     })
-    console.log("payload: " + payload);
+    console.log("send payload: " + payload);
   }
   return {
     status, messages, sendMessage

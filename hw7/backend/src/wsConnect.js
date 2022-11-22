@@ -28,9 +28,10 @@ export default {
                     }
                     //TODO: Response to clinet
                     sendData(['output', [payload]], ws)
+                    console.log("send: " + payload)
                     sendStatus({
                         type: 'success',
-                        msg: 'Message sent.'
+                        msg: 'recieved.'
                     }, ws)
                     break
                 }
