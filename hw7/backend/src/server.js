@@ -18,7 +18,7 @@ db.once('open', () => {
     wss.on('connection', (ws) => {
         //let time = new Date()
         wsConnect.initData(ws)
-        ws.onmessage = wsConnect.onMessage(ws)
+        ws.onmessage = wsConnect.onMessage(wss)
         //console.log("ws on connected" + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds())
         //console.log("=====")
     })

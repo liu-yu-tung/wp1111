@@ -19,11 +19,9 @@ function App() {
         case 'success':
           message.success(content)
           break
-        case 'error':
-          console.log("error")
-          break
         default:
           message.error(content)
+          console.log("error")
           break
       }
     }
@@ -31,6 +29,7 @@ function App() {
 
   useEffect(() => {
     displayStauts(status)
+    console.log("new status")
   }, [status])
 
 

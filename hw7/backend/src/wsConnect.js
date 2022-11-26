@@ -1,11 +1,20 @@
 import Message from "./models/message"
 
 const sendData = (data, ws) => {
-    console.log(JSON.stringify(data))
+    //console.log(JSON.stringify(data))
     ws.send(JSON.stringify(data))
+    //console.log("broadcast data")
 }
 const sendStatus = (payload, ws) => {
     sendData(['status', payload], ws)
+    //console.log("broadcast status")
+}
+const broadcastMessage = (wss, data, status) => {
+    wss.clients.forEach((client) => {
+        sendData(data, client)
+        sendStatus(status, client)
+        console.log("broadcast client")
+    })
 }
 export default {
     initData: (ws) => {
@@ -15,10 +24,10 @@ export default {
             sendData(["init", res], ws)
         })
     },
-    onMessage: (ws) => (
+    onMessage: (wss) => (
         async (btyeString) => {
             console.log("onMessage called")
-            console.log(btyeString)
+            //console.log(btyeString)
             const {data} = btyeString
             const [task, payload] = JSON.parse(data)
             switch (task) {
@@ -32,22 +41,22 @@ export default {
                     catch (e) {
                         throw new Error ("Message DB save error: " + e)
                     }
-                    sendData(['output', [payload]], ws)
-                    console.log("send: " + payload)
-                    sendStatus({
+                    const data = ['output', [payload]]
+                    const status = {
                         type: 'success',
                         msg: 'recieved.'
-                    }, ws)
+                    }
+                    broadcastMessage(wss, data, status)
                     break
                 }
                 case 'clear': {
-                    Message.deleteMany({}, () => {
-                        sendData(['cleared'], ws)
-                        sendStatus({
-                            type: 'success',
-                            msg: 'Message cache cleared.',
-                        }, ws)
-                    })
+                    const data = ['cleared']
+                    const status = {
+                        type: 'success',
+                        msg: 'Message cache cleared.',
+                    }
+                    broadcastMessage(wss, data, status)
+
                     break
                 }
                 default: break

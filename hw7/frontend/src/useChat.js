@@ -1,9 +1,5 @@
 import { useEffect, useRef } from "react";
-import useState from 'react-usestateref'
-
-const useChat = () => {
-  const [messages, setMessages, ref] = useState([]);
-  const [status, setStatus] = useState({});
+import useState from 'react-usestateref';
 
   function useWs(onMessage) {
     const [ready, setReady] = useState(false);
@@ -21,6 +17,10 @@ const useChat = () => {
 
     return {ready, send: wsRef.current?.send.bind(wsRef.current)};
   }
+const useChat = () => {
+  const [messages, setMessages, msgRef] = useState([]);
+  const [status, setStatus] = useState({});
+
   const onMessage = (byteString) => {
     const {data} = byteString
     const [task, payload] = JSON.parse(data)
@@ -31,7 +31,7 @@ const useChat = () => {
         break
       }
       case "output": {
-        setMessages(() => [...ref.current, ...payload])
+        setMessages(() => [...msgRef.current, ...payload])
         console.log("output: " + [...messages])
 
         break
@@ -52,7 +52,7 @@ const useChat = () => {
   }
   const sendMessage = (payload) => { 
     sendData(["input", payload])
-    setMessages([...ref.current, {name: payload.name, body: payload.body}]);
+    setMessages([...msgRef.current, {name: payload.name, body: payload.body}]);
     setStatus({
       type: "success",
       msg: "Message sent."
