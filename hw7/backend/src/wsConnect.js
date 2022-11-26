@@ -8,6 +8,13 @@ const sendStatus = (payload, ws) => {
     sendData(['status', payload], ws)
 }
 export default {
+    initData: (ws) => {
+        Message.find().sort({created_at: -1}).limit(100)
+        .exec((err, res) => {
+            if (err) throw err
+            sendData(["init", res], ws)
+        })
+    },
     onMessage: (ws) => (
         async (btyeString) => {
             console.log("onMessage called")
@@ -17,7 +24,6 @@ export default {
             switch (task) {
                 case 'input': {
                     const {name, body} = payload
-                    //TODO: Save payload to DB
                     const message = new Message({name, body})
                     try {
                         await message.save()
@@ -26,13 +32,22 @@ export default {
                     catch (e) {
                         throw new Error ("Message DB save error: " + e)
                     }
-                    //TODO: Response to clinet
                     sendData(['output', [payload]], ws)
                     console.log("send: " + payload)
                     sendStatus({
                         type: 'success',
                         msg: 'recieved.'
                     }, ws)
+                    break
+                }
+                case 'clear': {
+                    Message.deleteMany({}, () => {
+                        sendData(['cleared'], ws)
+                        sendStatus({
+                            type: 'success',
+                            msg: 'Message cache cleared.',
+                        }, ws)
+                    })
                     break
                 }
                 default: break

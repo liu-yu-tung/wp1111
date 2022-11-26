@@ -16,11 +16,11 @@ const db = mongoose.connection
 db.once('open', () => {
     console.log("MongoDB connected!")
     wss.on('connection', (ws) => {
-        //console.log(ws)
-        let time = new Date()
+        //let time = new Date()
+        wsConnect.initData(ws)
         ws.onmessage = wsConnect.onMessage(ws)
-        console.log("ws on msg " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds())
-        console.log("=====")
+        //console.log("ws on connected" + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds())
+        //console.log("=====")
     })
 })
 

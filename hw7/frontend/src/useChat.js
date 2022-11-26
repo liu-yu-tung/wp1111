@@ -1,20 +1,47 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
+import useState from 'react-usestateref'
 
 const useChat = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages, ref] = useState([]);
   const [status, setStatus] = useState({});
-  const client = new WebSocket('ws://localhost:4000')
-  client.onmessage = (byteString) => {
+
+  function useWs(onMessage) {
+    const [ready, setReady] = useState(false);
+    const wsRef = useRef(null);
+
+    useEffect(() => {
+      const client = new WebSocket("ws://localhost:4000");
+      console.log("new ws")
+      client.onopen = () => setReady(true);
+      client.onclose = () => setReady(false);
+      client.onmessage = onMessage;
+      wsRef.current = client;
+      return () => {client.close(); console.log("close")}
+    }, []);
+
+    return {ready, send: wsRef.current?.send.bind(wsRef.current)};
+  }
+  const onMessage = (byteString) => {
     const {data} = byteString
     const [task, payload] = JSON.parse(data)
-    console.log("client onmessage: " + task + ", payload: " + payload)
     switch (task) {
+      case "init": {
+        setMessages(payload)
+        console.log("init: " + [...messages])
+        break
+      }
       case "output": {
-        setMessages(() => [...messages, ...payload])
+        setMessages(() => [...ref.current, ...payload])
+        console.log("output: " + [...messages])
+
         break
       }
       case "status": {
         setStatus(payload)
+        break
+      }
+      case "cleared": {
+        setMessages([])
         break
       }
       default: break 
@@ -22,19 +49,19 @@ const useChat = () => {
   }
   const sendData = async (data) => {
     await client.send(JSON.stringify(data))
-    //console.log("send " + JSON.stringify(data))
   }
   const sendMessage = (payload) => { 
     sendData(["input", payload])
-    setMessages([...messages, {name: payload.name, body: payload.body}]);
+    setMessages([...ref.current, {name: payload.name, body: payload.body}]);
     setStatus({
       type: "success",
       msg: "Message sent."
     })
-    console.log("send payload: " + payload);
   }
-  return {
-    status, messages, sendMessage
-  };
+  const clearMessages = () => {
+    sendData(["clear"])
+  }
+  const client = useWs(onMessage)
+  return { status, messages, sendMessage, clearMessages};
 };
 export default useChat;
