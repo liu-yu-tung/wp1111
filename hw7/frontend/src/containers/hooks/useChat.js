@@ -85,11 +85,13 @@ const ChatProvider = (props) => {
   }
   const sendMessage = (payload) => { 
     sendData(["input", payload])
-    setMessages([...msgRef.current, {name: payload.name, body: payload.body}]);
     setStatus({
       type: "success",
       msg: "Message sent."
     })
+    setMessages([...msgRef.current])
+    //setMessages([...msgRef.current, {name: payload.name, body: payload.body}]);
+    console.log(payload)
   }
   const clearMessages = () => {
     sendData(["clear"])
