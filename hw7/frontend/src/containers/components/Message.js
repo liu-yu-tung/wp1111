@@ -20,10 +20,10 @@ const StyledMessage = styled.div`
     }
 `
 
-const Message = ({name, isMe, message}) => {
+const Message = ({isMe, message}) => {
     return (
         <StyledMessage isMe={isMe}>
-            <p><Tag color="blue">{name}</Tag> {message}</p>
+            <p>{message}</p>
         </StyledMessage>
     )
 }
