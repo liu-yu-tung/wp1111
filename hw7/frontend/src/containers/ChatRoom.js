@@ -5,7 +5,6 @@ import { useChat } from './hooks/useChat';
 import Title from './components/Title';
 import Message from "./components/Message";
 import ChatModal from "./components/ChatModal";
-// import { Button, Input, message, Tag } from 'antd'
 
 const ChatBoxesWrapper = styled(Tabs)`
     width: 100%;
@@ -27,17 +26,14 @@ const FootRef = styled.div`
 `;
 const ChatRoom = ()=> {
     const { me, messages, sendMessage, displayStatus } = useChat();
-    // const [ username, setUsername ] = useState('');
     const [ msg, setMsg ] = useState('');
     const [ msgSent, setMsgSent ] = useState(false);
     const [ modalOpen, setModalOpen ] = useState(false);
-
     const [ chatBoxes, setChatBoxes ] = useState([]);
     const [ activeKey, setActiveKey ] = useState('');
 
     const msgFooter = useRef(null);
 
-    // const displayMessages = (chat) => (
     const displayChat = (chat) => (
         chat.length ===0 ? (
             <p style={{ color: '#ccc' }}>No messages...</p>
@@ -49,14 +45,6 @@ const ChatRoom = ()=> {
             <FootRef ref = {msgFooter} />
         </ChatBoxWrapper>
     ));
-    // useEffect(() => {
-    //     if (messages) {
-    //         const chat = extractChat(activeKey);
-    //         setChatBoxes();
-    //         chatBoxes.some(({key}) => key === friend)
-    //         setMsgSent(true);
-    //     }
-    // },[messages])
     const extractChat = (friend) => {
         return displayChat(
             messages.filter(({name, body})=>((name === friend)||(name === me )))
@@ -131,17 +119,13 @@ const ChatRoom = ()=> {
             enterButton="Send"
             placeholder="Type a message here..."
             onSearch={(msg)=>{
-            // if (!msg || !username) {
             if (!msg ) {
                 displayStatus({
                 type: 'error',
-                // msg: 'Please enter a username and a message body.'
                 msg: 'Please enter and a message body.'
                 })
                 return
             }
-            // sendMessage({name: username, body: msg });
-            // sendMessage({name: me, body: msg });
             sendMessage({name: me,to: activeKey, body: msg });
             setMsg('');
             setMsgSent(true);
