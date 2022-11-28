@@ -25,7 +25,7 @@ const FootRef = styled.div`
     height: 20px;
 `;
 const ChatRoom = ()=> {
-    const { me, messages, sendMessage, displayStatus } = useChat();
+    const { me, messages, sendMessage, displayStatus, startChat } = useChat();
     const [ msg, setMsg ] = useState('');
     const [ msgSent, setMsgSent ] = useState(false);
     const [ modalOpen, setModalOpen ] = useState(false);
@@ -35,7 +35,7 @@ const ChatRoom = ()=> {
     const msgFooter = useRef(null);
 
     const displayChat = (chat) => (
-        chat.length ===0 ? (
+        chat.length === 0 ? (
             <p style={{ color: '#ccc' }}>No messages...</p>
         ):(
         <ChatBoxWrapper>
@@ -45,6 +45,19 @@ const ChatRoom = ()=> {
             <FootRef ref = {msgFooter} />
         </ChatBoxWrapper>
     ));
+
+    useEffect(() => {
+        console.log("useEffect messages")
+        console.log(messages)
+        /*
+        displayChat(
+            //messages.filter(({name, to})=>((name === me)&&(to === activeKey)))
+            //dosen't work
+            messages
+        );
+        */
+    },[messages])
+
     const extractChat = (friend) => {
         return displayChat(
             messages.filter(({name, body})=>((name === friend)||(name === me )))
@@ -52,7 +65,7 @@ const ChatRoom = ()=> {
     }
     const createChatBox = (friend) => {
         if (chatBoxes.some(({key}) => key === friend)){
-            throw new Error(friend + "'s chat bos has already opened.");
+            throw new Error(friend + "'s chat box has already opened.");
         }
         const chat = extractChat(friend);
         setChatBoxes([...chatBoxes,
@@ -61,7 +74,7 @@ const ChatRoom = ()=> {
         return friend;
     }
     const removeChatBox = (targetKey, activeKey) => {
-        const index = chatBoxes.findIndes(({key})=> key === activeKey);
+        const index = chatBoxes.findIndex(({key})=> key === activeKey);
         const newChatBoxes = chatBoxes.filter(({key}) => key !== targetKey);
         setChatBoxes(newChatBoxes);
             
@@ -91,7 +104,7 @@ const ChatRoom = ()=> {
                 activeKey={activeKey}
                 onChange={(key) => {
                     setActiveKey(key);
-                    extractChat(key);
+                    startChat(me, key);
                 }}
                 onEdit={(targetKey, action) => {
                     if (action === 'add') setModalOpen(true);
@@ -105,7 +118,7 @@ const ChatRoom = ()=> {
                 open={modalOpen}
                 onCreate={({name})=>{
                     setActiveKey(createChatBox(name));
-                    extractChat(name);
+                    startChat(me, name);
                     setModalOpen(false);
                 }}
                 onCancel={() => {

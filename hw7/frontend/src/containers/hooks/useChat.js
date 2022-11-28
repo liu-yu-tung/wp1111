@@ -1,4 +1,3 @@
-/*
 import { useEffect, useRef, createContext, useContext } from "react";
 import useState from 'react-usestateref';
 import {message} from 'antd'
@@ -12,6 +11,7 @@ const ChatContext = createContext({
   signedIn: false,
   sendMessage: () => {},
   clearMessages: () => {},
+  startChat: () => {},
 })
 
 function useWs(onMessage) {
@@ -30,7 +30,6 @@ function useWs(onMessage) {
 
   return {ready, send: wsRef.current?.send.bind(wsRef.current)};
 }
-
 
 const ChatProvider = (props) => {
   const [messages, setMessages, msgRef] = useState([]);
@@ -61,13 +60,12 @@ const ChatProvider = (props) => {
     switch (task) {
       case "init": {
         setMessages(payload)
-        console.log("init: " + [...messages])
+        //console.log("init: " + [...messages])
         break
       }
       case "output": {
         setMessages(() => [...msgRef.current, ...payload])
-        console.log("output: " + [...messages])
-
+        //console.log("output: " + [...messages])
         break
       }
       case "status": {
@@ -85,12 +83,17 @@ const ChatProvider = (props) => {
     await client.send(JSON.stringify(data))
   }
   const sendMessage = (payload) => { 
-    sendData(["input", payload])
+    console.log(payload.name)
+    console.log(payload.to)
+    console.log(payload.body)
+    sendData(["message", payload])
+    //sendData(["init", payload])
     setStatus({
       type: "success",
       msg: "Message sent."
     })
     setMessages([...msgRef.current])
+    //why
     //setMessages([...msgRef.current, {name: payload.name, body: payload.body}]);
     console.log(payload)
   }
@@ -104,6 +107,12 @@ const ChatProvider = (props) => {
     }
   }, [signedIn])
 
+
+  const startChat = (name, to) => {
+    console.log("name, to: " + name + ", " + to)
+    sendData(["chat", {name: name, to:to}])
+  }
+
   //return { status, me, setMe, signedIn, setSignedIn, messages, sendMessage, clearMessages, displayStatus};
   return (
     <ChatContext.Provider
@@ -116,7 +125,8 @@ const ChatProvider = (props) => {
         setSignedIn,
         sendMessage,
         clearMessages,
-        displayStatus
+        displayStatus,
+        startChat
       }}
       {...props}
       />
@@ -124,121 +134,3 @@ const ChatProvider = (props) => {
 };
 const useChat = () => useContext(ChatContext)
 export {ChatProvider, useChat}
-
-*/
-import { useState, createContext, useContext, useEffect } from "react";
-import { message } from 'antd';
-
-const LOCALSTORAGE_KEY = 'save-me';
-const savedMe = localStorage.getItem(LOCALSTORAGE_KEY);
-
-const ChatContext = createContext({
-    status: {},
-    me: '',
-    signedIn: false,
-    messages: [],
-    sendMessage: () => {},
-    clearMessages: () => {}
-});
-
-const client = new WebSocket('ws://localhost:4000');
-
-// user define hook
-const ChatProvider = (props) => {
-    const [messages, setMessages] = useState([]);
-    const [status, setStatus] = useState({});
-    const [me, setMe] = useState(savedMe || '');
-    const [signedIn, setSignedIn] = useState(false);
-
-    // web socket (don't need to import "ws" in client part)
-    
-
-    // send data to backend via web socket
-    const sendData = async (data) => {
-        await client.send(JSON.stringify(data)); // JSON.stringify => convert object to string
-        //console.log('sent data');
-    };
-
-    // client web socket receive message
-    client.onmessage = (byteString) => {
-        const { data } = byteString;
-        const [task, payload] = JSON.parse(data);
-        //console.log('task:', task);
-        //console.log('payload:', payload);
-        switch (task) {
-            case "init": {
-                setMessages(payload);
-                break;
-            }
-            case "output": {
-                setMessages(() => [...messages, ...payload]);
-                //console.log('in output: ', messages);
-                break;
-            }
-            case "status": {
-                setStatus(payload);
-                break;
-            }
-            case "cleared": {
-                setMessages([]);
-                break;
-            }
-            default: break;
-        }
-    }
-
-    const sendMessage = (payload) => {
-        // send data
-        sendData(["input", payload]);
-    }
-
-    const clearMessages = () => {
-        sendData(["clear"]);
-    }
-
-
-    const displayStatus = (s) => {
-      if(s.msg) {
-        const { type, msg } = s;
-        const content = { content: msg, duration: 0.5 };
-        switch (type) {
-          case 'success':
-            message.success(content);
-            break;
-          case 'error':
-            message.error(content);
-            break;
-          default:          
-            break;
-        }
-      }
-  }
-
-  useEffect(() => {
-      if(signedIn) {
-          localStorage.setItem(LOCALSTORAGE_KEY, me);
-      }
-  }, [signedIn]);
-
-  return (
-      <ChatContext.Provider
-          value={{
-              status, 
-              me, 
-              signedIn, 
-              messages, 
-              setMe,
-              setSignedIn, 
-              sendMessage,
-              clearMessages,
-              displayStatus
-          }}
-          {...props}
-      />
-  );
-
-  //return { status, me, setMe, signedIn, setSignedIn, messages, sendMessage, clearMessages, displayStatus };
-};
-
-const useChat = () => useContext(ChatContext);
-export { ChatProvider, useChat };
