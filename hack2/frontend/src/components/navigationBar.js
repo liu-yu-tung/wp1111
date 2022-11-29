@@ -38,7 +38,7 @@ const NavBar = () => {
         setFilterExpanded(false)
         // TODO Part I-1: navigation to search page
         // See README for hint
-        navigate('/search')
+        //navigate('/search')
         // FIXME - Modify below
         navigate('/search', {
             state: {

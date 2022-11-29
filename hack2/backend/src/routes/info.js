@@ -20,9 +20,10 @@ exports.GetSearch = async (req, res) => {
     /****************************************/
 
     console.log("get Info called")
-    const db = mongoose.Connection
+    const db = mongoose.connection
     let find = false
-    find =  await Info.find({priceFilter, mealFilter, typeFilter, sortBy}).exec(err, data)
+    find = await Info.find({})
+    console.log(find)
     if (find != '') {
       res.status(200).send({ message: 'success', contents: "..." })
     }
