@@ -49,8 +49,6 @@ exports.GetSearch = async (req, res) => {
             for (let i=0; i<priceFilter.length; i++) {
                 priceFilterInterger.push(priceFilter[i].length)
             }
-            console.log(priceFilterInterger)
-            console.log("price condition: " )
             Find = Find.filter((item) => {
                 if (priceFilterInterger.includes(item.price)) {
                     return item 
@@ -58,42 +56,23 @@ exports.GetSearch = async (req, res) => {
             })
         }
         if (mealFilter !== undefined){
-            console.log("meal condition: ")
-            console.log(mealFilter)
             Find = Find.filter((item) => {
                 let set1 = new Set(mealFilter)
                 let set2 = new Set(item.tag)
-                //console.log("======")
-                //console.log(set1)
-                //console.log(set2)
                 let set3 = getIntersection(set1, set2)
-                //console.log(set3)
                 if (set3.size !== 0) {
-                    //console.log("return this")
-                    //console.log("======")
                     return item
                 }
-                //let intersection = arrA.filter(x => arrB.includes(x));
             })
-            //console.log(Find)
         }
         if (typeFilter !== undefined){
-            console.log("type condition " )
-            console.log(typeFilter)
             Find = Find.filter((item) => {
                 let set1 = new Set(typeFilter)
                 let set2 = new Set(item.tag)
-                //console.log("======")
-                //console.log(set1)
-                //console.log(set2)
                 let set3 = getIntersection(set1, set2)
-                //console.log(set3)
                 if (set3.size !== 0) {
-                    //console.log("return this")
-                    //console.log("======")
                     return item
                 }
-                //let intersection = arrA.filter(x => arrB.includes(x));
             })
         }
         res.status(200).send({ message: 'success', contents: Find })
