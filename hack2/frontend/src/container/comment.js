@@ -57,17 +57,17 @@ const Comment = ({ restaurantId, comments, setComments, setLoad }) => {
                 <textarea className='content' placeholder='Type your comment' onChange={e => setContent(e.target.value)} value={content} />
             </div>
 
-            <div className='comments'>
+            <div className='commentss'>
                 {
-                    comments.map((comment) => (
-                        <div className='comment' key={comment.name}>
+                    comments.map((c) => (
+                        <div className='comment' key={c.name}>
                             <div className='title'>
                                 <div className='info'>
-                                    <p className='name'> {comment.name} </p>
-                                    <Stars rating={comment.rating} displayScore={false} />
+                                    <p className='name'> {c.name} </p>
+                                    <Stars rating={c.rating} displayScore={false} />
                                 </div>
                             </div>
-                            <p className='content'> {comment.content}</p>
+                            <p className='content'> {c.content}</p>
                         </div>
                     ))
                 }

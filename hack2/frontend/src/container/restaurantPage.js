@@ -20,7 +20,7 @@ const instance = axios.create({
 const RestaurantPage = () => {
     const { id } = useParams()
     const [info, setInfo] = useState({})
-    const [comments, setComments] = useState([])
+    const [commentsss, setComments] = useState([])
     const [loading, setLoading] = useState(true)
     const [keys, setKeys] = useState("")
     const getInfo = async () => {
@@ -31,9 +31,10 @@ const RestaurantPage = () => {
         // TODO Part III-2: get a restaurant's info
     }
     const getComments = async () => {
-        const com = await instance.get('getCommentsByRestarantId', {params: {restaurantId:id}})
-        console.log(com)
-        setComments(com)
+        const comm = await instance.get('/getCommentsByRestaurantId', {params: {restaurantId:id}})
+        const msg = await (instance.get('/getCommentsByRestaurantId?restaurantId='+id))
+        console.log("comments")
+        setComments(msg.data)
         // TODO Part III-3: get a restaurant's comments 
     }
     useEffect(() => {
@@ -44,8 +45,8 @@ const RestaurantPage = () => {
     }, [])
     
     useEffect(() => {
-        // TODO Part III-3-c: update the comment display immediately after submission
-    }, [comments])
+            getComments()
+    }, [commentsss])
 
     /* TODO Part III-2-b: calculate the average rating of the restaurant */
     let rating = 0;
@@ -53,7 +54,7 @@ const RestaurantPage = () => {
     return (
         <div className='restaurantPageContainer'>
             {Object.keys(info).length === 0 ? <></> : <Information info={info} rating={rating} />}
-            <Comment restaurantId={id} comments={comments} setComments={setComments} setLoad={setLoading} />
+            <Comment restaurantId={id} comments={commentsss} setComments={setComments} setLoad={setLoading} />
         </div>
     )
 }
