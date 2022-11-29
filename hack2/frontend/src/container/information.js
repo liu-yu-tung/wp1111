@@ -13,7 +13,7 @@ import '../css/restaurantPage.css'
 const Information = ({ info, rating }) => {
 
     const getTag = (tags) => {
-        console.log(tags)
+        //console.log(tags)
         return (
                 tags.map((i) => (
                    <div className='tag' key={i}>{i}</div>
@@ -33,7 +33,7 @@ const Information = ({ info, rating }) => {
     }
 
     const getBusiness = (time) => {
-        console.log(time)
+        //console.log(time)
         if (!time.All) {
             return (
                 <div className='businessTime'>

@@ -102,9 +102,7 @@ exports.GetInfo = async (req, res) => {
     /****************************************/
 
     console.log("getInfo called")
-    console.log(req.query)
     const msg = await Info.findOne({"id":id})
-    console.log(msg)
 
     res.status(200).send(msg)
     

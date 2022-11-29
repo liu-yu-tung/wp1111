@@ -27,16 +27,19 @@ const RestaurantPage = () => {
         const msg = await (instance.get('/getInfo?id='+id))
         console.log(msg.data)
         setInfo(msg.data)
-        console.log(info.name)
         setKeys(msg.data.tag.join(" "))
         // TODO Part III-2: get a restaurant's info
     }
     const getComments = async () => {
+        const com = await instance.get('getCommentsByRestarantId', {params: {restaurantId:id}})
+        console.log(com)
+        setComments(com)
         // TODO Part III-3: get a restaurant's comments 
     }
     useEffect(() => {
         if (Object.keys(info).length === 0) {
             getInfo()
+            getComments()
         }
     }, [])
     
