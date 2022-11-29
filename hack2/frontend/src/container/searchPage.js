@@ -49,16 +49,19 @@ const SearchPage = () => {
                     // TODO Part I-2: search page front-end
                     <>
                     {console.log(item)}
+                    {console.log(item.tag.join(', '))}
 
                     <div className='resBlock' id={item.id} key={item.id}>
                         <div className='resImgContainer'>
                             <img className='resImg' src={item.img}></img>
                         </div>
                         <div className='resInfo'>
-                            <div className='name'>{item.name}</div>
-                            <div className='price'>{getPrice(item.price)}</div>
-                            <div className='distance'>{item.distance / 1000 + "km"}</div>
-                            <p className='description'>{item.name}</p>
+                            <div className='title'>
+                                <p className='name'>{item.name}</p> 
+                                <p className='price'>{getPrice(item.price)}</p>
+                                <p className='distance'>{item.distance / 1000 + " km"}</p>
+                            </div>
+                            <p className='description'>{item.tag.join(', ')}</p>
                         </div>
                     </div>
                     </>
