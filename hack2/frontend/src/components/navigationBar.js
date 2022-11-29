@@ -38,16 +38,18 @@ const NavBar = () => {
         setFilterExpanded(false)
         // TODO Part I-1: navigation to search page
         // See README for hint
+        navigate('/search')
         // FIXME - Modify below
         navigate('/search', {
             state: {
-                priceFilter: undefined,
-                mealFilter: undefined,
-                typeFilter: undefined,
-                sortBy: undefined
+                priceFilter: [],
+                mealFilter: [],
+                typeFilter: [],
+                sortBy: options[0] 
             }
-        });
 
+        }
+        );
     };
     return (
         <div className='navBarContainer'>

@@ -8,6 +8,7 @@
 // *
 // * ////////////////////////////////////////////////////////////////////////
 
+import mongoose from 'mongoose'
 import Info from '../models/info'
 
 exports.GetSearch = async (req, res) => {
@@ -18,6 +19,18 @@ exports.GetSearch = async (req, res) => {
     const sortBy      = req.query.sortBy
     /****************************************/
 
+    console.log("get Info called")
+    const db = mongoose.Connection
+    let find = false
+    find =  await Info.find({priceFilter, mealFilter, typeFilter, sortBy}).exec(err, data)
+    if (find != '') {
+      res.status(200).send({ message: 'success', contents: "..." })
+    }
+    else {
+      res.status(403).send({ message: 'error', contents: "..." })
+    }
+    
+    
     // NOTE Hint: 
     // use `db.collection.find({condition}).exec(err, data) {...}`
     // When success, 
@@ -27,6 +40,8 @@ exports.GetSearch = async (req, res) => {
     
 
     // TODO Part I-3-a: find the information to all restaurants
+
+
     
     // TODO Part II-2-a: revise the route so that the result is filtered with priceFilter, mealFilter and typeFilter
     // TODO Part II-2-b: revise the route so that the result is sorted by sortBy
