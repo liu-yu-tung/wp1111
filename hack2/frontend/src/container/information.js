@@ -34,32 +34,54 @@ const Information = ({ info, rating }) => {
 
     const getBusiness = (time) => {
         console.log(time)
-        return (
+        if (!time.All) {
+            return (
                 <div className='businessTime'>
-                    <div className='day'>Mon</div>
-                    if (time.Mon) return <div className='time'>{time.Mon}</div>
-                    else return <div className='time'>Closed</div>
-                    <div className='day'>Tue</div>
-                    if (time.Tue) return <div className='time'>{time.Tue}</div>
-                    else return <div className='time'>Closed</div>
-                    <div className='day'>Wed</div>
-                    if (time.Wed) return <div className='time'>{time.Wed}</div>
-                    else return <div className='time'>Closed</div>
-                    <div className='day'>Thr</div>
-                    if (time.Thr) return <div className='time'>{time.Thr}</div>
-                    else return <div className='time'>Closed</div>
-                    <div className='day'>Fri</div>
-                    if (time.Fri) return <div className='time'>{time.Fri}</div>
-                    else return <div className='time'>Closed</div>
-                    <div className='day'>Sat</div>
-                    if (time.Sat) return <div className='time'>{time.Sat}</div>
-                    else return <div className='time'>Closed</div>
-                    <div className='day'>Sun</div>
-                    if (time.Sun) return <div className='time'>{time.Sun}</div>
-                    else return <div className='time'>Closed</div>
-                    {/* TODO Part III-2-c: render business time for each day*/}
+                        <div className='day'>Mon</div>
+                        {(time.Mon)? <div className='time'>{time.Mon}</div>
+                        : <div className='time'>Closed</div>}
+                        <div className='day'>Tue</div>
+                        {(time.Tue)?<div className='time'>{time.Tue}</div>
+                        : <div className='time'>Closed</div>}
+                        <div className='day'>Wed</div>
+                        {(time.Wed)? <div className='time'>{time.Wed}</div>
+                        : <div className='time'>Closed</div>}
+                        <div className='day'>Thr</div>
+                        {(time.Thr) ? <div className='time'>{time.Thr}</div>
+                        : <div className='time'>Closed</div>}
+                        <div className='day'>Fri</div>
+                        {(time.Fri) ? <div className='time'>{time.Fri}</div>
+                        : <div className='time'>Closed</div>}
+                        <div className='day'>Sat</div>
+                        {(time.Sat) ? <div className='time'>{time.Sat}</div>
+                        : <div className='time'>Closed</div>}
+                        <div className='day'>Sun</div>
+                        {(time.Sun) ? <div className='time'>{time.Sun}</div>
+                        : <div className='time'>Closed</div>}
                 </div>
-        )
+
+            )
+        }
+        else {
+            return  (
+            <div className='businessTime'>
+                <div className='day'>Mon</div>
+                <div className='time'>{time.All}</div>
+                <div className='day'>Tue</div>
+                <div className='time'>{time.All}</div>
+                <div className='day'>Wed</div>
+                <div className='time'>{time.All}</div>
+                <div className='day'>Thr</div>
+                <div className='time'>{time.All}</div>
+                <div className='day'>Fri</div>
+                <div className='time'>{time.All}</div>
+                <div className='day'>Sat</div>
+                <div className='time'>{time.All}</div>
+                <div className='day'>Sun</div>
+                <div className='time'>{time.All}</div>
+            </div>
+            )
+        }
     }
 
     return (
