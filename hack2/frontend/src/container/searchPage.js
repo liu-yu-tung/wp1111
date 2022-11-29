@@ -8,7 +8,7 @@
 
 import React, { useState, useEffect } from 'react'
 import '../css/searchPage.css'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, useParams} from 'react-router-dom'
 
 import axios from 'axios'
 const instance = axios.create({
@@ -19,19 +19,22 @@ const SearchPage = () => {
     const { state } = useLocation();
     const [restaurants, setRestaurant] = useState([])
     const getRestaurant = async () => {
-        const res = await instance.get('/getSearch', {params: state})
+        const res = await instance.get('/getSearch', {params:state })
+        console.log(state)
         setRestaurant([...res.data.contents])
         // TODO Part I-3-b: get information of restaurants from DB
     }
 
     useEffect(() => {
         getRestaurant()
+        console.log("useEffect called")
     }, [state.priceFilter, state.mealFilter, state.typeFilter, state.sortBy])
 
 
     const navigate = useNavigate();
     const ToRestaurant = (id) => {
         // TODO Part III-1: navigate the user to restaurant page with the corresponding id
+        console.log(id)
     }
     const getPrice = (price) => {
         let priceText = ""

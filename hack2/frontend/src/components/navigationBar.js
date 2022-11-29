@@ -42,10 +42,10 @@ const NavBar = () => {
         // FIXME - Modify below
         navigate('/search', {
             state: {
-                priceFilter: [],
-                mealFilter: [],
-                typeFilter: [],
-                sortBy: options[0] 
+                priceFilter: priceFilter,
+                mealFilter: mealFilter,
+                typeFilter: typeFilter,
+                sortBy: sortMethod 
             }
 
         }

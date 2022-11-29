@@ -22,9 +22,40 @@ exports.GetSearch = async (req, res) => {
     
 
     console.log("getSearch called")
+    //console.log("price filter: " + priceFilter)
+    //console.log("meal filter: " + mealFilter)
+    //console.log("type filter: " + typeFilter)
     try {
-        let find = await Info.find({})
-        res.status(200).send({ message: 'success', contents: find })
+        //console.log(sortBy)
+        let Find = false
+        if (sortBy === 'price') {
+            Find = await Info.find({})
+            Find.sort((a, b) => a.price.toString()-b.price.toString())
+        }
+        else if (sortBy === 'distance') {
+            Find = await Info.find({})
+            Find.sort((a, b) => a.distance-b.distance)
+        }
+        if (priceFilter !== undefined) {
+            let priceFilterInterger = []
+            for (let i=0; i<priceFilter.length; i++) {
+                priceFilterInterger.push(priceFilter[i].length)
+            }
+            console.log(priceFilterInterger)
+            console.log("price condition: " )
+            Find = Find.filter((item) => {
+                if (priceFilterInterger.includes(item.price)) {
+                    return item 
+                }
+            })
+        }
+        if (mealFilter !== undefined){
+            console.log("meal condition: ")
+        }
+        if (typeFilter !== undefined){
+            console.log("type condition " )
+        }
+        res.status(200).send({ message: 'success', contents: Find })
     }
     catch(e) {
         res.status(403).send({message: 'error', contents:"..."})
