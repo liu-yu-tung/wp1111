@@ -43,9 +43,8 @@ exports.CreateComment = async (req, res) => {
     /*******    NOTE: DO NOT MODIFY   *******/
     const body = req.body
     /****************************************/
-    const restaurantId = req.body.restaurantId
     console.log(body)
-    const {name, rating, content} = body.params
+    const {restaurantId, name, rating, content} = body.params
     const newC = new Comment({restaurantId: restaurantId, name: name, rating: rating, content: content})
     res.status(200).send({message: "yes"})
     return newC.save()
