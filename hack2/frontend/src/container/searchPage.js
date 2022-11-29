@@ -21,6 +21,7 @@ const SearchPage = () => {
     const getRestaurant = async () => {
         const res = await instance.get('/getSearch', {params:state })
         console.log(state)
+        console.log(restaurants)
         setRestaurant([...res.data.contents])
         // TODO Part I-3-b: get information of restaurants from DB
     }

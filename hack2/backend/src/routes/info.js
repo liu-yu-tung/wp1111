@@ -8,9 +8,10 @@
 // *
 // * ////////////////////////////////////////////////////////////////////////
 
-import mongoose from 'mongoose'
+import mongoose, { set } from 'mongoose'
 import Info from '../models/info'
-
+  const set1 = new Set(['a', 'b', 'c']);
+  const set2 = new Set(['a', 'b', 'd', 'e']);
 exports.GetSearch = async (req, res) => {
     /*******    NOTE: DO NOT MODIFY   *******/
     const priceFilter = req.query.priceFilter
@@ -20,6 +21,13 @@ exports.GetSearch = async (req, res) => {
     /****************************************/
 
     
+    function getIntersection(setA, setB) {
+        const intersection = new Set(
+        [...setA].filter(element => setB.has(element))
+        );
+        return intersection;
+    }
+  
 
     console.log("getSearch called")
     //console.log("price filter: " + priceFilter)
@@ -51,9 +59,42 @@ exports.GetSearch = async (req, res) => {
         }
         if (mealFilter !== undefined){
             console.log("meal condition: ")
+            console.log(mealFilter)
+            Find = Find.filter((item) => {
+                let set1 = new Set(mealFilter)
+                let set2 = new Set(item.tag)
+                //console.log("======")
+                //console.log(set1)
+                //console.log(set2)
+                let set3 = getIntersection(set1, set2)
+                //console.log(set3)
+                if (set3.size !== 0) {
+                    //console.log("return this")
+                    //console.log("======")
+                    return item
+                }
+                //let intersection = arrA.filter(x => arrB.includes(x));
+            })
+            //console.log(Find)
         }
         if (typeFilter !== undefined){
             console.log("type condition " )
+            console.log(typeFilter)
+            Find = Find.filter((item) => {
+                let set1 = new Set(typeFilter)
+                let set2 = new Set(item.tag)
+                //console.log("======")
+                //console.log(set1)
+                //console.log(set2)
+                let set3 = getIntersection(set1, set2)
+                //console.log(set3)
+                if (set3.size !== 0) {
+                    //console.log("return this")
+                    //console.log("======")
+                    return item
+                }
+                //let intersection = arrA.filter(x => arrB.includes(x));
+            })
         }
         res.status(200).send({ message: 'success', contents: Find })
     }
