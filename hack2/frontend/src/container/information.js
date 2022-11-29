@@ -13,10 +13,11 @@ import '../css/restaurantPage.css'
 const Information = ({ info, rating }) => {
 
     const getTag = (tags) => {
+        console.log(tags)
         return (
-            <>
-                {/* TODO Part III-2-a render tags */}
-            </>
+                tags.map((i) => (
+                   <div className='tag' key={i}>{i}</div>
+                ))
         )
     }
     const getPriceTag = (price) => {
@@ -25,17 +26,39 @@ const Information = ({ info, rating }) => {
             priceText += "$"
         return (
             <>
+            <div className='tag' key={priceText}>{priceText}</div>
                 {/* TODO Part III-2-a render price tags; hint: convert price number to dollar signs first */}
             </>
         )
     }
 
     const getBusiness = (time) => {
-        
+        console.log(time)
         return (
-            <div className='businessTime'>
-                {/* TODO Part III-2-c: render business time for each day*/}
-            </div>
+                <div className='businessTime'>
+                    <div className='day'>Mon</div>
+                    if (time.Mon) return <div className='time'>{time.Mon}</div>
+                    else return <div className='time'>Closed</div>
+                    <div className='day'>Tue</div>
+                    if (time.Tue) return <div className='time'>{time.Tue}</div>
+                    else return <div className='time'>Closed</div>
+                    <div className='day'>Wed</div>
+                    if (time.Wed) return <div className='time'>{time.Wed}</div>
+                    else return <div className='time'>Closed</div>
+                    <div className='day'>Thr</div>
+                    if (time.Thr) return <div className='time'>{time.Thr}</div>
+                    else return <div className='time'>Closed</div>
+                    <div className='day'>Fri</div>
+                    if (time.Fri) return <div className='time'>{time.Fri}</div>
+                    else return <div className='time'>Closed</div>
+                    <div className='day'>Sat</div>
+                    if (time.Sat) return <div className='time'>{time.Sat}</div>
+                    else return <div className='time'>Closed</div>
+                    <div className='day'>Sun</div>
+                    if (time.Sun) return <div className='time'>{time.Sun}</div>
+                    else return <div className='time'>Closed</div>
+                    {/* TODO Part III-2-c: render business time for each day*/}
+                </div>
         )
     }
 

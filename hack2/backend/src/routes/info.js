@@ -101,6 +101,13 @@ exports.GetInfo = async (req, res) => {
     const id = req.query.id
     /****************************************/
 
+    console.log("getInfo called")
+    console.log(req.query)
+    const msg = await Info.findOne({"id":id})
+    console.log(msg)
+
+    res.status(200).send(msg)
+    
     // NOTE USE THE FOLLOWING FORMAT. Send type should be 
     // if success:
     // {
@@ -114,4 +121,6 @@ exports.GetInfo = async (req, res) => {
     // }
 
     // TODO Part III-2: find the information to the restaurant with the id that the user requests
+    console.log(id)
+
 }

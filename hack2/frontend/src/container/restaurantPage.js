@@ -22,7 +22,13 @@ const RestaurantPage = () => {
     const [info, setInfo] = useState({})
     const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(true)
+    const [keys, setKeys] = useState("")
     const getInfo = async () => {
+        const msg = await (instance.get('/getInfo?id='+id))
+        console.log(msg.data)
+        setInfo(msg.data)
+        console.log(info.name)
+        setKeys(msg.data.tag.join(" "))
         // TODO Part III-2: get a restaurant's info
     }
     const getComments = async () => {

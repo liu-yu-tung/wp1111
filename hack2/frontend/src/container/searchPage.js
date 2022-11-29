@@ -33,9 +33,10 @@ const SearchPage = () => {
 
 
     const navigate = useNavigate();
-    const ToRestaurant = (id) => {
+    const ToRestaurant = async(id) => {
         // TODO Part III-1: navigate the user to restaurant page with the corresponding id
-        navigate('/resturants/' + id)
+        navigate('/restaurant/' + id)
+        await instance.get('/getInfo',{params: {id:id} }) 
         console.log(id)
     }
     const getPrice = (price) => {
