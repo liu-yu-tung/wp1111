@@ -37,7 +37,10 @@ const dboptions = {
 // TODO Part I-3: check .env exists
 
 dotenv.config()
-
+const db = mongoose.connection
+db.once('open', () => {
+    console.log("MongoDB connected!")
+})
 mongoose.connect(
     // TODO Part I-3: connect the backend to mongoDB
     process.env.MONGO_URL, {
@@ -57,6 +60,9 @@ mongoose.connection.on('error',
 
 
 // TODO Part I-3: check DB connection
+db.once('open', () => {
+    console.log("MongoDB connected!")
+})
 
 routes(app)
 app.listen(port, () => {

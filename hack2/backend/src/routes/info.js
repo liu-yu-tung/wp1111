@@ -19,19 +19,17 @@ exports.GetSearch = async (req, res) => {
     const sortBy      = req.query.sortBy
     /****************************************/
 
-    console.log("get Info called")
-    const db = mongoose.connection
-    let find = false
-    find = await Info.find({})
-    console.log(find)
-    if (find != '') {
-      res.status(200).send({ message: 'success', contents: "..." })
-    }
-    else {
-      res.status(403).send({ message: 'error', contents: "..." })
-    }
     
-    
+
+    console.log("getSearch called")
+    try {
+        let find = await Info.find({})
+        console.log(find)
+        res.status(200).send({ message: 'success', contents: find })
+    }
+    catch(e) {
+        res.status(403).send({message: 'error', contents:"..."})
+    }
     // NOTE Hint: 
     // use `db.collection.find({condition}).exec(err, data) {...}`
     // When success, 
