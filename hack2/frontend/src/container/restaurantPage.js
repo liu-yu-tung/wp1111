@@ -33,7 +33,6 @@ const RestaurantPage = () => {
     const getComments = async () => {
         const comm = await instance.get('/getCommentsByRestaurantId', {params: {restaurantId:id}})
         const msg = await (instance.get('/getCommentsByRestaurantId?restaurantId='+id))
-        console.log("comments")
         setComments(msg.data)
         // TODO Part III-3: get a restaurant's comments 
     }
@@ -50,6 +49,11 @@ const RestaurantPage = () => {
 
     /* TODO Part III-2-b: calculate the average rating of the restaurant */
     let rating = 0;
+    for (let i=0; i<commentsss.length; i++) {
+        rating += commentsss[i].rating
+    }
+    rating /= commentsss.length
+
     
     return (
         <div className='restaurantPageContainer'>

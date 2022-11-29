@@ -8,10 +8,7 @@
 // *
 // * ////////////////////////////////////////////////////////////////////////
 
-import mongoose, { set } from 'mongoose'
 import Info from '../models/info'
-  const set1 = new Set(['a', 'b', 'c']);
-  const set2 = new Set(['a', 'b', 'd', 'e']);
 exports.GetSearch = async (req, res) => {
     /*******    NOTE: DO NOT MODIFY   *******/
     const priceFilter = req.query.priceFilter
