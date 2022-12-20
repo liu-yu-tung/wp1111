@@ -28,9 +28,10 @@ function Row({
   };
 
   const handleDelete = () => {
+    console.log(item.id)
     deleteItem({
       variables: {
-        id: item.id,
+          id: item.id
       },
       onError: (err) => {
         // eslint-disable-next-line no-console
