@@ -5,6 +5,7 @@ const Mutation = {
     pubSub.publish("ITEM_CREATED", {
       itemCreated: newItem,
     });
+    console.log("create Item")
     return newItem;
   },
 
