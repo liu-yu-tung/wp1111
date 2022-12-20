@@ -40,10 +40,14 @@ function Row({
   };
 
   const handleSubmitEdit = (formData) => {
+    console.log(formData)
     updateItem({
       variables: {
         // TODO 4 Use `updateItem` and pass the correct variables
-
+        input: {
+          id: item.id,
+          ...formData
+        },
         // TODO End
         onError: (err) => {
           // eslint-disable-next-line no-console

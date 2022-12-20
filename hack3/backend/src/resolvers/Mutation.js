@@ -10,6 +10,7 @@ const Mutation = {
   },
 
   updateItem: async (parent, { input }, {itemModel, pubSub}) => {
+    console.log("update received")
     const item = await itemModel.findOneAndUpdate(
       { id: input.id },
       {
