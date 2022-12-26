@@ -21,6 +21,7 @@
     "mongoos": "^0.0.1-security"
   },
   "scripts": {
-    "server": "nodemon src/server.js --ext js --exec babel-node"
+    "server": "NODE_ENV=production nodemon src/server.js --ext js --exec babel-node",
+    "deploy": "NODE_ENV=production babel-node src/server.js"
   }
 }
