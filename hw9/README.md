@@ -5,4 +5,4 @@
 [Link](https://web-app-prod-production.up.railway.app/)
 
 ## Features
-Same as HW 6
+Same as HW 6, but the Qeury won't work
