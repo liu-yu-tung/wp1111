@@ -1,0 +1,43 @@
+:root {
+  background-color: white;
+  font-family: "Inter var";
+}
+:root.dark {
+  background-color: #111111;
+}
+:root p,
+:root div,
+:root h1,
+:root h2,
+:root h3,
+:root h4,
+:root span {
+  color: #2c2c2c;
+}
+:root.dark p,
+:root.dark div,
+:root.dark h1,
+:root.dark h2,
+:root.dark h3,
+:root.dark h4,
+:root.dark span {
+  color: white;
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3rem;
+}
+h3 {
+  font-size: 2.5rem;
+}
+h4 {
+  font-size: 2rem;
+}
+h5 {
+  font-size: 1.5rem;
+}
+h6 {
+  font-size: 1rem;
+}

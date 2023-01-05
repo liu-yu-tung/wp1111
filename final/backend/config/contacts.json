@@ -1,0 +1,70 @@
+[
+  {
+    "name": {
+      "en": "facebook",
+      "ch": "臉書"
+    },
+    "link": "https://www.facebook.com/",
+    "icon": {
+      "path": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+    },
+    "background": {
+      "path": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+    },
+    "description": {
+      "en": "english description for facebook",
+      "ch": "臉書中文敘述"
+    }
+  },
+  {
+    "name": {
+      "en": "Instagram",
+      "ch": "Instagram"
+    },
+    "link": "https://www.instagram.com/",
+    "icon": {
+      "path": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+    },
+    "background": {
+      "path": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+    },
+    "description": {
+      "en": "english description for facebook",
+      "ch": "IG中文敘述"
+    }
+  },
+  {
+    "name": {
+      "en": "email",
+      "ch": "電子信箱"
+    },
+    "link": "https://mail.google.com/",
+    "icon": {
+      "path": "https://static.vecteezy.com/system/resources/thumbnails/001/500/730/small/email-icon-free-vector.jpg"
+    },
+    "background": {
+      "path": "https://static.vecteezy.com/system/resources/thumbnails/001/500/730/small/email-icon-free-vector.jpg"
+    },
+    "description": {
+      "en": "english description for email",
+      "ch": "電子信箱中文敘述"
+    }
+  },
+  {
+    "name": {
+      "en": "NewCreate",
+      "ch": "新的"
+    },
+    "link": "https://www.facebook.com/",
+    "icon": {
+      "path": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+    },
+    "background": {
+      "path": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+    },
+    "description": {
+      "en": "english description for facebook",
+      "ch": "臉書中文敘述"
+    }
+  }
+]

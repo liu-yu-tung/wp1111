@@ -1,0 +1,165 @@
+type Query {
+  greetings: String!
+  getContacts: [Contactt]!
+
+  getNewsFeeds: [NewsFeedType]!
+  getNewsFeed(id: ID!): NewsFeedType!
+
+  getMembers: [Member]!
+  getMember(id: ID!): Member
+}
+
+type Mutation {
+  modifyContacts(id: ID!, contacts: ContactInput!): Contactt!
+  deleteContacts(id: ID!): Contactt!
+  createContacts(contacts: ContactInput!): Contactt!
+  modifyMember(member: MemberIdInput!): Member!
+  deleteMember(id: ID!): Member!
+  createMember(member: MemberInput!): Member!
+  modifyNewsFeed(id: ID!, input: NewsFeedModifyInput!): NewsFeedType!
+  createNewsFeed(input: NewsFeedInput!): NewsFeedType!
+  deleteNewsFeed(id: ID!): Boolean!
+}
+
+type Contactt {
+  name: TexttType
+  link: UrlType
+  icon: ImageType
+  backgroundImage: ImageType
+  description: TexttType
+  id: ID
+}
+
+type TexttType {
+  en: String
+  ch: String
+}
+input TexttInput {
+  en: String
+  ch: String
+}
+
+input TexttInput {
+  en: String
+  ch: String
+}
+
+type ImageType {
+  url: String
+}
+
+input ImageInput {
+  url: String
+}
+
+type UrlType {
+  url: String
+}
+
+input UrlInput {
+  url: String
+}
+
+enum ElementType {
+  FILE
+  IMAGE
+  TEXT
+  URL
+}
+
+enum RoleType {
+  CAPTAIN
+  VICE_CAPTAIN
+  GROUP_LEADER
+  MEMBER
+  CTO
+}
+
+enum GroupType {
+  PR
+  GEN
+  ADMIN
+  POWER
+  ELEC
+  CHAS
+  AERO
+  STRUC
+}
+
+enum LangType {
+  EN
+  CH
+}
+
+type NewsFeedType {
+  title: TexttType!
+  Author: Member
+  createdTime: Date!
+  lastUpdateTime: Date!
+  body: TexttType!
+  imgs: [ImageType]
+  id: ID!
+}
+input NewsFeedInput {
+  title: TexttInput!
+  Author: MemberNewsFeedInput
+  body: TexttInput!
+  imgs: [ImageInput]
+}
+
+input NewsFeedModifyInput {
+  title: TexttInput
+  Author: MemberNewsFeedInput
+  body: TexttInput
+  imgs: [ImageInput]
+}
+input ContactInput {
+  name: TexttInput
+  link: UrlInput
+  icon: ImageInput
+  backgroundImage: ImageInput
+  description: TexttInput
+}
+
+type GroupRoleType {
+  role: RoleType
+  group: GroupType
+}
+
+input GroupRoleInput {
+  role: RoleType
+  group: GroupType
+}
+
+type Member {
+  name: TexttType!
+  groupRole: [GroupRoleType]
+  avatar: ImageType
+  introduction: TexttType
+  school: TexttType
+  departmentYear: TexttType
+  id: ID!
+}
+input MemberInput {
+  name: TexttInput!
+  groupRole: [GroupRoleInput]
+  avatar: ImageInput
+  introduction: TexttInput
+  school: TexttInput
+  departmentYear: TexttInput
+}
+
+input MemberIdInput {
+  name: TexttInput
+  groupRole: [GroupRoleInput]
+  avatar: ImageInput
+  introduction: TexttInput
+  school: TexttInput
+  departmentYear: TexttInput
+  id: ID!
+}
+input MemberNewsFeedInput {
+  id: ID!
+}
+
+scalar Date
